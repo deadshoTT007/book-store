@@ -102,6 +102,9 @@ const useStyles = makeStyles(theme => ({
         gridColumnGap: "40px",
         margin: "20px 0",
         padding: "40px 80px",
+        [theme.breakpoints.up("lg")]: {
+            gridColumnGap: "80px"
+        },
         [theme.breakpoints.down('sm')]: {
             gridTemplateColumns: " 1fr 1fr ",
         },

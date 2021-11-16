@@ -22,7 +22,7 @@ export default function Home() {
     // <Register />
     // <Payment />
     // <TopBar />
-    // <ProductDetails />
-    <SunglassWomens />
+    <ProductDetails />
+    // <SunglassWomens />
   )
 }

@@ -39,6 +39,9 @@ const useStyles = makeStyles(theme => ({
         gridGap: "20px",
         // justifyContent: 'center',
         alignItems: 'center',
+        [theme.breakpoints.down('lg')]: {
+            gridTemplateColumns: "50% 50%"
+        },
         [theme.breakpoints.down('sm')]: {
             gridTemplateColumns: "1fr"
         }
@@ -133,7 +136,11 @@ const useStyles = makeStyles(theme => ({
             fontSize: "32px",
             fontWeight: "500",
             lineHeight: "38px",
-            color: colors.black
+            color: colors.black,
+            [theme.breakpoints.down('xs')]: {
+                fontSize: "24px",
+                lineHeight: "28px"
+            }
         }
     },
     starIcon: {
@@ -168,7 +175,11 @@ const useStyles = makeStyles(theme => ({
         fontWeight: "500",
         fontSize: "32px",
         lineHeight: "38px",
-        color: colors.primary
+        color: colors.primary,
+        [theme.breakpoints.down('xs')]: {
+            fontSize: "24px",
+            lineHeight: "28px"
+        }
     },
     colors: {
         '& p': {
@@ -282,6 +293,9 @@ const useStyles = makeStyles(theme => ({
         marginTop: "10px",
         '& .MuiFormControlLabel-root': {
             marginRight: "0px"
+        },
+        '& span': {
+            display: "inline-block"
         }
     },
     chaseGlass: {

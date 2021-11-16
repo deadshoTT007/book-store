@@ -9,7 +9,7 @@ const SecondaryButton = (props) => {
 
         buttonContainer: {
             display: "flex",
-            justifyContent: props.style.justifyContent ? props.style.justifyContent : "center",
+            justifyContent: props.style ? props.style.justifyContent : "center",
             marginBottom: "30px",
             marginTop: "30px"
 
@@ -20,7 +20,7 @@ const SecondaryButton = (props) => {
             padding: "15px 30px",
             color: colors.black,
             border: "3px solid #000",
-            width: props.style.width ? props.style.width : "100%",
+            width: props.style ? props.style.width : "100%",
             fontSize: "16px",
             lineHeight: "19px",
             outline: "none",

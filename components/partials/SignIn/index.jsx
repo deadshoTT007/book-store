@@ -14,6 +14,7 @@ import { passwordRegex } from '../../utils'
 import PermIdentityIcon from '@material-ui/icons/PermIdentity';
 import MailOutlineIcon from '@material-ui/icons/MailOutline';
 
+
 const useStyles = makeStyles(theme => ({
     modal: {
         // margin: "0 auto",

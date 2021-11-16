@@ -233,7 +233,7 @@ export const Register = () => {
                                 fullWidth="true" />
                         })}
                     </div>
-                    <PrimaryButton style={{ width: "300px" }} title="Register" />
+                    <PrimaryButton style={{ justifyContent: "start", width: "300px" }} title="Register" />
                     <div className={classes.linkContainer}>
                         <Typography variant="span" className={classes.linkText}>Already have account</Typography>
                         <Link href="#" className={classes.links}>

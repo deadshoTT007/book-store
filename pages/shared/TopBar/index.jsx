@@ -225,7 +225,7 @@ const useStyles = makeStyles(theme => ({
         userSelect: "none",
         top: "60px",
         minWidth: "135px",
-        right: "40px",
+        right: "20px",
         height: "120px",
         display: "flex",
         alignItems: "center",
