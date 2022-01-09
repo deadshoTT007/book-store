@@ -1,9 +1,9 @@
 import React from 'react'
-import { makeStyles } from '@material-ui/core/styles'
+import { makeStyles} from '@mui/styles'
 import { colors } from '../../../utils'
 import TopBar from '../../modules/TopBar'
 import Product from '../../modules/Product'
-import { useMediaQuery } from '@material-ui/core'
+import { useMediaQuery } from '@mui/material'
 const bgImage = 'https://post.healthline.com/wp-content/uploads/2020/09/woman-enjoying-morning-coffee-thumb.jpg'
 const womenSunglassesData = [
     {

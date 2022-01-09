@@ -1,6 +1,6 @@
 import React from 'react'
-import { makeStyles } from "@material-ui/core/styles"
-import { Typography, Grid, Button } from '@material-ui/core'
+import { makeStyles } from "@mui/styles"
+import { Typography, Grid, Button } from '@mui/material'
 import { FcGoogle } from 'react-icons/fc'
 import { SiFacebook } from 'react-icons/si'
 

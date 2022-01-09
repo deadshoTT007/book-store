@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
-import { makeStyles } from "@material-ui/core/styles"
-import { Typography, Grid, Button, Link } from '@material-ui/core';
+import { makeStyles } from "@mui/styles"
+import { Typography, Grid, Button, Link } from '@mui/material';
 import { AiOutlineCreditCard } from 'react-icons/ai'
 import { colors } from '../../../utils';
 import CustomButton from '../../elements/CustomButton';
