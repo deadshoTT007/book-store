@@ -1,13 +1,13 @@
 import React, { useState } from 'react'
-import { makeStyles } from '@material-ui/core/styles'
+import { makeStyles } from '@mui/styles'
 import { colors } from '../../../utils'
-import SearchIcon from '@material-ui/icons/Search';
-import { Link } from '@material-ui/core'
-import EmailOutlinedIcon from '@material-ui/icons/EmailOutlined';
-import AccountCircleOutlinedIcon from '@material-ui/icons/AccountCircleOutlined';
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
-import ExpandLessIcon from '@material-ui/icons/ExpandLess';
+import SearchIcon from '@mui/icons-material/Search';
+import { Link } from '@mui/material'
+import EmailOutlinedIcon from '@mui/icons-material/EmailOutlined';
+import AccountCircleOutlinedIcon from '@mui/icons-material/AccountCircleOutlined';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+import ExpandLessIcon from '@mui/icons-material/ExpandLess';
 const useStyles = makeStyles(theme => ({
     topBar: {
         width: "100vw",

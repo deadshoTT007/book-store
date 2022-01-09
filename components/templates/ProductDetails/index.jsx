@@ -1,13 +1,13 @@
 import React, { useState } from 'react'
-import { makeStyles } from '@material-ui/core/styles'
+import { makeStyles } from '@mui/styles'
 import { colors } from '../../../utils'
-import StarRoundedIcon from '@material-ui/icons/StarRounded';
-import StarBorderRoundedIcon from '@material-ui/icons/StarBorderRounded';
-import { Radio, RadioGroup, FormControlLabel, FormControl, FormLabel } from '@material-ui/core'
+import StarRoundedIcon from '@mui/icons-material/StarRounded';
+import StarBorderRoundedIcon from '@mui/icons-material/StarBorderRounded';
+import { Radio, RadioGroup, FormControlLabel, FormControl, FormLabel } from '@mui/material'
 import PrimaryButton from '../../elements/PrimaryButton';
 import SecondaryButton from '../../elements/SecondaryButton';
 import TopBar from '../../modules/TopBar';
-import { useMediaQuery } from '@material-ui/core';
+import { useMediaQuery } from '@mui/material';
 const bgImage = "https://st2.depositphotos.com/3258807/10726/i/950/depositphotos_107267666-stock-photo-positive-girl-holding-her-glasses.jpg"
 
 const imageData = [

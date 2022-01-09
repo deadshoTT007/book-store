@@ -1,10 +1,10 @@
 import React from 'react'
-import { makeStyles } from '@material-ui/core/styles'
-import { Typography, Button, Link } from '@material-ui/core'
+import { makeStyles } from '@mui/styles'
+import { Typography, Button, Link } from '@mui/material'
 import { colors } from '../../../../utils'
 import OrderConfirmation from '../../OrderConfirmation'
-import PaymentOutlinedIcon from '@material-ui/icons/PaymentOutlined';
-import PermIdentityIcon from '@material-ui/icons/PermIdentity';
+import PaymentOutlinedIcon from '@mui/icons-material/PaymentOutlined';
+import PermIdentityIcon from '@mui/icons-material/PermIdentity';
 import Input from '../../../elements/Input'
 
 const useStyles = makeStyles(theme => ({

@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
-import { makeStyles } from "@material-ui/core/styles"
+import { makeStyles } from "@mui/styles"
 import CustomButton from '../../../elements/CustomButton'
-import { Typography, Grid, Modal, Link } from '@material-ui/core'
-import AuthenticationModal from '../../../elements/AuthenticationModal'
+import { Typography, Grid, Modal, Link } from '@mui/material'
+import AuthenticationModal from '../AuthenticationModal'
 import { colors } from '../../../../utils'
 import Input from '../../../elements/Input'
 import { emailRegex } from '../../../../utils'

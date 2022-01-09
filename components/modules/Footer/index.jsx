@@ -1,7 +1,7 @@
 import React from 'react'
-import { makeStyles } from "@material-ui/core/styles"
-import { Typography, Button, Link, FormControl, OutlinedInput, InputLabel, InputAdornment, IconButton, Grid } from '@material-ui/core'
-import { mergeClasses } from '@material-ui/styles'
+import { makeStyles } from "@mui/styles"
+import { Typography, Button, Link, FormControl, OutlinedInput, InputLabel, InputAdornment, IconButton, Grid } from '@mui/material'
+import { mergeClasses } from '@mui/styles'
 import { FiGift } from 'react-icons/fi'
 import { BiEnvelope } from 'react-icons/bi'
 import { BiPhone } from 'react-icons/bi'

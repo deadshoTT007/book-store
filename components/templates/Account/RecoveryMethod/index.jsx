@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
-import { makeStyles } from "@material-ui/core/styles"
+import { makeStyles } from "@mui/styles"
 import { colors } from '../../../../utils'
 import Input from '../../../elements/Input'
-import { Typography, Link, Radio, RadioGroup, FormControlLabel, FormControl, FormLabel } from '@material-ui/core'
+import { Typography, Link, Radio, RadioGroup, FormControlLabel, FormControl, FormLabel } from '@mui/material'
 import PrimaryButton from '../../../elements/PrimaryButton'
 import SecondaryButton from '../../../elements/SecondaryButton'
 
