@@ -11,8 +11,8 @@ const PrimaryButton = (props) => {
             display: "flex",
             justifyContent: props.style ? props.style.justifyContent : "center",
             // justifyContent: "center",
-            marginBottom: "30px",
-            marginTop: "30px"
+            marginBottom: props.style.marginBottom?props.style.marginBottom:"0px",
+            marginTop: props.style.marginTop?props.style.marginTop:"30px"
 
         },
         button: {

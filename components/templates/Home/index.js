@@ -1,215 +1,205 @@
-import React from 'react'
-import { makeStyles } from '@mui/styles'
-import SecondaryButton from '../../elements/SecondaryButton'
-import PrimaryButton from '../../elements/PrimaryButton'
+import React from 'react';
+import { makeStyles } from '@mui/styles';
+import { Typography } from '@mui/material';
+import Grid from '@mui/material/Grid';
+import PrimaryButton from '@/components/elements/PrimaryButton';
+import SecondaryButton from '@/components/elements/SecondaryButton';
 
-import CardMedia from '@mui/material/CardMedia';
+const useStyles = makeStyles(() => ({
+    mainContainer: {
+        padding: '0 24px'
+    },
+    heroContainer: {
+        backgroundImage: `url(images/hero-section.png), linear-gradient(rgba(0,0,0,1), rgba(0,0,0,0))`,
 
-import HeroImage from '@/public/images/hero-section.png'
-import { colors } from '../../../utils'
-const useStyles = makeStyles(theme => ({
-    topBar: {
-        // width: "100vw",
-        padding: "20px",
-        background: "#fff",
+        // width: '100%',
+        height: '400px',
+        margin: '24px 0px 24px'
     },
-    heroSection: {
-        height: "400px",
-        // backgroundImage: `url(${"https://images.unsplash.com/photo-1542449450-025fc187536e?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MzZ8fGdsYXNzZXMlMjBjb2xsZWN0aW9uJTIwcmF5YmFufGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"}) `,
-        // backgroundSize: "cover",
-        display: "flex",
-        justifyContent: "center",
-        flexDirection: "column",
-        paddingLeft: "40px"
+    heroTextContainer: {
+        width: '50%',
+        padding: '80px 10px 20px 40px'
     },
-    buttonContainer: {
-        marginTop: "40px"
+    heroHeader: {
+        fontWeight: 700,
+        fontSize: '48px',
+        color: 'white',
+        textTransform: 'capitalize'
     },
-    button: {
-        background: "transparent",
-        fontSize: "16px",
-        lineHeight: "19px",
-        fontWeight: "500",
-        width: "200px",
-        color: "#fff",
-        border: "none",
-        padding: "20px 15px",
-        border: "3px solid #fff",
-        borderRadius: "50px",
-        marginRight: "20px",
-        outline: "none"
+    heroButtonContainer: {
+        display: 'flex',
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'flex-start'
     },
-    mainText: {
-        fontSize: "48px",
-        fontWeight: "500",
-        lineHeight: "55px",
-        color: "#fff",
-        textTransform: "capitalize"
+    leftImage: {
+        backgroundImage: `url(images/product.png)`,
+        // width: '100%',
+        height: '500px',
+        // marginLeft: '40px',
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'flex-end',
+        padding: '30px'
     },
-    main: {
-        marginTop: "20px",
-        display: "grid",
-        gridTemplateColumns: "1fr 1fr",
-        gridGap: "20px",
-        height: "500px",
-
-
+    rightImage: {
+        backgroundImage: `url(images/eye-glass.png)`,
+        // width: '100%',
+        height: '500px',
+        // marginRight: '40px',
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'flex-end',
+        padding: '30px'
     },
-    sunglasses: {
-        height: "100%",
-        backgroundImage: `url(${"https://images.pexels.com/photos/8264629/pexels-photo-8264629.jpeg?cs=srgb&dl=pexels-olya-prutskova-8264629.jpg&fm=jpg"}) `,
-        backgroundSize: "cover",
-        display: "flex",
-        justifyContent: "flex-end",
-        alignItems: "flex-start",
-        overflow: "hidden",
-        flexDirection: "column",
-        padding: "0 40px",
-        // background: 'linear-gradient(to right bottom, #430089, #82ffa1)',
-        backgroundSize: "cover",
-
-        '& h3': {
-            fontSize: "40px",
-            fontWeight: "500",
-            lineHeight: "47px",
-            color: "#fff",
-            margin: "10px 0",
-            textTransform: "capitalize"
-        },
-        '& p': {
-            fontSize: "20px",
-            lineHeight: "28px",
-            fontWeight: "400",
-            color: "#fff"
-        }
+    imageHeader: {
+        fontWeight: 700,
+        fontSize: '40px',
+        color: 'white',
+        textTransform: 'capitalize',
+        lineHeight: '45px'
     },
-    banner: {
-        height: "340px",
-        width: "100%",
-        overflow: "hidden",
-        padding: "20px 0",
-        backgroundImage: `url(${"https://images.unsplash.com/photo-1534844978-b859e5a09ad6?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTA3fHxnbGFzc2VzJTIwY29sbGVjdGlvbiUyMHJheWJhbnxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"}) `,
-        backgroundSize: "cover",
-        textAlign: "center",
-        margin: "20px 0"
+    imageDescription: {
+        fontWeight: 700,
+        fontSize: '20px',
+        color: 'white',
+        marginTop: '10px'
     },
-    bannerText: {
-        fontSize: "40px",
-        fontWeight: "700",
-        lineHeight: "46px"
+    homeTryOn: {
+        backgroundImage: `url(images/ads-section.png)`,
+        height: '330px',
+        marginTop: '24px',
+        display: 'flex'
     },
-    brands: {
-        textAlign: "center",
-        // margin: "30px 0",
-        textTransform: "capitalize",
-        paddingTop: "10px"
+    homeTryOnText: {
+        fontWeight: 700,
+        fontSize: '40px',
+        color: 'black',
+        margin: '20px auto',
+        textTransform: 'capitalize',
     },
-    brandsContainer: {
-        display: "grid",
-        gridTemplateColumns: "1fr 1fr 1fr",
-        gridGap: "20px",
-        margin: "30px 0",
+    brandContainerHeader: {
+        fontWeight: 700,
+        fontSize: '32px',
+        color: 'black',
+        margin: '20px auto',
+        textAlign: 'center',
+        width: '50%',
+        textTransform: 'capitalize',
     },
-    brandsText: {
-        fontSize: "32px",
-        lineHeight: "37px",
-        fontWeight: "500",
+    brandContainer: {
 
     },
-    brand: {
-        padding: "0 40px",
-        '& img': {
-            width: "70%",
-            height: "200px"
-        },
-        '& h2': {
-            fontSize: "32px",
-            fontWeight: "500",
-            lineHeight: "37px",
-            color: colors.black
-        },
-        '& p': {
-            fontSize: "16px",
-            fontWeight: "400",
-            lineHeight: "22px",
-            color: colors.black,
-            padding: "10px 0"
-        },
-        '& button': {
-            padding: "15px 20px",
-            width: "40%",
-            borderRadius: "50px",
-            border: "2px solid #000",
-            background: "transparent",
-            margin: "10px 0",
-            fontSize: "16px",
-            fontWeight: "700",
-            lineHeight: "19px",
-            color: colors.black,
-            textTransform: "capitalize"
-        }
+    brandItem: {
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        padding: '10px'
+    },
+    brandItemHeader: {
+        fontWeight: 500,
+        fontSize: '32px',
+        color: 'black',
+        textAlign: 'center'
+    },
+    brandItemText: {
+        fontWeight: 400,
+        fontSize: '16px',
+        color: 'black',
+        textAlign: 'center',
+        width: '80%'
+    },
+    brandItemLogo: {
+        height: '100px',
+        marginBottom: '20px'
+    },
+    virtualContainer: {
+        padding: '20px',
+        backgroundColor: '#137D27'
+    },
+    virtualImage: {
+        height: '330px',
     }
 
-}))
-const HomePage = () => {
-    const classes = useStyles()
+}));
+
+const HomePage = (props) => {
+
+    const classes = useStyles();
     return (
-        <div className={classes.topBar}>
-            <div className={classes.topBarContainer}>
-                {/* <CardMedia component="img"
-                    height="194"
-                    image={HeroImage}
-                    alt="Paella dish">
-                    <h1 className={classes.mainText}>Find the sunglass that <br></br> protect you everytime.</h1>
-                    <div className={classes.buttonContainer}>
-                        <button className={classes.button}>For Mens</button>
-                        <button className={classes.button}>For Womens</button>
-
-                    </div>
-                </CardMedia> */}
-                <div className={classes.main}>
-                    <div className={classes.sunglasses}>
-                        <h3 >Iconic Styles with wide <br></br> range of sunglasses. </h3>
-                        <p>Stand out and let your light shine with this collection of bold and bright sunglasses.</p>
-                        <PrimaryButton style={{ width: "210px" }} title="Shop Sunglasses" />
-                    </div>
-                    <div className={classes.sunglasses}>
-                        <h3 >Your custom sunglass to match your personality.</h3>
-                        <p>Stand out and let your light shine with this collection of bold and bright sunglasses.</p>
-                        <PrimaryButton style={{ width: "210px" }} title="Shop Sunglasses" />
-                    </div>
-
-                </div>
-                <div className={classes.banner}>
-                    <h2 className={classes.bannerText}>Get 5-frames for home try-on.</h2>
-                </div>
-                <div className={classes.brands}>
-                    <h2 className={classes.brandsText}>shop premium glasses from world reknown <br></br> eye wear companies</h2>
-                    <div className={classes.brandsContainer}>
-                        <div className={classes.brand}>
-                            <img src="https://www.titlis-rent.ch/uploads/images/Logo/Oakley.jpg" />
-                            <h2>Sunglass hut</h2>
-                            <p>Stand out and let your light shine with this collection of bold and bright sunglasses.</p>
-                            <button className={classes.brandButton}>buy sunglass-hut</button>
-                        </div>
-                        <div className={classes.brand}>
-                            <img src="https://www.titlis-rent.ch/uploads/images/Logo/Oakley.jpg" />
-                            <h2>Ray-Ban</h2>
-                            <p>Stand out and let your light shine with this collection of bold and bright sunglasses.</p>
-                            <button className={classes.brandButton}>Buy ray-ban</button>
-                        </div>
-                        <div className={classes.brand}>
-                            <img src="https://www.titlis-rent.ch/uploads/images/Logo/Oakley.jpg" />
-                            <h2>Okaley</h2>
-                            <p>Stand out and let your light shine with this collection of bold and bright sunglasses.</p>
-                            <button className={classes.brandButton}>buy okaley</button>
-                        </div>
+        <div className={classes.mainContainer}>
+            <div className={classes.heroContainer}>
+                <div className={classes.heroTextContainer}>
+                    <Typography className={classes.heroHeader}>Find the sunglass that protect you everytime</Typography>
+                    <div className={classes.heroButtonContainer}>
+                        <SecondaryButton title={'For Men'} style={{ width: '160px', marginRight: '30px' }} />
+                        <SecondaryButton title={'For Women'} style={{ width: '160px' }} />
                     </div>
                 </div>
-
             </div>
+            <Grid container spacing={2}>
+                <Grid item xs={12} md={6}>
+                    <div className={classes.leftImage}>
+                        <Typography className={classes.imageHeader}>Iconic Styles with wide range of Sunglasses</Typography>
+                        <Typography className={classes.imageDescription}>Stand out and let your light shine with this collection of bold and bright sunglasses</Typography>
+                        <PrimaryButton title={'Shop Sunglasses'} style={{ width: '200px', marginTop: '20px' }} />
+                    </div>
+                </Grid>
+                <Grid item xs={12} md={6}>
+                    <div className={classes.rightImage}>
+                        <Typography className={classes.imageHeader}>Your custom glasses to match your personality</Typography>
+                        <Typography className={classes.imageDescription}>Stand out and let your light shine with this collection of bold and bright sunglasses</Typography>
+                        <PrimaryButton title={'Shop Eyeglasses'} style={{ width: '200px', marginTop: '20px' }} />
+                    </div>
+                </Grid>
+            </Grid>
+            <div className={classes.homeTryOn}>
+                <Typography className={classes.homeTryOnText}>Get 5-frames for Home Try-On.</Typography>
+            </div>
+            <div className={classes.brandContainer}>
+                <Typography className={classes.brandContainerHeader}>Shop Premium glasses from world reknowned eye wear companies</Typography>
+                <Grid container spacing={2}>
+                    <Grid item xs={12} md={4}>
+                        <div className={classes.brandItem}>
+                            <img className={classes.brandItemLogo} src={'images/image-1.png'} alt={'sunglasses hut'} />
+                            <Typography className={classes.brandItemHeader}>Sun Glass Hut</Typography>
+                            <Typography className={classes.brandItemText}>Stand out and let your light shine with this collection of bold and bright sunglasses</Typography>
+                            <SecondaryButton title={'Buy Sunglass Hut'} style={{ width: '220px', border: 'solid 1px #000', color: 'black' }} />
+                        </div>
+                    </Grid>
+                    <Grid item xs={12} md={4}>
+                        <div className={classes.brandItem}>
+                            <img className={classes.brandItemLogo} src={'images/image-2.png'} alt={'sunglasses hut'} />
+                            <Typography className={classes.brandItemHeader}>Ray-Ban</Typography>
+                            <Typography className={classes.brandItemText}>Stand out and let your light shine with this collection of bold and bright sunglasses</Typography>
+                            <SecondaryButton title={'Buy Ray Ban'} style={{ width: '220px', border: 'solid 1px #000', color: 'black' }} />
+                        </div>
+                    </Grid>
+                    <Grid item xs={12} md={4}>
+                        <div className={classes.brandItem}>
+                            <img className={classes.brandItemLogo} src={'images/image-3.png'} alt={'sunglasses hut'} />
+                            <Typography className={classes.brandItemHeader}>Okaley</Typography>
+                            <Typography className={classes.brandItemText}>Stand out and let your light shine with this collection of bold and bright sunglasses</Typography>
+                            <SecondaryButton title={'Buy Okaley'} style={{ width: '220px', border: 'solid 1px #000', color: 'black' }} />
+                        </div>
+                    </Grid>
+                </Grid>
+            </div>
+            <div className={classes.virtualContainer}>
+                <Grid container>
+                    <Grid item xs={12} md={6}>
+                        <img className={classes.vitualImage} src={'images/girl.png'} alt={'girl glasses'} />
 
+                    </Grid>
+                    <Grid item xs={12} md={6} className={classes.brandItem}>
+                        <Typography className={classes.brandItemHeader}>Virtual Try-On</Typography>
+                        <Typography className={classes.brandItemText}>Stand out and let your light shine with this collection of bold and bright sunglasses</Typography>
+                        <SecondaryButton title={'Virtual Try-On'} style={{ width: '220px', border: 'solid 1px #000', color: 'black' }} />
+                    </Grid>
+                </Grid>
+            </div>
         </div>
     )
 }
-export default HomePage
+
+export default HomePage;
