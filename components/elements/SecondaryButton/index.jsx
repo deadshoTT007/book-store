@@ -11,15 +11,15 @@ const SecondaryButton = (props) => {
             display: "flex",
             justifyContent: props.style ? props.style.justifyContent : "center",
             marginBottom: "30px",
-            marginTop: "30px"
-
+            marginTop: "30px",
+            marginRight: props.style.marginRight?props.style.marginRight: 0
         },
         button: {
             background: "transparent",
-            borderRadius: "50px",
-            padding: "15px 30px",
-            color: colors.black,
-            border: "3px solid #000",
+            borderRadius: "40px",
+            padding: "12px 32px",
+            color: props.style.color?props.style.color:colors.white,
+            border: props.style.border?props.style.border:"2px solid #fff",
             width: props.style ? props.style.width : "100%",
             fontSize: "16px",
             lineHeight: "19px",

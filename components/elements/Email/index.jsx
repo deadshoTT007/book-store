@@ -59,7 +59,7 @@ const Email = (props) => {
                             </IconButton>
                         </InputAdornment>
                     }
-                    labelWidth={70}
+                    // labelWidth={70}
                 />
             </FormControl>
         </div>
