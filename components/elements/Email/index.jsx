@@ -8,10 +8,10 @@ const Email = (props) => {
     const useStyles = makeStyles(theme => ({
 
         inputContainer: {
-            width: props.fullWidth ? "100%" : "20vw",
             paddingRight: "20px",
             paddingTop: props.paddingTop ? props.paddingTop : "0",
             color: "#4A4A4A",
+            // marginBottom:"16px",
             '& input': {
                 fontSize: "16px",
                 color: "#4A4A4A",

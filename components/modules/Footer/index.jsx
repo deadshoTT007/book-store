@@ -1,32 +1,35 @@
 import React from 'react'
-import { makeStyles } from "@mui/styles"
-import { Typography, Button, Link, FormControl, OutlinedInput, InputLabel, InputAdornment, IconButton, Grid } from '@mui/material'
-import { mergeClasses } from '@mui/styles'
+import { makeStyles } from '@mui/styles';
+import { Typography, Button, Link, FormControl, OutlinedInput, InputLabel, InputAdornment, IconButton } from '@mui/material'
 import { FiGift } from 'react-icons/fi'
+import PrimaryButton from '@/components/elements/PrimaryButton';
 import { BiEnvelope } from 'react-icons/bi'
 import { BiPhone } from 'react-icons/bi'
 import { GrLocation } from 'react-icons/gr'
 import { GrCircleQuestion } from 'react-icons/gr'
 import { FiInstagram } from 'react-icons/fi'
 import { RiFacebookCircleLine } from 'react-icons/ri'
-import Email from '../../elements/Email'
-
+import {AiOutlineQuestionCircle} from 'react-icons/ai'
+import Email from '@/components/elements/Email';
 const useStyles = makeStyles(theme => ({
     main: {
         // position: "fixed",
-        bottom: "0",
+        // bottom: "0",
+        zIndex:"10000000",
         width: "100vw",
+        overflow:"hidden",
         background: "#F5FFF7",
         paddingTop: "40px",
         paddingBottom: "40px",
         marginTop: "auto",
-        boxSizing: "border-box"
+        [theme.breakpoints.down('md')]:{
+            position:"relative"
+        }
     },
     mainContainer: {
         width: "90%",
         margin: "0 auto",
         minHeight: "40vh",
-        boxSizing: "border-box"
 
     },
     subscriptionContainer: {
@@ -36,8 +39,7 @@ const useStyles = makeStyles(theme => ({
         justifyContent: "center",
         alignItems: "center",
         padding: "20px",
-        boxSizing: "border-box",
-        [theme.breakpoints.down("sm")]: {
+        [theme.breakpoints.down("md")]: {
             flexDirection: "column",
             width: "100%",
 
@@ -46,7 +48,8 @@ const useStyles = makeStyles(theme => ({
     subscriptionTextContainer: {
         display: "flex",
         alignItems: "center",
-        [theme.breakpoints.down("sm")]: {
+        // marginBottom:"24px",
+        [theme.breakpoints.down("md")]: {
             alignItems: "center"
         }
     },
@@ -56,7 +59,10 @@ const useStyles = makeStyles(theme => ({
         fontWeight: "500",
         paddingRight: "40px",
         lineHeight: "28px",
-        paddingLeft: "10px"
+        paddingLeft: "10px",
+        [theme.breakpoints.down("md")]:{
+            paddingRight:0
+        }
     },
     giftIcon: {
         fontSize: "44px",
@@ -65,7 +71,6 @@ const useStyles = makeStyles(theme => ({
 
     },
     inputContainer: {
-        width: "20vw",
         paddingRight: "20px",
         color: "#4A4A4A",
         '& input': {
@@ -86,7 +91,7 @@ const useStyles = makeStyles(theme => ({
         // '&::placeholder':{
 
         // }
-        [theme.breakpoints.down("sm")]: {
+        [theme.breakpoints.down("md")]: {
             margin: "20px 0",
             width: "90vw",
             padding: "0"
@@ -107,46 +112,49 @@ const useStyles = makeStyles(theme => ({
         fontWeight: "500"
     },
     info: {
-        // width: "100%",
+        width: "100%",
         margin: "30px 0",
         // minHeight: "200px",
         paddingBottom: "40px",
         background: "#fff",
-        // display: "flex",
-        // justifyContent: "center",
-        // boxSizing: "border-box",
-        // alignItems: "center",
-        // '&>*': {
-        //     flex: "1",
-        // },
-        // [theme.breakpoints.down("sm")]: {
-        //     flexDirection: "column"
-        // }
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        '&>*': {
+            flex: "1",
+        },
+        [theme.breakpoints.down("md")]: {
+            flexDirection: "column"
+        }
     },
     infoBox: {
-        paddingTop: "40px",
-        // boxSizing: "border-box",
+        paddingTop: "40px ",
+
         textAlign: "center"
     },
     infoBoxContainer: {
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
-        paddingBottom: "20px "
+        paddingBottom: "8px "
     },
     infoIcon: {
         display: "inline-block",
         fontSize: "24px",
-        marginTop: "2px",
-        paddingRight: "10px"
+        // marginTop: "2px",
+        // paddingRight: "10px"
+    },
+    infoPhoneIcon:{
+        display: "inline-block",
+        fontSize: "24px",
+// flex:1
     },
     infoHeaderText: {
         fontSize: "24px",
-        lineHeight: "27px",
+        // lineHeight: "27px",
         fontWeight: "700",
         color: "#0D0D0D",
-        padding: "0 14px",
-        boxSizing: 'border-box'
+        padding: "0 14px"
     },
     infoSubHeaderText: {
         fontSize: "16px",
@@ -154,24 +162,23 @@ const useStyles = makeStyles(theme => ({
         color: "#137D27"
     },
     footer: {
-        // display: "grid",
-        // boxSizing: "border-box",
-        // gridTemplateColumns: "1fr 1fr 1fr 1fr",
-        // gridGap: "20px",
+        display: "grid",
+        gridTemplateColumns: "1fr 1fr 1fr 1fr",
+        gridGap: "20px",
         paddingTop: "20px",
         paddingBottom: "30px",
         // padding: " 0 30px ",
         borderBottom: "2px solid #09651A",
-        // [theme.breakpoints.down("sm")]: {
-        //     gridTemplateColumns: "1fr 1fr"
-        // },
-        // [theme.breakpoints.down("xs")]: {
-        //     gridTemplateColumns: "1fr"
-        // }
+        [theme.breakpoints.down("md")]: {
+            gridTemplateColumns: "1fr 1fr"
+        },
+        [theme.breakpoints.down("sm")]: {
+            gridTemplateColumns: "1fr 1fr"
+        }
     },
     footerMainText: {
         fontSize: "16px",
-        fontWeight: "500",
+        fontWeight: "700",
         lineHeight: "18px",
         color: "#0D0D0D",
     },
@@ -189,7 +196,6 @@ const useStyles = makeStyles(theme => ({
 
     // },
     link: {
-        boxSizing: "border-box",
         display: "block",
         margin: "12px 0",
         color: "#4A4A4A",
@@ -204,19 +210,22 @@ const useStyles = makeStyles(theme => ({
             textDecoration: "none"
         }
     },
+    links:{
+textDecoration:"none"
+    },
     policiesContainer: {
         paddingTop: "20px",
         display: "flex",
-        alignItems: "center",
+        // alignItems: "center",
         justifyContent: "space-between",
-        [theme.breakpoints.down("sm")]: {
+        [theme.breakpoints.down("md")]: {
             flexDirection: "column"
         }
     },
     socials: {
         display: "flex",
         alignItems: "center",
-        [theme.breakpoints.down("sm")]: {
+        [theme.breakpoints.down("md")]: {
             paddingBottom: "20px"
         }
 
@@ -272,49 +281,58 @@ const Footer = () => {
                     </div> */}
                     <Email placeholder="Email" />
                     <div className={classes.subscriptionButtonContainer}>
-                        <Button className={classes.subscriptionButton} variant="contained">Subscribe</Button>
+                        <PrimaryButton title="Subscribe" style={{marginTop:0}} smallStyle={{marginTop:24}}/>
+                        {/* <Button className={classes.subscriptionButton} variant="contained">Subscribe</Button> */}
                     </div>
                 </div>
-                <Grid container className={classes.info}>
-                    <Grid item lg={3} className={classes.infoBox}>
+                <div className={classes.info}>
+                    {/* <div className={classes.infoBox}>
                         <div className={classes.infoBoxContainer}>
                             <BiPhone className={classes.infoIcon} />
                             <Typography className={classes.infoHeaderText} variant="span">Phone Number</Typography>
                         </div>
                         <Typography className={classes.infoSubHeaderText} variant="h5">980253697</Typography>
 
-                    </Grid>
-                    <Grid item lg={3} className={classes.infoBox}>
+                    </div> */}
+                    <div className={classes.infoBox}>
+                        <div className={classes.infoBoxContainer}>
+                            <BiPhone className={classes.infoPhoneIcon} />
+                            <Typography className={classes.infoHeaderText} variant="span">Phone Number</Typography>
+                        </div>
+                        <Typography className={classes.infoSubHeaderText} variant="h5">980253697</Typography>
+
+                    </div>
+                    <div className={classes.infoBox}>
                         <div className={classes.infoBoxContainer}>
                             <BiEnvelope className={classes.infoIcon} />
                             <Typography className={classes.infoHeaderText} variant="span">Email</Typography>
                         </div>
                         <Typography className={classes.infoSubHeaderText} variant="h5">support@chasmaghar.com</Typography>
 
-                    </Grid>
+                    </div>
 
-                    <Grid item lg={3} className={classes.infoBox}>
+                    <div className={classes.infoBox}>
                         <div className={classes.infoBoxContainer}>
                             <GrLocation className={classes.infoIcon} />
                             <Typography className={classes.infoHeaderText} variant="span">Location</Typography>
                         </div>
                         <Typography className={classes.infoSubHeaderText} variant="h5">Kupandole, lalitpur</Typography>
 
-                    </Grid>
+                    </div>
 
-                    <Grid item lg={3} className={classes.infoBox}>
+                    <div className={classes.infoBox}>
                         <div className={classes.infoBoxContainer}>
-                            <BiPhone className={classes.infoIcon} />
+                            <AiOutlineQuestionCircle className={classes.infoIcon}/>
                             <Typography className={classes.infoHeaderText} variant="span">FAQ</Typography>
                         </div>
                         <Typography className={classes.infoSubHeaderText} variant="h5">Vist FQA</Typography>
 
-                    </Grid>
+                    </div>
 
 
-                </Grid>
-                <Grid container className={classes.footer}>
-                    <Grid item lg={3} sm={6} xs={12} className={classes.footerContent}>
+                </div>
+                <div className={classes.footer}>
+                    <div className={classes.footerContent}>
                         <Typography className={classes.footerMainText} variant="h3">Categories</Typography>
                         <Link href="#" className={classes.links}>
                             <a className={classes.link}>Sunglass for mens</a>
@@ -334,8 +352,8 @@ const Footer = () => {
                         <Link href="#" className={classes.links}>
                             <a className={classes.link}>Eyeglass for kids</a>
                         </Link>
-                    </Grid>
-                    <Grid item lg={3} sm={6} xs={12} className={classes.footerContent}>
+                    </div>
+                    <div className={classes.footerContent}>
                         <Typography className={classes.footerMainText} variant="h3">Brand</Typography>
                         <Link href="#" className={classes.links}>
                             <a className={classes.link}>Ray-ban</a>
@@ -347,8 +365,8 @@ const Footer = () => {
                             <a className={classes.link}>Okaley</a>
                         </Link>
 
-                    </Grid>
-                    <Grid item lg={3} sm={6} xs={12} className={classes.footerContent}>
+                    </div>
+                    <div className={classes.footerContent}>
                         <Typography className={classes.footerMainText} variant="h3">Useful</Typography>
                         <Link href="#" className={classes.links}>
                             <a className={classes.link}>Cart</a>
@@ -357,8 +375,8 @@ const Footer = () => {
                             <a className={classes.link}>Profile</a>
                         </Link>
 
-                    </Grid>
-                    <Grid item lg={3} sm={6} xs={12} className={classes.footerContent}>
+                    </div>
+                    <div className={classes.footerContent}>
                         <Typography className={classes.footerMainText} variant="h3">Features</Typography>
                         <Link href="#" className={classes.links}>
                             <a className={classes.link}>Home try-on</a>
@@ -370,8 +388,8 @@ const Footer = () => {
                             <a className={classes.link}>Upload subscription</a>
                         </Link>
 
-                    </Grid>
-                </Grid>
+                    </div>
+                </div>
                 <div className={classes.policiesContainer}>
                     <div className={classes.socials}>
                         <Typography variant="span" className={classes.socialText}>@chasmaghar</Typography>

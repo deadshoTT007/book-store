@@ -1,69 +1,71 @@
 import React from 'react'
-import { makeStyles} from '@mui/styles'
-import { colors } from '../../../utils'
-import TopBar from '../../modules/TopBar'
-import Product from '../../modules/Product'
+import {makeStyles} from '@mui/styles'
+import { colors } from '../../../utils/index'
+import TopBar from '@/components/modules/TopBar'
+import Product from '@/components/modules/Product'
 import { useMediaQuery } from '@mui/material'
+import FilterBox from '@/components/elements/FilterBox'
 const bgImage = 'https://post.healthline.com/wp-content/uploads/2020/09/woman-enjoying-morning-coffee-thumb.jpg'
+const imageBg="https://media.baamboozle.com/uploads/images/120677/1602612165_18008"
 const womenSunglassesData = [
     {
-        src: "https://www.prokurainnovations.com/wp-content/uploads/2021/08/product-view-image.png",
+        src:imageBg,
         title: "Durand",
         colors: ["red", "black", "gray", "brown", "maron", "yellow"],
         price: "2500"
 
     },
     {
-        src: "https://www.prokurainnovations.com/wp-content/uploads/2021/08/product-view-image.png",
+        src:imageBg,
         title: "Durand",
         colors: ["red", "black", "gray", "brown", "maron", "yellow"],
         price: "2500"
 
     },
     {
-        src: "https://www.prokurainnovations.com/wp-content/uploads/2021/08/product-view-image.png",
+        src:imageBg,
         title: "Durand",
         colors: ["red", "black", "gray", "brown", "maron", "yellow"],
         price: "2500"
 
     },
     {
-        src: "https://www.prokurainnovations.com/wp-content/uploads/2021/08/product-view-image.png",
+        src:imageBg,
         title: "Durand",
         colors: ["red", "black", "gray", "brown", "maron", "yellow"],
         price: "2500"
 
     },
     {
-        src: "https://www.prokurainnovations.com/wp-content/uploads/2021/08/product-view-image.png",
+        src:imageBg,
         title: "Durand",
         colors: ["red", "black", "gray", "brown", "maron", "yellow"],
         price: "2500"
 
     },
     {
-        src: "https://www.prokurainnovations.com/wp-content/uploads/2021/08/product-view-image.png",
+        src:imageBg,
         title: "Durand",
         colors: ["red", "black", "gray", "brown", "maron", "yellow"],
         price: "2500"
 
     },
     {
-        src: "https://www.prokurainnovations.com/wp-content/uploads/2021/08/product-view-image.png",
+        src:imageBg,
         title: "Durand",
         colors: ["red", "black", "gray", "brown", "maron", "yellow"],
         price: "2500"
 
     },
     {
-        src: "https://www.prokurainnovations.com/wp-content/uploads/2021/08/product-view-image.png",
+        src:imageBg,
         title: "Durand",
         colors: ["red", "black", "gray", "brown", "maron", "yellow"],
         price: "2500"
 
     },
     {
-        src: "https://www.prokurainnovations.com/wp-content/uploads/2021/08/product-view-image.png",
+        src:imageBg,
         title: "Durand",
         colors: ["red", "black", "gray", "brown", "maron", "yellow"],
         price: "2500"
@@ -73,7 +75,7 @@ const womenSunglassesData = [
 const useStyles = makeStyles(theme => ({
     main: {
         padding: "40px",
-        [theme.breakpoints.down('xs')]: {
+        [theme.breakpoints.down('md')]: {
             padding: "40px 20px"
         }
     },
@@ -105,10 +107,10 @@ const useStyles = makeStyles(theme => ({
         [theme.breakpoints.up("lg")]: {
             gridColumnGap: "80px"
         },
-        [theme.breakpoints.down('sm')]: {
+        [theme.breakpoints.down('md')]: {
             gridTemplateColumns: " 1fr 1fr ",
         },
-        [theme.breakpoints.down('xs')]: {
+        [theme.breakpoints.down('md')]: {
             gridTemplateColumns: "1fr",
             padding: "20px 20px"
         }
@@ -135,12 +137,13 @@ const useStyles = makeStyles(theme => ({
     }
 
 }))
-export const Products = () => {
+export const SunglassWomens = () => {
     const classes = useStyles()
-    const bannerActive = useMediaQuery("(min-width:600px)")
+    const bannerActive = useMediaQuery("(min-width:900px)")
     console.log(bannerActive, "acctive")
     return (
         <>
+            <TopBar />
             <div className={classes.main}>
                 {bannerActive ? <div className={classes.banner}>
                     <div className={classes.bannerContainer}>
@@ -154,7 +157,7 @@ export const Products = () => {
                     <div className={classes.heroSectionText}>Glasses that work hard.<br></br>
                         Just as hard as you do.</div>
                 </div>}
-
+<FilterBox/>
                 <div className={classes.sunglassesContainer}>
                     <div className={classes.sunglasses}>
                         {womenSunglassesData.map((sunglass, index) => {
@@ -166,4 +169,4 @@ export const Products = () => {
         </>
     )
 }
-export default Products
+export default SunglassWomens

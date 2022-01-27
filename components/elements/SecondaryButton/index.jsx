@@ -9,25 +9,31 @@ const SecondaryButton = (props) => {
 
         buttonContainer: {
             display: "flex",
-            justifyContent: props.style ? props.style.justifyContent : "center",
-            marginBottom: "30px",
-            marginTop: "30px",
-            marginRight: props.style.marginRight?props.style.marginRight: 0
+            justifyContent:"center",
+            // marginBottom: "30px",
+            // marginTop: "30px",
+            marginRight: 0,
+            ...props.parentStyle
         },
         button: {
+            border:"none",
             background: "transparent",
             borderRadius: "40px",
             padding: "12px 32px",
-            color: props.style.color?props.style.color:colors.white,
-            border: props.style.border?props.style.border:"2px solid #fff",
-            width: props.style ? props.style.width : "100%",
+            color: colors.white,
+            border: "2px solid #fff",
+            width: "100%",
             fontSize: "16px",
             lineHeight: "19px",
             outline: "none",
             fontWeight: "700",
             textTransform: "capitalize",
+            ...props.style,
             '&.MuiButton-contained': {
                 boxShadow: "none"
+            },
+            [theme.breakpoints.down('md')]:{
+                ...props.smallStyle
             }
 
         },

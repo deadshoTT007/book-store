@@ -9,31 +9,34 @@ const PrimaryButton = (props) => {
 
         buttonContainer: {
             display: "flex",
-            justifyContent: props.style ? props.style.justifyContent : "center",
+            justifyContent:"center",
             // justifyContent: "center",
-            marginBottom: props.style.marginBottom?props.style.marginBottom:"0px",
-            marginTop: props.style.marginTop?props.style.marginTop:"30px"
-
+            // marginBottom: "0px",
+            // marginTop: "30px",
+...props.parentStyle,
+[theme.breakpoints.down("md")]:{
+    maxWidth:"100%"
+}
         },
         button: {
             background: colors.primary,
             borderRadius: "50px",
-            padding: "15px 30px",
+            padding: "12px 32px",
             color: "#fff",
-            width: props.style ? props.style.width : "100%",
             // width: "100%",
             fontSize: "16px",
             lineHeight: "19px",
             fontWeight: "700",
             textTransform: "capitalize",
+            ...props.style,
             '&:hover': {
                 background: "green"
             },
             '&.MuiButton-contained': {
                 boxShadow: "none"
             },
-            [theme.breakpoints.down('xs')]: {
-                width: (props.style && props.style.width) ? "50%" : "100%"
+            [theme.breakpoints.down('md')]: {
+                ...props.smallStyle,
             }
         },
 

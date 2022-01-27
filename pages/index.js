@@ -15,9 +15,9 @@ import Products from '@/components/templates/Products'
 import HomeLayout from '@/components/layouts/HomeLayout';
 export default function HomePage() {
   return (
-    <HomeLayout>
-     <Home />
-    </HomeLayout>
+    // <HomeLayout>
+    //  <Home />
+    // </HomeLayout>
     // <Footer />
     // <Form />
     // <ForgotPassword />
@@ -27,7 +27,7 @@ export default function HomePage() {
     // <Payment />
     // <TopBar />
     // <ProductDetails />
-    // 
+    <Products/>
     // <Home/>
   )
 }

@@ -5,26 +5,37 @@ import Grid from '@mui/material/Grid';
 import PrimaryButton from '@/components/elements/PrimaryButton';
 import SecondaryButton from '@/components/elements/SecondaryButton';
 
-const useStyles = makeStyles(() => ({
+const useStyles = makeStyles((theme) => ({
     mainContainer: {
         padding: '0 24px'
     },
     heroContainer: {
         backgroundImage: `url(images/hero-section.png), linear-gradient(rgba(0,0,0,1), rgba(0,0,0,0))`,
-
+backgroundRepeat:"no-repeat",
+backgroundSize:"cover",
         // width: '100%',
-        height: '400px',
-        margin: '24px 0px 24px'
+        // height: '400px',
+        margin: '24px 0px 24px',
+        height:"400px",
+        display:'flex',
+        alignItems:"center"
     },
     heroTextContainer: {
         width: '50%',
-        padding: '80px 10px 20px 40px'
+        padding: '40px',
+        [theme.breakpoints.down('md')]:{
+            width:"100%",
+            padding:" 40px"
+        }
     },
     heroHeader: {
         fontWeight: 700,
         fontSize: '48px',
         color: 'white',
-        textTransform: 'capitalize'
+        textTransform: 'capitalize',
+        [theme.breakpoints.down('md')]:{
+            fontSize:"32px"
+        }
     },
     heroButtonContainer: {
         display: 'flex',
@@ -35,38 +46,55 @@ const useStyles = makeStyles(() => ({
     leftImage: {
         backgroundImage: `url(images/product.png)`,
         // width: '100%',
+        backgroundRepeat:"no-repeat",
+backgroundSize:"cover",
         height: '500px',
         // marginLeft: '40px',
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'flex-end',
-        padding: '30px'
+        padding: '40px',
+        borderRadius:"4px"
     },
     rightImage: {
         backgroundImage: `url(images/eye-glass.png)`,
         // width: '100%',
         height: '500px',
+        backgroundRepeat:"no-repeat",
+        borderRadius:"4px",
+backgroundSize:"cover",
         // marginRight: '40px',
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'flex-end',
-        padding: '30px'
+        padding: '40px'
     },
     imageHeader: {
         fontWeight: 700,
         fontSize: '40px',
         color: 'white',
         textTransform: 'capitalize',
-        lineHeight: '45px'
+        lineHeight: '45px',
+        [theme.breakpoints.down('md')]:{
+            fontSize:"24px",
+            lineHeight:"28px"
+        }
     },
     imageDescription: {
-        fontWeight: 700,
+        fontWeight: 400,
         fontSize: '20px',
         color: 'white',
-        marginTop: '10px'
+        marginTop: '10px',
+        [theme.breakpoints.down('md')]:{
+            fontSize:"16px",
+            lineHeight:"22px"
+        }
+
     },
     homeTryOn: {
-        backgroundImage: `url(images/ads-section.png)`,
+        backgroundImage: `url(images/collection.jpg)`,
+        backgroundSize:"cover",
+        backgroundRepeat:"no-repeat",
         height: '330px',
         marginTop: '24px',
         display: 'flex'
@@ -77,48 +105,78 @@ const useStyles = makeStyles(() => ({
         color: 'black',
         margin: '20px auto',
         textTransform: 'capitalize',
+        padding:"0px 16px",
+        textAlign:"center"
     },
     brandContainerHeader: {
         fontWeight: 700,
         fontSize: '32px',
         color: 'black',
-        margin: '20px auto',
+        lineHeight:"40px",
+        margin: '32px auto',
+        marginTop:"40px",
         textAlign: 'center',
         width: '50%',
         textTransform: 'capitalize',
+        [theme.breakpoints.down('md')]:{
+            width:"100%"
+        }
     },
     brandContainer: {
-
+marginBottom:64
     },
     brandItem: {
         display: 'flex',
         flexDirection: 'column',
-        alignItems: 'center',
-        padding: '10px'
+        alignItems:"center",
+        justifyContent:"center",
+        padding: '10px',
+        [theme.breakpoints.down('md')]:{
+            alignItems: 'center',
+textAlign:"center"
+        }
+    },
+
+    brandHeaderText:{
+        fontWeight: 500,
+        fontSize: '32px',
+        color: '#0D0D0D',
+        lineHeight:"38px",
+        textAlign:"center"
+
+    },
+    brandSubHeaderText:{
+        fontWeight: 500,
+        fontSize: '16px',
+        color: '#0D0D0D',
+        textAlign:"center",
+        marginTop:4
     },
     brandItemHeader: {
         fontWeight: 500,
-        fontSize: '32px',
-        color: 'black',
-        textAlign: 'center'
+        fontSize: '48px',
+        color: '#fff',
+        // textAlign: 'center'
     },
     brandItemText: {
         fontWeight: 400,
-        fontSize: '16px',
-        color: 'black',
-        textAlign: 'center',
+        fontSize: '20px',
+        color: '#fff',
+        // textAlign: 'center',
         width: '80%'
     },
     brandItemLogo: {
         height: '100px',
-        marginBottom: '20px'
+        marginBottom: '24px',
+        width:"200px"
     },
     virtualContainer: {
         padding: '20px',
-        backgroundColor: '#137D27'
+        background:'linear-gradient(49.32deg, #137D27 0%, #03C95D 100%)',
     },
-    virtualImage: {
-        height: '330px',
+    vitualImage: {
+        // height: '330px',
+        width:"100%"
     }
 
 }));
@@ -132,24 +190,24 @@ const HomePage = (props) => {
                 <div className={classes.heroTextContainer}>
                     <Typography className={classes.heroHeader}>Find the sunglass that protect you everytime</Typography>
                     <div className={classes.heroButtonContainer}>
-                        <SecondaryButton title={'For Men'} style={{ width: '160px', marginRight: '30px' }} />
-                        <SecondaryButton title={'For Women'} style={{ width: '160px' }} />
+                        <SecondaryButton title={'For Men'} smallStyle={{padding:"8px 24px",fontSize:"12px"}} style={{ marginTop:40,  marginRight: '30px' }} />
+                        <SecondaryButton title={'For Women'} smallStyle={{padding:"8px 24px",fontSize:"12px"}} style={{ marginTop:40, }} />
                     </div>
                 </div>
             </div>
-            <Grid container spacing={2}>
+            <Grid container spacing={4}>
                 <Grid item xs={12} md={6}>
                     <div className={classes.leftImage}>
                         <Typography className={classes.imageHeader}>Iconic Styles with wide range of Sunglasses</Typography>
                         <Typography className={classes.imageDescription}>Stand out and let your light shine with this collection of bold and bright sunglasses</Typography>
-                        <PrimaryButton title={'Shop Sunglasses'} style={{ width: '200px', marginTop: '20px' }} />
+                        <PrimaryButton title={'Shop Sunglasses'} parentStyle={{justifyContent:"start"}} style={{ width: '200px', marginTop: '20px',background:"linear-gradient(49.32deg, #137D27 0%, #03C95D 100%)" }} />
                     </div>
                 </Grid>
                 <Grid item xs={12} md={6}>
                     <div className={classes.rightImage}>
                         <Typography className={classes.imageHeader}>Your custom glasses to match your personality</Typography>
                         <Typography className={classes.imageDescription}>Stand out and let your light shine with this collection of bold and bright sunglasses</Typography>
-                        <PrimaryButton title={'Shop Eyeglasses'} style={{ width: '200px', marginTop: '20px' }} />
+                        <PrimaryButton title={'Shop Eyeglasses'} parentStyle={{justifyContent:"start"}} style={{ width: '200px', marginTop: '20px',background:"linear-gradient(49.32deg, #137D27 0%, #03C95D 100%)" }} />
                     </div>
                 </Grid>
             </Grid>
@@ -162,25 +220,25 @@ const HomePage = (props) => {
                     <Grid item xs={12} md={4}>
                         <div className={classes.brandItem}>
                             <img className={classes.brandItemLogo} src={'images/image-1.png'} alt={'sunglasses hut'} />
-                            <Typography className={classes.brandItemHeader}>Sun Glass Hut</Typography>
-                            <Typography className={classes.brandItemText}>Stand out and let your light shine with this collection of bold and bright sunglasses</Typography>
-                            <SecondaryButton title={'Buy Sunglass Hut'} style={{ width: '220px', border: 'solid 1px #000', color: 'black' }} />
+                            <Typography className={classes.brandHeaderText}>Sun Glass Hut</Typography>
+                            <Typography className={classes.brandSubHeaderText}>Stand out and let your light shine with this collection of bold and bright sunglasses</Typography>
+                            <SecondaryButton title={'Buy Sunglass Hut'} style={{ marginTop:24,width: '220px', border: 'solid 1px #000', color: 'black' }} />
                         </div>
                     </Grid>
                     <Grid item xs={12} md={4}>
                         <div className={classes.brandItem}>
                             <img className={classes.brandItemLogo} src={'images/image-2.png'} alt={'sunglasses hut'} />
-                            <Typography className={classes.brandItemHeader}>Ray-Ban</Typography>
-                            <Typography className={classes.brandItemText}>Stand out and let your light shine with this collection of bold and bright sunglasses</Typography>
-                            <SecondaryButton title={'Buy Ray Ban'} style={{ width: '220px', border: 'solid 1px #000', color: 'black' }} />
+                            <Typography className={classes.brandHeaderText}>Ray-Ban</Typography>
+                            <Typography className={classes.brandSubHeaderText}>Stand out and let your light shine with this collection of bold and bright sunglasses</Typography>
+                            <SecondaryButton title={'Buy Ray Ban'} style={{ marginTop:24,width: '220px', border: 'solid 1px #000', color: 'black' }} />
                         </div>
                     </Grid>
                     <Grid item xs={12} md={4}>
                         <div className={classes.brandItem}>
                             <img className={classes.brandItemLogo} src={'images/image-3.png'} alt={'sunglasses hut'} />
-                            <Typography className={classes.brandItemHeader}>Okaley</Typography>
-                            <Typography className={classes.brandItemText}>Stand out and let your light shine with this collection of bold and bright sunglasses</Typography>
-                            <SecondaryButton title={'Buy Okaley'} style={{ width: '220px', border: 'solid 1px #000', color: 'black' }} />
+                            <Typography className={classes.brandHeaderText}>Okaley</Typography>
+                            <Typography className={classes.brandSubHeaderText}>Stand out and let your light shine with this collection of bold and bright sunglasses</Typography>
+                            <SecondaryButton title={'Buy Okaley'}  style={{ marginTop:24,width: '220px', border: 'solid 1px #000', color: 'black' }} />
                         </div>
                     </Grid>
                 </Grid>
@@ -194,7 +252,7 @@ const HomePage = (props) => {
                     <Grid item xs={12} md={6} className={classes.brandItem}>
                         <Typography className={classes.brandItemHeader}>Virtual Try-On</Typography>
                         <Typography className={classes.brandItemText}>Stand out and let your light shine with this collection of bold and bright sunglasses</Typography>
-                        <SecondaryButton title={'Virtual Try-On'} style={{ width: '220px', border: 'solid 1px #000', color: 'black' }} />
+                        <SecondaryButton title={'Virtual Try-On'} parentStyle={{justifyContent:"start"}} style={{ marginTop:"24px",width: '220px', border: 'solid 2px #fff', color: '#fff' }} />
                     </Grid>
                 </Grid>
             </div>

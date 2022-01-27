@@ -6,11 +6,11 @@ const useStyles = makeStyles(theme => ({
         display: "flex",
         alignItems: "center",
         flexDirection: "column",
-
+overflow:"hidden"
 
     },
     productImage: {
-        width: "100%",
+        // width: "30%",
         height: "auto",
         objectFit: "contain"
         // objectFit: "cover"

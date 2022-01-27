@@ -3,7 +3,7 @@ import { makeStyles } from '@mui/styles'
 import { colors } from '../../../utils'
 import StarRoundedIcon from '@mui/icons-material/StarRounded';
 import StarBorderRoundedIcon from '@mui/icons-material/StarBorderRounded';
-import { Radio, RadioGroup, FormControlLabel, FormControl, FormLabel } from '@mui/material'
+import { Radio, RadioGroup,Checkbox, FormControlLabel, FormControl, FormLabel } from '@mui/material'
 import PrimaryButton from '../../elements/PrimaryButton';
 import SecondaryButton from '../../elements/SecondaryButton';
 import TopBar from '../../modules/TopBar';
@@ -23,7 +23,7 @@ const useStyles = makeStyles(theme => ({
     main: {
         padding: "40px",
         overflow: "hidden",
-        [theme.breakpoints.down('xs')]: {
+        [theme.breakpoints.down('md')]: {
             padding: "40px 20px"
         }
         // background: 'red'
@@ -42,7 +42,7 @@ const useStyles = makeStyles(theme => ({
         [theme.breakpoints.down('lg')]: {
             gridTemplateColumns: "50% 50%"
         },
-        [theme.breakpoints.down('sm')]: {
+        [theme.breakpoints.down('md')]: {
             gridTemplateColumns: "1fr"
         }
     },
@@ -58,11 +58,11 @@ const useStyles = makeStyles(theme => ({
         // width: "100vw",
         userSelect: "none",
 
-        [theme.breakpoints.down('sm')]: {
+        [theme.breakpoints.down('md')]: {
             minHeight: "50vh",
             height: "50vh"
         },
-        [theme.breakpoints.down("xs")]: {
+        [theme.breakpoints.down("md")]: {
             minHeight: "30vh",
             height: "30vh",
             width: "100vw"
@@ -72,13 +72,14 @@ const useStyles = makeStyles(theme => ({
     mainImgContainer: {
         overflow: "hidden",
         height: "60%",
-        [theme.breakpoints.down('xs')]: {
+        [theme.breakpoints.down('md')]: {
             width: "100%",
-            height: "100%"
+            height: "100%",
+            marginBottom:"40px"
         },
-        [theme.breakpoints.down('sm')]: {
-            height: "70%"
-        }
+        // [theme.breakpoints.down('md')]: {
+        //     height: "70%"
+        // }
     },
     mainImg: {
         width: "100%",
@@ -119,7 +120,7 @@ const useStyles = makeStyles(theme => ({
         display: "flex",
         alignItems: "center",
         minWidth: "600px",
-        [theme.breakpoints.down('xs')]: {
+        [theme.breakpoints.down('md')]: {
             padding: "30px 15px"
         }
     },
@@ -137,7 +138,7 @@ const useStyles = makeStyles(theme => ({
             fontWeight: "500",
             lineHeight: "38px",
             color: colors.black,
-            [theme.breakpoints.down('xs')]: {
+            [theme.breakpoints.down('md')]: {
                 fontSize: "24px",
                 lineHeight: "28px"
             }
@@ -176,7 +177,7 @@ const useStyles = makeStyles(theme => ({
         fontSize: "32px",
         lineHeight: "38px",
         color: colors.primary,
-        [theme.breakpoints.down('xs')]: {
+        [theme.breakpoints.down('md')]: {
             fontSize: "24px",
             lineHeight: "28px"
         }
@@ -246,7 +247,7 @@ const useStyles = makeStyles(theme => ({
             margin: "20px 0px",
             marginRight: "5px"
         },
-        [theme.breakpoints.down('xs')]: {
+        [theme.breakpoints.down('md')]: {
             padding: "10px 20px",
             margin: "10px 5px",
             "&:first-child": {
@@ -300,21 +301,23 @@ const useStyles = makeStyles(theme => ({
     },
     chaseGlass: {
         display: "flex",
-        [theme.breakpoints.down('sm')]: {
+        [theme.breakpoints.down('md')]: {
             flexDirection: "column-reverse"
         },
         // display:"grid",
         // gridTemplateColumns: "50% 50%",
         alignItems: "center",
         margin: "40px 0",
-        "&>*": {
-            flex: "1"
-        }
+        // "&>*": {
+        //     flex: "1"
+        // }
     },
     chaseDescription: {
-        padding: " 0 80px ",
-        [theme.breakpoints.down('sm')]: {
-            padding: "20px 0"
+        padding: " 0 64px ",
+        width:"40%",
+        [theme.breakpoints.down('md')]: {
+            padding: "16px 0",
+            width:"100%"
         },
         '& h2': {
             fontSize: "40px",
@@ -322,7 +325,12 @@ const useStyles = makeStyles(theme => ({
             fontWeight: "700",
             color: "#000",
             fontFamily: 'Lora',
-            textTransform: "capitalize"
+            textTransform: "capitalize",
+            [theme.breakpoints.down('md')]:{
+                fontSize:"24px",
+                lineHeight:"30px",
+                fontWeight:"700"
+            }
         },
         '& p': {
             fontWeight: "400",
@@ -337,16 +345,21 @@ const useStyles = makeStyles(theme => ({
         height: "400px",
         userSelect: "none",
         display: 'flex',
+        width:"60%",
         alignItems: 'center',
         justifyContent: "flex-end",
         '& img': {
             height: "400px",
             width: "100%",
-            borderRadius: "4px"
+            borderRadius: "4px",
+            objectFit:"cover"
+        },
+        [theme.breakpoints.down('md')]:{
+            width:"100%"
         }
     },
     banner: {
-        paddingRight: "140px",
+        paddingRight: "64px",
         height: "380px",
         background: `url(${bgImage})`,
         backgroundSize: "cover",
@@ -354,14 +367,14 @@ const useStyles = makeStyles(theme => ({
         display: "flex",
         justifyContent: "flex-end",
         alignItems: "center",
-        [theme.breakpoints.down('sm')]: {
+        [theme.breakpoints.down('md')]: {
             paddingRight: "60px"
         }
     },
     bannerContainer: {
         width: "30%",
         minWidth: "400px",
-        [theme.breakpoints.down('sm')]: {
+        [theme.breakpoints.down('md')]: {
             width: "50%"
         },
         '& h2': {
@@ -441,7 +454,7 @@ const ProductDetails = () => {
     const [imageIndex, setImageIndex] = useState([0])
     const [imagesData, setImagesData] = useState(imageData)
     const image = imagesData[imageIndex].src
-    const active = useMediaQuery("(min-width:600px)")
+    const active = useMediaQuery("(min-width:900px)")
     console.log(active, "Active")
     const [value, setValue] = React.useState("Prescription");
     const handleChange = (e) => {
@@ -528,13 +541,13 @@ const ProductDetails = () => {
                                                 <FormControlLabel name="Normal" value="Normal" control={<Radio />} label="Normal" />
                                             </div>
                                             <div className={classes.homeTryOn}>
-                                                <FormControlLabel value="Home Try-On" control={<Radio />} label="Home Try-On" />
+                                                <FormControlLabel value="Home Try-On" control={<Checkbox />} label="Home Try-On" />
                                                 <span>(Available: Get 5-frames to try at home)</span>
                                             </div>
                                         </RadioGroup>
                                     </FormControl>
                                 </div>
-                                <PrimaryButton title="Select lens for purchase" style={{ width: "70%", justifyContent: "start" }} />
+                                <PrimaryButton title="Select lens for purchase" style={{ width: "70%",marginTop:"32px" }} parentStyle={{justifyContent:"start"}} />
                             </div>
                         </div>
                     </div>
@@ -555,7 +568,7 @@ const ProductDetails = () => {
                         <h2>Find eaxct width that fits you</h2>
                         <p>If your face is average in size, which is most common, this frame should fit you well.
                             Unsure of your size? Select a few different options in a free Home Try-On.</p>
-                        <SecondaryButton title="Find your width" style={{ width: "50%", justifyContent: "flex-start" }} />
+                        <SecondaryButton title="Find your width" parentStyle={{justifyContent:"start",marginTop:"32px"}} style={{ width: "50%",color:colors.black,border:`2px solid ${colors.black}`, justifyContent: "flex-start" }} />
                     </div>
                 </div> :
                     <div className={classes.heroSection}>
