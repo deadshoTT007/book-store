@@ -224,8 +224,8 @@ const FilterBox = () => {
                         <div className={classes.mainFilterContainer}> 
             <div className={classes.filterMainContainer}>
             <CloseIcon className={classes.closeIcon}/>
-          <RangeSlider maxRange="Rs. 100" minRange="Rs. 500"/>
-            <div className={classes.priceRange}>Rs. 100 - Rs. 500</div>
+          <RangeSlider maxRange="Rs. 100" minRange="Rs. 5000"/>
+            <div className={classes.priceRange}>Rs. 100 - Rs. 5000</div>
             <PrimaryButton title="Apply" style={{marginTop:"24px"}}/>
             </div>
             </div>
