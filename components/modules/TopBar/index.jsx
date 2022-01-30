@@ -26,7 +26,10 @@ const useStyles = makeStyles(theme => ({
 
         justifyContent: "space-between",
         [theme.breakpoints.down('sm')]: {
-            padding: "10px 10px"
+            // padding: "10px 10px"
+            padding:"16px 0",
+            width:"90%",
+            margin:"0 auto"
         }
     },
     logoText: {

@@ -6,10 +6,10 @@ import OrderConfirmation from '../../OrderConfirmation'
 const useStyles = makeStyles(theme => ({
     onDelivery: {
         backgroundColor: colors.background,
-        padding: "20px 0",
+        padding: "24px",
     },
     onDeliveryContainer: {
-        margin: "0 20px",
+        margin: "0 ",
         borderBottom: "1px solid #8D8D8D"
     },
     headerText: {

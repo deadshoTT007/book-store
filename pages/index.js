@@ -26,8 +26,8 @@ export default function HomePage() {
     // <Register />
     // <Payment />
     // <TopBar />
-    // <ProductDetails />
-    <Products/>
+    <ProductDetails />
+    // <Products/>
     // <Home/>
   )
 }

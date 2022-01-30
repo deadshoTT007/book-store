@@ -6,8 +6,9 @@ import StarBorderRoundedIcon from '@mui/icons-material/StarBorderRounded';
 import { Radio, RadioGroup,Checkbox, FormControlLabel, FormControl, FormLabel } from '@mui/material'
 import PrimaryButton from '../../elements/PrimaryButton';
 import SecondaryButton from '../../elements/SecondaryButton';
-import TopBar from '../../modules/TopBar';
 import { useMediaQuery } from '@mui/material';
+import TopBar from '@/components/modules/TopBar';
+import StickyBottomNavBar from '@/components/elements/StickyBottomNavbar';
 const bgImage = "https://st2.depositphotos.com/3258807/10726/i/950/depositphotos_107267666-stock-photo-positive-girl-holding-her-glasses.jpg"
 
 const imageData = [
@@ -31,7 +32,8 @@ const useStyles = makeStyles(theme => ({
     },
     productDetails: {
         width: "100%",
-        overflow: "hidden",
+        overflowX: "hidden",
+        overflowY:"auto",
         // minHeight: "70vh",
         // height: "70vh",
         display: "grid",
@@ -114,18 +116,19 @@ const useStyles = makeStyles(theme => ({
         padding: "40px",
         // overflow: "hidden",
         // marginRight: "80px",
-        backgroundColor: colors.background,
+        backgroundColor: colors.mainGray,
         minHeight: "60vh",
         // height: "60vh",
         display: "flex",
         alignItems: "center",
         minWidth: "600px",
         [theme.breakpoints.down('md')]: {
-            padding: "30px 15px"
+            padding: "16px 64px 24px 16px",
+            minWidth:"100%",
         }
     },
     detailsContainer: {
-        flex: 1
+        flex: 1,
     },
     titleContainer: {
         display: "flex",
@@ -302,7 +305,8 @@ const useStyles = makeStyles(theme => ({
     chaseGlass: {
         display: "flex",
         [theme.breakpoints.down('md')]: {
-            flexDirection: "column-reverse"
+            flexDirection: "column-reverse",
+            display:"none"
         },
         // display:"grid",
         // gridTemplateColumns: "50% 50%",
@@ -368,7 +372,8 @@ const useStyles = makeStyles(theme => ({
         justifyContent: "flex-end",
         alignItems: "center",
         [theme.breakpoints.down('md')]: {
-            paddingRight: "60px"
+            paddingRight: "60px",
+            display:"none"
         }
     },
     bannerContainer: {
@@ -445,6 +450,11 @@ const useStyles = makeStyles(theme => ({
         height: "16px",
         borderRadius: "50%",
         backgroundColor: colors.primary
+    },
+    heroSection:{
+        [theme.breakpoints.down('md')]:{
+            display:"none"
+        }
     }
 
 
@@ -471,6 +481,7 @@ const ProductDetails = () => {
     const dots = new Array(imagesData.length)
     return (
         <>
+        <TopBar/>
             <div className={classes.main}>
                 <div className={classes.productDetails}>
                     <div className={classes.imageContainer}>
@@ -514,6 +525,7 @@ const ProductDetails = () => {
                             <p className={classes.description}>Product Description(short)</p>
                             <p className={classes.model}>model:H231ff</p>
                             <h4 className={classes.price}>Rs. 2400.00</h4>
+                            
                             <div className={classes.colors}>
                                 <p>Select Colors</p>
                                 <div className={classes.colorsContainer}>
@@ -580,8 +592,8 @@ const ProductDetails = () => {
                         <SecondaryButton title="Find your width" style={{ width: "50%", justifyContent: "flex-start" }} />
                     </div>
                 }
-
             </div>
+<StickyBottomNavBar/>
         </>
     )
 }

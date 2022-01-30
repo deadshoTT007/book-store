@@ -113,7 +113,7 @@ const useStyles = makeStyles(theme => ({
     },
     info: {
         width: "100%",
-        margin: "30px 0",
+        margin: "24px 0",
         // minHeight: "200px",
         paddingBottom: "40px",
         background: "#fff",
@@ -166,7 +166,7 @@ const useStyles = makeStyles(theme => ({
         gridTemplateColumns: "1fr 1fr 1fr 1fr",
         gridGap: "20px",
         paddingTop: "20px",
-        paddingBottom: "30px",
+        paddingBottom: "24px",
         // padding: " 0 30px ",
         borderBottom: "2px solid #09651A",
         [theme.breakpoints.down("md")]: {

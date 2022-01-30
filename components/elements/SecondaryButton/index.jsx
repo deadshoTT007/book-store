@@ -44,7 +44,7 @@ const SecondaryButton = (props) => {
 
 
         <div className={classes.buttonContainer}>
-            <Button type="submit" variant="contained" className={classes.button}>{props.title}</Button>
+            <Button onClick={props.actionClick} type="submit" variant="contained" className={classes.button}>{props.title}</Button>
 
         </div>
 

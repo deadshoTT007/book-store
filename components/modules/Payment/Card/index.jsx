@@ -10,16 +10,17 @@ import Input from '../../../elements/Input'
 const useStyles = makeStyles(theme => ({
     card: {
         backgroundColor: colors.background,
+        paddingTop:"24px"
     },
     cardContainer: {
-        padding: "30px 0px",
+        padding: "24px 0px",
         paddingTop: "0px",
-        margin: "0 20px",
+        margin: "0 24px",
     },
     inputContainer: {
         width: "100%",
         borderBottom: "1px solid #8D8D8D",
-        paddingBottom: "30px",
+        paddingBottom: "24px",
         display: "flex",
         flexWrap: "wrap",
         justifyContent: "space-between"

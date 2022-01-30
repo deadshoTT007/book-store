@@ -2,10 +2,12 @@ import React from 'react'
 import { Typography, Button, Link } from '@mui/material';
 import { makeStyles } from '@mui/styles'
 import { colors } from '../../../utils'
+import PrimaryButton from '@/components/elements/PrimaryButton';
 const useStyles = makeStyles(theme => ({
     orderConfirmation: {
         backgroundColor: colors.background,
-        padding: "20px 20px"
+        padding: "10px 0",
+        paddingBottom:"0px"
     },
     totalContainer: {
         display: "flex",
@@ -27,14 +29,14 @@ const useStyles = makeStyles(theme => ({
     buttonContainer: {
         display: "flex",
         justifyContent: "center",
-        marginBottom: "30px",
+        marginBottom: "24px",
         marginTop: "20px"
 
     },
     button: {
         background: colors.primary,
         borderRadius: "50px",
-        padding: "15px 30px",
+        padding: "15px 24px",
         color: "#fff",
         fontSize: "16px",
         lineHeight: "19px",
@@ -46,7 +48,7 @@ const useStyles = makeStyles(theme => ({
         display: "flex",
         justifyContent: "center",
         textAlign: "center",
-        paddingBottom: "30px"
+        // paddingBottom: "30px"
     },
     links: {
         color: colors.black,
@@ -71,9 +73,10 @@ const OrderConfirmation = () => {
                     <Typography variant="span" className={classes.totalAmount}>Rs. 8000.00</Typography>
                 </div>
 
-                <div className={classes.buttonContainer}>
+                {/* <div className={classes.buttonContainer}>
                     <Button variant="contained" className={classes.button}>Confirm Your Order</Button>
-                </div>
+                </div> */}
+                <PrimaryButton title="Confirm Your Order" style={{marginTop:24,marginBottom:28}}/>
                 <div className={classes.linkContainer}>
                     <Link href="#" className={classes.links}>
                         <a className={classes.link}>Help?</a>

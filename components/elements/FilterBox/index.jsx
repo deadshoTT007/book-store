@@ -10,7 +10,7 @@ import RangeSlider from '../RangeSlider'
 import ImageButton from '../ImageButton'
 
 
-const FilterBox = () => {
+const FilterBox = (props) => {
     const [filterValue,setFilterValue]=useState("")
     const useStyles=makeStyles(theme=>({
         filterMainContainer:{
@@ -32,7 +32,10 @@ const FilterBox = () => {
             display:"flex",
             alignItems:"flex-end",
             border:`1px solid #E8E8E8`,
-            background:"#F9F9F9"
+            background:"#F9F9F9",
+            [theme.breakpoints.down('md')]:{
+                display:"none"
+            }
             
         
         },
@@ -102,14 +105,7 @@ const FilterBox = () => {
             },
            
         },
-        priceRange:{
-            fontSize:"16px",
-            lineHeight:"19px",
-            fontWeight:600,
-            color:colors.black,
-            textAlign:"center",
-            marginTop:"24px"
-        },
+       
         sizeContainer:{
             width:"40%",
             minWidth:"800px",
@@ -199,7 +195,7 @@ const FilterBox = () => {
     }
     return (
         <div>
-            <FilterTab value={filterValue} filterHandler={filterHandler}/>
+            <FilterTab filterShowHandler={props.filterShowHandler} value={filterValue} filterHandler={filterHandler}/>
             {filterValue=="nosebridge"&&
             <div className={classes.mainFilterContainer}> 
             <div className={classes.filterMainContainer}>
@@ -224,8 +220,8 @@ const FilterBox = () => {
                         <div className={classes.mainFilterContainer}> 
             <div className={classes.filterMainContainer}>
             <CloseIcon className={classes.closeIcon}/>
-          <RangeSlider maxRange="Rs. 100" minRange="Rs. 5000"/>
-            <div className={classes.priceRange}>Rs. 100 - Rs. 5000</div>
+          <RangeSlider maxRange="100" minRange="5000"/>
+            {/* <div className={classes.priceRange}>Rs. 100 - Rs. 5000</div> */}
             <PrimaryButton title="Apply" style={{marginTop:"24px"}}/>
             </div>
             </div>
@@ -241,7 +237,6 @@ const FilterBox = () => {
     <div className={classes.size}>Extra-large</div>
 </div>
 <RangeSlider minRange="8mm" maxRange="12mm"/>
-<div className={classes.priceRange}>8mm - 12mm</div>
             <PrimaryButton title="Apply" style={{marginTop:"24px"}}/>
 
                 </div>

@@ -120,9 +120,9 @@ const useStyles = makeStyles(theme => ({
         display: "block"
     },
     form: {
-        padding: "20px",
-        paddingTop: "30px",
-        marginTop: "20px",
+        padding: "24px",
+        paddingTop: "24px",
+        marginTop: "24px",
         backgroundColor: colors.background
     }
 

@@ -25,7 +25,7 @@ const useStyles = makeStyles(theme => ({
     paymentText: {
         textAlign: "center",
         fontSize: "24px",
-        fontWeight: "700",
+        fontWeight: "500",
         lineHeight: "28px",
         color: colors.black,
         textTransform: "capitalize"

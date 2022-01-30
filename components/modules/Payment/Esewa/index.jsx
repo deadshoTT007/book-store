@@ -7,12 +7,14 @@ const useStyles = makeStyles(theme => ({
     esewa: {
 
         backgroundColor: colors.background,
+        padding:"24px "
     },
     esewaContainer: {
-        padding: "30px 0px",
+        padding: "24px 0px",
         paddingTop: "20px",
-        margin: "0 20px",
-        borderBottom: "1px solid #8D8D8D"
+        // margin: "0 20px",
+        borderBottom: "1px solid #8D8D8D",
+        paddingTop:0
 
     },
     esewaHeaderText: {

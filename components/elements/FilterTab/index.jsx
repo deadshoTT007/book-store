@@ -8,11 +8,15 @@ const useStyles=makeStyles(theme=>({
 filterBoxContainer:{
     margin:"24px 0",
     padding:"16px 24px",
-    border:`1px solid ${colors.black}`,
+    border:`1px solid #E8E8E8`,
     display:"flex",
     alignItems:"center",
     justifyContent:"space-between",
-    background:"#F9F9F9"
+    background:"#F9F9F9",
+    borderRadius:"4px",
+    [theme.breakpoints.down('md')]:{
+        display:"none"
+    }
 },
 tryOnContainer:{
 display:"flex",
@@ -46,8 +50,44 @@ filterTextContainer:{
     gap:"24px"
 },
 filterText:{
-    cursor:"pointer"
+    cursor:"pointer",
+    padding:"4px 8px",
+fontSize:"16px",
+borderRadius:"4px",
+border:"2px solid transparent",
+userSelect:"none",
+
+'&:hover':{
+    color:colors.primary
+},
+'&:focus':{
+    border:`2px solid ${colors.primary}`,
 }
+},
+activeFilterText:{
+    cursor:"pointer",
+    border:`2px solid ${colors.primary}`,
+    padding:"4px 8px",
+    userSelect:"none",
+    borderRadius:"4px",
+    fontSize:"16px"
+
+},
+smallTryOnContainer:{
+    display:"none",
+    [theme.breakpoints.down('md')]:{
+        display:"flex",
+        alignItems:"center",
+        justifyContent:"space-between"
+    }
+    
+},
+mainToggleCOntainer:{
+    display:"flex",
+    alignItems:"center"
+}
+
+
 }))
 
 const FilterTab = (props) => {
@@ -55,6 +95,8 @@ const FilterTab = (props) => {
     console.log(value,"value")
     const classes=useStyles()
     return (
+        <>
+        
         <div className={classes.filterBoxContainer}>
             <div className={classes.tryOnContainer}>
                 <div className={classes.tryOnText}>Home try on</div>
@@ -66,15 +108,28 @@ const FilterTab = (props) => {
 </div>
             </div>
             <ul className={classes.filterTextContainer}>
-                <li className={`${classes.filterText} ${value==="price"}`} onClick={()=>props.filterHandler("price")}>Price</li>
-                <li className={classes.filterText} onClick={()=>props.filterHandler("shapes")}>Shapes</li>
-                <li className={classes.filterText} onClick={()=>props.filterHandler("frame")}>Frame width</li>
-                <li className={classes.filterText} onClick={()=>props.filterHandler("colors")}>Colors</li>
-                <li className={classes.filterText} onClick={()=>props.filterHandler("materials")}>Materials</li>
-                <li className={classes.filterText} onClick={()=>props.filterHandler("nosebridge")}>Nose bridge</li>
+                <li className={`${value==="price"?classes.activeFilterText:classes.filterText}`} onClick={()=>props.filterHandler("price")}>Price</li>
+                <li className={`${value==="shapes"?classes.activeFilterText:classes.filterText}`} onClick={()=>props.filterHandler("shapes")}>Shapes</li>
+                <li className={`${value==="frame"?classes.activeFilterText:classes.filterText}`} onClick={()=>props.filterHandler("frame")}>Frame width</li>
+                <li className={`${value==="colors"?classes.activeFilterText:classes.filterText}`} onClick={()=>props.filterHandler("colors")}>Colors</li>
+                <li className={`${value==="materials"?classes.activeFilterText:classes.filterText}`} onClick={()=>props.filterHandler("materials")}>Materials</li>
+                <li className={`${value==="nosebridge"?classes.activeFilterText:classes.filterText}`} onClick={()=>props.filterHandler("nosebridge")}>Nose bridge</li>
             </ul>
             <ButtonIcon/>
         </div>
+        <div className={classes.smallTryOnContainer}>
+            <div className={classes.mainToggleCOntainer}>
+                <div className={classes.tryOnText}>Home try on</div>
+                <div className={classes.toggleContainer}>
+                <FormGroup className={classes.toggleButton}>
+  <FormControlLabel  control={<Switch   />} label="" />
+</FormGroup>
+
+</div>
+</div>
+<SecondaryButton actionClick={props.filterShowHandler} title="Filter" style={{border:`1px solid ${colors.black}`,color:colors.black}}/>
+            </div>
+        </>
     )
 }
 

@@ -5,15 +5,19 @@ import { Typography, FormControl, OutlinedInput, InputAdornment, IconButton } fr
 
 const Input = (props) => {
     const useStyles = makeStyles(theme => ({
-        emailContainer: {
-            paddingTop: "30px",
+        mainContainer: {
+            paddingTop: "24px",
             minWidth: props.minWidth ? props.minWidth : null,
+            '&:first-child':{
+                paddingTop:0
+            },
+            ...props.style
 
 
         },
 
         inputContainer: {
-            width: props.fullWidth ? "100%" : "20vw",
+            width:'100%',
             // paddingRight: "20px",
             marginTop: "16px ",
             paddingTop: props.paddingTop ? props.paddingTop : "0",
@@ -21,10 +25,16 @@ const Input = (props) => {
             '& input': {
                 fontSize: "16px",
                 color: "#4A4A4A",
-                padding: "15px"
+                padding: "15px",
+                opacity:'1',
                 // background: "red",
-
+                "&.css-24rejj-MuiInputBase-input-MuiOutlinedInput-input":{
+                    fontSize: "16px",
+                    color: "#4A4A4A",
+                    padding: "15px"
+                },
             },
+            
             '& .PrivateNotchedOutline-legend-191': {
                 display: "none"
             },
@@ -52,7 +62,8 @@ const Input = (props) => {
             },
             '& .MuiOutlinedInput-root': {
                 background: "#fff",
-                borderRadius: "50px"
+                borderRadius: "50px",
+                width:"100%"
             },
             // '&::placeholder':{
 
@@ -110,7 +121,7 @@ const Input = (props) => {
     const { name, type, Icon, pattern, iconClickHandler, focus, showPassword, focusHandler, phoneFocus, blurHandler, value, valid, inputData, touched, required, placeholder, emailFocus, passwordFocus, label, fullWidth, changeHandler, paddingTop } = props
     console.log(focus, "focus")
     return (
-        <div className={classes.emailContainer}>
+        <div className={classes.mainContainer}>
             <div className={classes.labelContainer}>
                 <label className={classes.label}>{label}</label>
                 <Typography varaint="span" className={classes.required}>{required && "*"}</Typography>

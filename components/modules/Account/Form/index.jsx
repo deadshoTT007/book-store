@@ -47,8 +47,8 @@ const useStyles = makeStyles(theme => ({
     },
     crossIcon: {
         position: "absolute",
-        top: "20px",
-        right: "20px",
+        top: "24px",
+        right: "24px",
         cursor: "pointer"
     },
     mainContainer: {
@@ -84,7 +84,7 @@ const useStyles = makeStyles(theme => ({
     },
     signinContainer: {
         backgroundColor: "#F5FFF7",
-        padding: "20px 20px",
+        padding: "24px ",
         // height: "100%",
 
     },
@@ -114,13 +114,13 @@ const useStyles = makeStyles(theme => ({
         fontSize: "16px",
         lineHeight: "18px",
         fontWeight: "500",
-        marginBottom: "20px",
+        marginBottom: "24px",
         // background: "red",
         display: "block"
     },
     form: {
-        padding: "20px",
-        paddingTop: "30px",
+        padding: "24px",
+        paddingTop: "24px",
         marginTop: "20px",
         backgroundColor: colors.background
     }
