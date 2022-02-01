@@ -8,6 +8,7 @@ import PermIdentityIcon from '@mui/icons-material/PermIdentity';
 import MailOutlineIcon from '@mui/icons-material/MailOutline';
 import { emailRegex } from '@/utils/index'
 import { Link } from '@mui/material'
+import { useRouter } from 'next/dist/client/router'
 const useStyles=makeStyles(theme=>({
     root:{
 flex:1,
@@ -56,6 +57,7 @@ link:{
 }))
 const ShippingInformation = () => {
     const classes=useStyles()
+    const router=useRouter()
     const [userData, setUserData] = React.useState({
         formData: {
             email: {
@@ -265,7 +267,7 @@ const ShippingInformation = () => {
                                 fullWidth="true" />
                         })}
 
-<PrimaryButton title="Proceed to checkout" parentStyle={{justifyContent:"center"}} style={{marginTop:"24px"}}/>
+<PrimaryButton actionClick={()=>router.push('/order-summary')} title="Proceed to checkout" parentStyle={{justifyContent:"center"}} style={{marginTop:"24px"}}/>
 <Link className={classes.link}>
     <a>Back to Cart</a>
 </Link>

@@ -7,6 +7,10 @@ const useStyles = makeStyles(theme => ({
     onDelivery: {
         backgroundColor: colors.background,
         padding: "24px",
+        borderRadius:4,
+        [theme.breakpoints.down('md')]:{
+            padding:"16px"
+        }
     },
     onDeliveryContainer: {
         margin: "0 ",

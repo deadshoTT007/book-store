@@ -9,8 +9,8 @@ const IconText = (props) => {
             display:"flex",
             alignItems:"center",
             justifyContent:"center",
-            textAlign:'center'
-        
+            textAlign:'center',
+        ...props.style
             // background:"red",
             
         },

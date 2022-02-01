@@ -8,15 +8,22 @@ import CloseIcon from '@mui/icons-material/Close';
 import Divider from '@/components/elements/Divider'
 import PrimaryButton from '@/components/elements/PrimaryButton'
 import { Link } from '@mui/material'
+import { useRouter } from 'next/dist/client/router'
+import HomeLayout from '@/components/layouts/HomeLayout'
 const useStyles=makeStyles(theme=>({
 mainContainer:{
     margin:"28px 0",
     width:"80%",
+    marginTop:"96px",
     padding:"0 40px",
     [theme.breakpoints.down('md')]:{
         width:"90%",
         margin:"24px auto",
+        marginTop:"150px",
         padding:"0px"
+    },
+    [theme.breakpoints.down('sm')]:{
+        marginTop:"180px"
     }
 },
 cartText:{
@@ -165,13 +172,14 @@ link:{
 
 const Cart = () => {
     const classes=useStyles()
+    const router=useRouter()
     const [showMore,setShowMore]=useState(false)
     const detailsClickHandler=()=>{
         setShowMore(!showMore)
     }
     return (
+        <HomeLayout>
         <div className={classes.root}>
-            <TopBar/>
             <div className={classes.mainContainer}>
                 <div className={classes.cartText}>Your Cart</div>
                 <div className={classes.productDetailsContainer}>
@@ -235,7 +243,7 @@ const Cart = () => {
                                 <div className={classes.price}>Rs.8000.00</div>
                             </div>
                             <div className={classes.shippingText}>Shipping and Tax in not included.</div>
-                            <PrimaryButton title="Proceed to checkout" style={{marginTop:24}} parentStyle={{justifyContent:"center"}}/>
+                            <PrimaryButton actionClick={()=>router.push('/order-summary')} title="Proceed to checkout" style={{marginTop:24}} parentStyle={{justifyContent:"center"}}/>
                             <div className={classes.includesText}>Includes:</div>
                             <ul className={classes.infoBox}>
                               <li className={classes.infoText}>Includes frame case and lens cloth</li>  
@@ -246,6 +254,7 @@ const Cart = () => {
                 </div>
             </div>
         </div>
+        </HomeLayout>
     )
 }
 

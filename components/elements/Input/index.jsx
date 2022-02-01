@@ -8,9 +8,10 @@ const Input = (props) => {
         mainContainer: {
             paddingTop: "24px",
             minWidth: props.minWidth ? props.minWidth : null,
-            '&:first-child':{
-                paddingTop:0
-            },
+            // '&:first-child':{
+            //     paddingTop:0,
+            //     marginTop:0
+            // },
             ...props.style
 
 
@@ -25,13 +26,13 @@ const Input = (props) => {
             '& input': {
                 fontSize: "16px",
                 color: "#4A4A4A",
-                padding: "15px",
+                padding: "8px 24px",
                 opacity:'1',
                 // background: "red",
                 "&.css-24rejj-MuiInputBase-input-MuiOutlinedInput-input":{
                     fontSize: "16px",
                     color: "#4A4A4A",
-                    padding: "15px"
+                    padding: "8px 24px"
                 },
             },
             
@@ -48,8 +49,8 @@ const Input = (props) => {
                 display: "none"
             },
             '& .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline': {
-                border: "3px solid #4A4A4A",
-                borderRadius: "50px"
+                border: "1px solid #4A4A4A",
+                borderRadius: "40px"
             },
             '& .PrivateNotchedOutline-legend-18': {
                 display: "none",

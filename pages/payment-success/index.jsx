@@ -6,11 +6,20 @@ import PrimaryButton from '@/components/elements/PrimaryButton'
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import IconText from '@/components/elements/IconText'
 import TopBar from '@/components/modules/TopBar'
+import HomeLayout from '@/components/layouts/HomeLayout'
 const useStyles=makeStyles(theme=>({
 root:{
     margin:"64px 0px",
     display:'flex',
-    justifyContent:'center'
+    marginTop:"144px",
+    justifyContent:'center',
+    [theme.breakpoints.down('md')]:{
+        marginTop:'184px'
+    },
+    [theme.breakpoints.down('sm')]:{
+        marginTop:'200px'
+    }
+
 },
 paymentHeaderText:{
     marginBottom:"10px",
@@ -39,7 +48,7 @@ const PaymentSucess = () => {
     const classes=useStyles()
     return (
         <>
-        <TopBar/>
+        <HomeLayout>
         <div className={classes.root}>
             <div className={classes.mainPaymentContainer}>
                 <div className={classes.paymentHeaderText}>Your Order is placed successfully!</div>
@@ -48,6 +57,7 @@ const PaymentSucess = () => {
                     <PrimaryButton style={{marginTop:"24px"}} title="Browse more"/>
             </div>
         </div>
+        </HomeLayout>
         </>
 
     )

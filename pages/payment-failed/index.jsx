@@ -5,7 +5,7 @@ import { makeStyles } from '@mui/styles'
 import IconText from '@/components/elements/IconText'
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import TopBar from '@/components/modules/TopBar'
-
+import HomeLayout from '@/components/layouts/HomeLayout'
 const useStyles=makeStyles(theme=>({
     root:{
         margin:"64px 0px",
@@ -44,16 +44,17 @@ const PaymentFailed = () => {
     const classes=useStyles()
     return (
         <>
-        <TopBar/>
+        <HomeLayout>
         <div className={classes.root}>
         <div className={classes.mainPaymentContainer}>
             <div className={classes.paymentHeaderText}>Oops</div>
             <div className={classes.paymentInfoText}>Failed to place your oders</div>
-            <div className={classes.paymentDescriptionText}>Error occured while processing your payment. Please try again.</div>
+            <div className={classes.paymentDescriptionText}>Error occured while processing your payment. Please try again.                                                                                                                </div>
             <IconText title="Report" icon={<ArrowForwardIosIcon className={classes.icon}/>} />
                 <PrimaryButton style={{marginTop:"24px"}} title="Go To Cart"/>
         </div>
     </div>
+    </HomeLayout>
     </>
 
     )

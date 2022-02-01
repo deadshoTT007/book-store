@@ -59,7 +59,6 @@ const useStyles = makeStyles(theme => ({
     },
     socialButton: {
         width: "100%",
-        height: "100%",
         padding: "2rem 0",
         color: "#fff",
         borderRadius: '0',

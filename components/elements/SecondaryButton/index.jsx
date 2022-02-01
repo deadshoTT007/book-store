@@ -13,16 +13,19 @@ const SecondaryButton = (props) => {
             // marginBottom: "30px",
             // marginTop: "30px",
             marginRight: 0,
-            ...props.parentStyle
+            ...props.parentStyle,
+            [theme.breakpoints.down('md')]:{
+                ...props.smallParentStyle
+            }
         },
         button: {
             border:"none",
             background: "transparent",
             borderRadius: "40px",
-            padding: "12px 32px",
-            color: colors.white,
-            border: "2px solid #fff",
-            width: "100%",
+            padding: "8px 32px",
+            color: colors.black,
+            border: `1px solid ${colors.black} `,
+            // width: "100%",
             fontSize: "16px",
             lineHeight: "19px",
             outline: "none",
@@ -31,6 +34,11 @@ const SecondaryButton = (props) => {
             ...props.style,
             '&.MuiButton-contained': {
                 boxShadow: "none"
+            },
+            '&:hover':{
+// transiton:"all 3000ms ease-in",
+// transform:"scale(1.07)",
+background:"transparent"
             },
             [theme.breakpoints.down('md')]:{
                 ...props.smallStyle

@@ -5,9 +5,13 @@ import { colors } from '../../../../utils'
 import OrderConfirmation from '../../OrderConfirmation'
 const useStyles = makeStyles(theme => ({
     esewa: {
-
         backgroundColor: colors.background,
-        padding:"24px "
+        padding:"24px ",
+        borderRadius:4,
+        [theme.breakpoints.down('md')]:{
+            padding:"16px"
+        }
+
     },
     esewaContainer: {
         padding: "24px 0px",

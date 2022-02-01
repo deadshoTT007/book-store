@@ -6,6 +6,8 @@ import ProductList from '@/components/modules/ProductList'
 import { Link } from '@mui/material'
 import Divider from '@/components/elements/Divider'
 import PrimaryButton from '@/components/elements/PrimaryButton'
+import { useRouter } from 'next/dist/client/router'
+import HomeLayout from '@/components/layouts/HomeLayout'
 const useStyles=makeStyles(theme=>({
     mainContainer:{
         width:"50%",
@@ -16,9 +18,14 @@ const useStyles=makeStyles(theme=>({
         // background:"red",
         alignItems:"flex-start",
         margin:"40px auto",
+        marginTop:"104px",
         [theme.breakpoints.down('md')]:{
             minWidth:"100%",
+            marginTop:"160px",
             display:"block"
+        },
+        [theme.breakpoints.down('sm')]:{
+            marginTop:"180px"
         }
     
     },
@@ -106,9 +113,10 @@ const useStyles=makeStyles(theme=>({
 
 const OrderSummary = () => {
     const classes=useStyles()
+    const router=useRouter()
     return (
         <>
-        <TopBar/>
+        <HomeLayout>
         <div className={classes.root}>
             <div className={classes.mainContainer}>
 <ProductList smallStyle={{display:"none"}}/>  
@@ -133,13 +141,14 @@ const OrderSummary = () => {
     <div className={classes.totalPrice}>Rs. 8000.00</div>
 </div>
 <div className={classes.taxText}>Tax included.</div>
-<PrimaryButton title="Proceed to Payment" style={{marginTop:24}}/>
+<PrimaryButton actionClick={()=>router.push('/payment')} title="Proceed to Payment" style={{marginTop:24}}/>
 </div>
 </div>
 
             </div>
             
         </div>
+        </HomeLayout>
         </>
     )
 }

@@ -1,6 +1,6 @@
 import React from 'react'
 import { makeStyles } from '@mui/styles';
-import { Typography, Button, Link, FormControl, OutlinedInput, InputLabel, InputAdornment, IconButton } from '@mui/material'
+import {  Button, Link, FormControl, OutlinedInput, InputLabel, InputAdornment, IconButton } from '@mui/material'
 import { FiGift } from 'react-icons/fi'
 import PrimaryButton from '@/components/elements/PrimaryButton';
 import { BiEnvelope } from 'react-icons/bi'
@@ -258,10 +258,10 @@ const Footer = () => {
                 <div className={classes.subscriptionContainer}>
                     <div className={classes.subscriptionTextContainer}>
                         <FiGift className={classes.giftIcon} />
-                        <Typography variant="span" className={classes.subscriptiontext}>Subscribe For Exciting Deals And Offers</Typography>
+                        <div  className={classes.subscriptiontext}>Subscribe For Exciting Deals And Offers</div>
                     </div>
                     {/* <div className={classes.emailContainer}>
-                        <FormControl variant="outlined" className={classes.inputContainer}>
+                        <FormControl outlined" className={classes.inputContainer}>
                             <OutlinedInput
                                 placeholder="Email"
                                 type="email"
@@ -282,50 +282,50 @@ const Footer = () => {
                     <Email placeholder="Email" />
                     <div className={classes.subscriptionButtonContainer}>
                         <PrimaryButton title="Subscribe" style={{marginTop:0}} smallStyle={{marginTop:24}}/>
-                        {/* <Button className={classes.subscriptionButton} variant="contained">Subscribe</Button> */}
+                        {/* <Button className={classes.subscriptionButton} ">Subscribe</Button> */}
                     </div>
                 </div>
                 <div className={classes.info}>
                     {/* <div className={classes.infoBox}>
                         <div className={classes.infoBoxContainer}>
                             <BiPhone className={classes.infoIcon} />
-                            <Typography className={classes.infoHeaderText} variant="span">Phone Number</Typography>
+                            <div className={classes.infoHeaderText} ">Phone Number</div>
                         </div>
-                        <Typography className={classes.infoSubHeaderText} variant="h5">980253697</Typography>
+                        <div className={classes.infoSubHeaderText} ">980253697</div>
 
                     </div> */}
                     <div className={classes.infoBox}>
                         <div className={classes.infoBoxContainer}>
                             <BiPhone className={classes.infoPhoneIcon} />
-                            <Typography className={classes.infoHeaderText} variant="span">Phone Number</Typography>
+                            <div className={classes.infoHeaderText} >Phone Number</div>
                         </div>
-                        <Typography className={classes.infoSubHeaderText} variant="h5">980253697</Typography>
+                        <div className={classes.infoSubHeaderText} >980253697</div>
 
                     </div>
                     <div className={classes.infoBox}>
                         <div className={classes.infoBoxContainer}>
                             <BiEnvelope className={classes.infoIcon} />
-                            <Typography className={classes.infoHeaderText} variant="span">Email</Typography>
+                            <div className={classes.infoHeaderText} >Email</div>
                         </div>
-                        <Typography className={classes.infoSubHeaderText} variant="h5">support@chasmaghar.com</Typography>
+                        <div className={classes.infoSubHeaderText} >support@chasmaghar.com</div>
 
                     </div>
 
                     <div className={classes.infoBox}>
                         <div className={classes.infoBoxContainer}>
                             <GrLocation className={classes.infoIcon} />
-                            <Typography className={classes.infoHeaderText} variant="span">Location</Typography>
+                            <div className={classes.infoHeaderText} >Location</div>
                         </div>
-                        <Typography className={classes.infoSubHeaderText} variant="h5">Kupandole, lalitpur</Typography>
+                        <div className={classes.infoSubHeaderText} >Kupandole, lalitpur</div>
 
                     </div>
 
                     <div className={classes.infoBox}>
                         <div className={classes.infoBoxContainer}>
                             <AiOutlineQuestionCircle className={classes.infoIcon}/>
-                            <Typography className={classes.infoHeaderText} variant="span">FAQ</Typography>
+                            <div className={classes.infoHeaderText} >FAQ</div>
                         </div>
-                        <Typography className={classes.infoSubHeaderText} variant="h5">Vist FQA</Typography>
+                        <div className={classes.infoSubHeaderText} >Vist FQA</div>
 
                     </div>
 
@@ -333,7 +333,7 @@ const Footer = () => {
                 </div>
                 <div className={classes.footer}>
                     <div className={classes.footerContent}>
-                        <Typography className={classes.footerMainText} variant="h3">Categories</Typography>
+                        <div className={classes.footerMainText} >Categories</div>
                         <Link href="#" className={classes.links}>
                             <a className={classes.link}>Sunglass for mens</a>
                         </Link>
@@ -354,7 +354,7 @@ const Footer = () => {
                         </Link>
                     </div>
                     <div className={classes.footerContent}>
-                        <Typography className={classes.footerMainText} variant="h3">Brand</Typography>
+                        <div className={classes.footerMainText} >Brand</div>
                         <Link href="#" className={classes.links}>
                             <a className={classes.link}>Ray-ban</a>
                         </Link>
@@ -367,7 +367,7 @@ const Footer = () => {
 
                     </div>
                     <div className={classes.footerContent}>
-                        <Typography className={classes.footerMainText} variant="h3">Useful</Typography>
+                        <div className={classes.footerMainText} >Useful</div>
                         <Link href="#" className={classes.links}>
                             <a className={classes.link}>Cart</a>
                         </Link>
@@ -377,7 +377,7 @@ const Footer = () => {
 
                     </div>
                     <div className={classes.footerContent}>
-                        <Typography className={classes.footerMainText} variant="h3">Features</Typography>
+                        <div className={classes.footerMainText} >Features</div>
                         <Link href="#" className={classes.links}>
                             <a className={classes.link}>Home try-on</a>
                         </Link>
@@ -392,12 +392,12 @@ const Footer = () => {
                 </div>
                 <div className={classes.policiesContainer}>
                     <div className={classes.socials}>
-                        <Typography variant="span" className={classes.socialText}>@chasmaghar</Typography>
+                        <div className={classes.socialText}>@chasmaghar</div>
                         <FiInstagram className={classes.socialIcons} />
                         <RiFacebookCircleLine className={classes.socialIcons} />
                     </div>
                     <div >
-                        <Typography variant="span" className={classes.policiesText}>Privacy Policy Terms and Conditions of Use</Typography>
+                        <div className={classes.policiesText}>Privacy Policy Terms and Conditions of Use</div>
                     </div>
                 </div>
             </div>

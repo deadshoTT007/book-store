@@ -5,6 +5,7 @@ import ProductList from '@/components/modules/ProductList'
 import TopBar from '@/components/modules/TopBar'
 import Footer from '@/components/modules/Footer'
 import ShippingInformation from '@/components/modules/ShippingInformation'
+import HomeLayout from '@/components/layouts/HomeLayout'
 const useStyles=makeStyles(theme=>({
 mainContainer:{
     width:"70%",
@@ -14,9 +15,18 @@ mainContainer:{
     // background:"red",
     alignItems:"flex-start",
     margin:"40px auto",
+    marginTop:"110px",
+
+    [theme.breakpoints.down('lg')]:{
+        marginTop:"130px"
+    },
     [theme.breakpoints.down('md')]:{
         display:"block",
-        width:"90%"
+        width:"90%",
+        marginTop:"160px"
+    },
+    [theme.breakpoints.down('sm')]:{
+        marginTop:"200px"
     }
 
 }
@@ -26,7 +36,7 @@ const CartPayment
     const classes=useStyles()
     return (
         <>
-<TopBar/>
+<HomeLayout>
         <div className={classes.root}>
             <div className={classes.mainContainer}>
             <ProductList smallStyle={{display:"none"}}/>
@@ -34,7 +44,7 @@ const CartPayment
             </div>
             
         </div>
-        {/* <Footer/> */}
+        </HomeLayout>
         </>
     )
 }

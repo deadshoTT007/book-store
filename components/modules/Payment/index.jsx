@@ -14,7 +14,14 @@ const useStyles = makeStyles(theme => ({
         height: "100vh",
         display: "flex",
         alignItems: "center",
-        justifyContent: "center"
+        justifyContent: "center",
+        [theme.breakpoints.down('md')]:{
+            marginTop:"100px",
+
+        },
+        [theme.breakpoints.down('sm')]:{
+            marginTop:"120px",
+        }
     },
     mainContainer: {
         width: "60vh",
@@ -62,9 +69,8 @@ const useStyles = makeStyles(theme => ({
     },
     eachMethodImageContainer: {
         border: "1px solid #8D8D8D",
-        backgroundColor: "#F5FFF7",
         borderRadius: "4px",
-        transition: "all 300ms ease-out",
+        transition: "all 200ms ease-out",
         width: "100%",
         height: "100%",
         display: "flex",
@@ -72,7 +78,9 @@ const useStyles = makeStyles(theme => ({
         alignItems: "center",
         cursor: "pointer",
         "&:hover,&:focus": {
-            border: "3px solid #137D27"
+            border: "3px solid #137D27",
+            backgroundColor: "#F5FFF7",
+
         }
     },
     active: {

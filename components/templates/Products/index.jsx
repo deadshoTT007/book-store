@@ -297,7 +297,6 @@ export const SunglassWomens = () => {
     return (
         <>
         <div className={classes.root}>
-            <TopBar />
             <div className={classes.main}>
                 {bannerActive ? <div className={classes.banner}>
                     <div className={classes.bannerContainer}>

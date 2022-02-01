@@ -62,6 +62,7 @@ const useStyles = makeStyles(theme => ({
     linkContainer: {
         // margin: "0 auto"
         display: "flex",
+    marginTop:16,
         justifyContent: "center",
         textAlign: "center",
         // paddingBottom: "30px"
@@ -258,7 +259,7 @@ const SignIn = () => {
                             fullWidth="true" />
                     })}
                 </div>
-                <PrimaryButton title="Sign In" />
+                <PrimaryButton style={{marginTop:24}} title="Sign In" />
                 <div className={classes.linkContainer}>
                     <Link href="#" className={classes.links}>
                         <a className={classes.link}>Forgot Password?</a>

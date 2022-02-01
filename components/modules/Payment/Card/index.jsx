@@ -10,7 +10,12 @@ import Input from '../../../elements/Input'
 const useStyles = makeStyles(theme => ({
     card: {
         backgroundColor: colors.background,
-        paddingTop:"24px"
+        paddingTop:"24px",
+        borderRadius:4,
+        [theme.breakpoints.down('md')]:{
+            padding:"16px"
+        }
+
     },
     cardContainer: {
         padding: "24px 0px",

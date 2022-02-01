@@ -30,7 +30,10 @@ const PrimaryButton = (props) => {
             textTransform: "capitalize",
             ...props.style,
             '&:hover': {
-                background: "green"
+                background: "#054A11"
+            },
+            '&:focus':{
+                background:"#03380D"
             },
             '&.MuiButton-contained': {
                 boxShadow: "none"
@@ -46,7 +49,7 @@ const PrimaryButton = (props) => {
 
 
         <div className={classes.buttonContainer}>
-            <Button type="submit" variant="contained" className={classes.button}>{props.title}</Button>
+            <Button onClick={props.actionClick} type="submit" variant="contained" className={classes.button}>{props.title}</Button>
 
         </div>
 

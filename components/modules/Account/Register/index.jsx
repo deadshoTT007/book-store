@@ -30,7 +30,8 @@ const useStyles = makeStyles(theme => ({
         display: "flex",
         justifyContent: "center",
         textAlign: "center",
-        alignItems: "center"
+        alignItems: "center",
+        marginTop:16
         // paddingBottom: "30px"
     },
     links: {
@@ -233,7 +234,7 @@ export const Register = () => {
                                 fullWidth="true" />
                         })}
                     </div>
-                    <PrimaryButton style={{ justifyContent: "start", width: "300px" }} title="Register" />
+                    <PrimaryButton style={{ width:"300px",marginTop:24 }} title="Register" />
                     <div className={classes.linkContainer}>
                         <Typography variant="span" className={classes.linkText}>Already have account</Typography>
                         <Link href="#" className={classes.links}>
