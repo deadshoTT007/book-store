@@ -12,8 +12,7 @@ import { BiEnvelope } from 'react-icons/bi'
 import { RiEyeCloseLine } from 'react-icons/ri'
 import { passwordRegex } from '../../../../utils'
 import PermIdentityIcon from '@mui/icons-material/PermIdentity';
-import MailOutlineIcon from '@mui/icons-material/MailOutline';
-
+import MailOutlineIcon from '@mui/icons-material/MailOutline'
 
 const useStyles = makeStyles(theme => ({
     modal: {
@@ -107,7 +106,7 @@ const useStyles = makeStyles(theme => ({
         textAlign: "center"
     },
     formContainer: {
-        padding: " 0 40px",
+        // padding: " 0 40px",
         [theme.breakpoints.down('xs')]: {
             padding: "0"
         }
@@ -238,8 +237,10 @@ const SignIn = () => {
 
     return (
         <>
+        <div>
             <form onSubmit={formSubmitHandler} className={classes.formContainer}>
                 <div className={classes.email}>
+                <AuthenticationModal title="Login with" />
 
                     {formDataArray.map((inputData, index) => {
                         return <Input name={inputData.formData.elementConfig.name}
@@ -259,14 +260,14 @@ const SignIn = () => {
                             fullWidth="true" />
                     })}
                 </div>
-                <PrimaryButton style={{marginTop:24}} title="Sign In" />
+                <PrimaryButton  style={{marginTop:24,width:"100%"}} title="Sign In" />
                 <div className={classes.linkContainer}>
                     <Link href="#" className={classes.links}>
                         <a className={classes.link}>Forgot Password?</a>
                     </Link>
                 </div>
             </form>
-            <AuthenticationModal title="Login with" />
+            </div>
         </>
     )
 

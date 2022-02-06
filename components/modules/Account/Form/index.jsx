@@ -30,19 +30,19 @@ const useStyles = makeStyles(theme => ({
         }
     },
     main: {
-        padding: "40px ",
-        width: "520px",
-        minHeight: "80vh",
+        // padding: "40px ",
+        // width: "520px",
+        // minHeight: "80vh",
         backgroundColor: "#fff",
-        borderRadius: "8px",
+        borderRadius: "4px",
         position: "relative"
     },
     mainRegister: {
-        padding: "40px ",
-        width: "780px",
-        minHeight: "80vh",
+        // padding: "40px ",
+        // width: "780px",
+        // minHeight: "80vh",
         backgroundColor: "#fff",
-        borderRadius: "8px",
+        borderRadius: "4px",
         position: "relative"
     },
     crossIcon: {
@@ -121,7 +121,7 @@ const useStyles = makeStyles(theme => ({
     form: {
         padding: "24px",
         paddingTop: "24px",
-        marginTop: "20px",
+        // marginTop: "20px",
         backgroundColor: colors.background
     }
 
@@ -145,24 +145,23 @@ const Form = () => {
         }
     }
     return (
-        <Modal
-            disablePortal
-            disableEnforceFocus
-            disableAutoFocus
-            onClose={handleClose}
-            open={open}
-            aria-labelledby="server-modal-title"
-            aria-describedby="server-modal-description"
-            className={classes.modal}
-        // container={() => rootRef.current}
-        >
+        // <Modal
+        //     disablePortal
+        //     disableEnforceFocus
+        //     disableAutoFocus
+        //     onClose={handleClose}
+        //     open={open}
+        //     aria-labelledby="server-modal-title"
+        //     aria-describedby="server-modal-description"
+        //     className={classes.modal}
+        // >
             <div className={`${register ? classes.mainRegister : classes.main}`}>
                 <div className={classes.mainContainer}>
-                    <ImCross className={classes.crossIcon} onClick={handleClose} />
-                    <Typography variant="h3" className={classes.headerText}>Welcome To
+                    {/* <ImCross className={classes.crossIcon} onClick={handleClose} /> */}
+                    {/* <Typography variant="h3" className={classes.headerText}>Welcome To
                         Chasma Ghar</Typography>
                     <Typography variant="p" className={classes.subHeaderText}>Best place to find personalize and high quality eyewears products.
-                    </Typography>
+                    </Typography> */}
                     <div className={classes.form}>
                         <CustomButton onClickHandler={onClickHandler} left={true} active={signIn} name="signIn" title="Sign In" />
                         <CustomButton onClickHandler={onClickHandler} right={true} active={register} name="register" title="Register" />
@@ -175,7 +174,7 @@ const Form = () => {
 
 
             </div>
-        </Modal >
+        // </Modal >
 
 
     )

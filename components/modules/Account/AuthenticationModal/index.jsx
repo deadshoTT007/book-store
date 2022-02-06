@@ -6,9 +6,9 @@ import { SiFacebook } from 'react-icons/si'
 
 const useStyles = makeStyles(theme => ({
     modal: {
-        marginTop: "20px ",
+        marginTop: "32px ",
         backgroundColor: "#fff",
-        padding: "20px"
+        padding: "12px 24px 24px 24px"
 
     },
     headerText: {

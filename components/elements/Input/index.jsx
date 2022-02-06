@@ -1,7 +1,7 @@
 import React from 'react'
 import { makeStyles } from "@mui/styles"
 import { Typography, FormControl, OutlinedInput, InputAdornment, IconButton } from '@mui/material'
-
+import { colors } from '@/utils/index'
 
 const Input = (props) => {
     const useStyles = makeStyles(theme => ({
@@ -12,7 +12,10 @@ const Input = (props) => {
             //     paddingTop:0,
             //     marginTop:0
             // },
-            ...props.style
+            ...props.style,
+            [theme.breakpoints.down('md')]:{
+                ...props.smallStyle
+        },
 
 
         },
@@ -22,16 +25,16 @@ const Input = (props) => {
             // paddingRight: "20px",
             marginTop: "16px ",
             paddingTop: props.paddingTop ? props.paddingTop : "0",
-            color: "#4A4A4A",
+            color: colors.black,
             '& input': {
                 fontSize: "16px",
-                color: "#4A4A4A",
+                color: colors.black,
                 padding: "8px 24px",
                 opacity:'1',
                 // background: "red",
                 "&.css-24rejj-MuiInputBase-input-MuiOutlinedInput-input":{
                     fontSize: "16px",
-                    color: "#4A4A4A",
+                    color: colors.black,
                     padding: "8px 24px"
                 },
             },
@@ -49,7 +52,7 @@ const Input = (props) => {
                 display: "none"
             },
             '& .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline': {
-                border: "1px solid #4A4A4A",
+                border: `1px solid ${colors.black}`,
                 borderRadius: "40px"
             },
             '& .PrivateNotchedOutline-legend-18': {
@@ -96,7 +99,7 @@ const Input = (props) => {
             fontSize: "16px",
             lineHeight: "22px",
             fontWeight: "400",
-            color: "#4A4A4A",
+            color: colors.black,
             '&[type=number]': {
                 '-moz-appearance': 'textfield',
             },

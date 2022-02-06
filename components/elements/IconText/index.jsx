@@ -10,7 +10,8 @@ const IconText = (props) => {
             alignItems:"center",
             justifyContent:"center",
             textAlign:'center',
-        ...props.style
+        ...props.style,
+        cursor:"pointer"
             // background:"red",
             
         },
@@ -25,9 +26,9 @@ const IconText = (props) => {
         }
     }))
     const classes=useStyles()
-    const {title,icon}=props
+    const {title,icon,actionClick}=props
     return (
-        <div className={classes.iconContainer}>
+        <div onClick={props.actionClick} className={classes.iconContainer}>
         <div className={classes.iconText}>{title}</div>
         {icon}
     </div>

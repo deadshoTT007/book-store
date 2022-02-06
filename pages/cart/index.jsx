@@ -10,6 +10,7 @@ import PrimaryButton from '@/components/elements/PrimaryButton'
 import { Link } from '@mui/material'
 import { useRouter } from 'next/dist/client/router'
 import HomeLayout from '@/components/layouts/HomeLayout'
+import StickyBottomNavBar from '@/components/elements/StickyBottomNavbar'
 const useStyles=makeStyles(theme=>({
 mainContainer:{
     margin:"28px 0",
@@ -23,7 +24,7 @@ mainContainer:{
         padding:"0px"
     },
     [theme.breakpoints.down('sm')]:{
-        marginTop:"180px"
+        marginTop:"200px"
     }
 },
 cartText:{
@@ -35,7 +36,9 @@ productDetailsContainer:{
     gridTemplateColumns:"60% 40%",
     gridGap:"64px",
     [theme.breakpoints.down('md')]:{
-        gridTemplateColumns:"1fr"
+        gridTemplateColumns:"1fr",
+        height:200,
+        overflow:"auto"
     }
 },
 productDetails:{
@@ -103,7 +106,13 @@ descriptionSubText:{
 checkOutContainer:{
     padding:"24px",
     background:colors.background,
-    height:"fit-content"
+    height:"fit-content",
+    [theme.breakpoints.down('md')]:{
+        position:"fixed",
+        bottom:"80px",
+        left:0,
+        width:"100vw"
+    }
 },
 itemContainer:{
     display:'flex',
@@ -178,7 +187,7 @@ const Cart = () => {
         setShowMore(!showMore)
     }
     return (
-        <HomeLayout>
+        <HomeLayout footer={true}>
         <div className={classes.root}>
             <div className={classes.mainContainer}>
                 <div className={classes.cartText}>Your Cart</div>
@@ -254,6 +263,7 @@ const Cart = () => {
                 </div>
             </div>
         </div>
+        <StickyBottomNavBar/>
         </HomeLayout>
     )
 }

@@ -1,103 +1,45 @@
-import React, { useState } from 'react'
-import { makeStyles } from "@mui/styles"
-import CustomButton from '../../../elements/CustomButton'
-import { Typography, Grid, Modal, Link } from '@mui/material'
-import AuthenticationModal from '../AuthenticationModal'
-import { colors } from '../../../../utils'
-import Input from '../../../elements/Input'
-import { emailRegex } from '../../../../utils'
-import PrimaryButton from '../../../elements/PrimaryButton'
-import { BiEnvelope } from 'react-icons/bi'
-    import { RiEyeCloseLine } from 'react-icons/ri'
-import { passwordRegex } from '../../../../utils'
-import { BsPerson } from 'react-icons/bs'
-import PermIdentityIcon from '@mui/icons-material/PermIdentity';
-import MailOutlineIcon from '@mui/icons-material/MailOutline';
+import React from 'react'
+import { makeStyles } from '@mui/styles'
+import { colors } from '@/utils/index'
+import PrimaryButton from '@/components/elements/PrimaryButton'
+import SecondaryButton from '@/components/elements/SecondaryButton'
+import Input from '@/components/elements/Input'
+import { passwordRegex } from '@/utils/index'
+import { RiEyeCloseLine } from 'react-icons/ri'
 
-
-const useStyles = makeStyles(theme => ({
-    inputContainer: {
-        // display: "grid",
-        // gridTemplateColumns: "1fr 1fr",
-        // gridGap: "20px",
-        // [theme.breakpoints.down('xs')]: {
-        //     gridTemplateColumns: "1fr",
-        //     gridGap: "0px"
-        // }
-    },
-    linkContainer: {
-        // margin: "0 auto"
-        display: "flex",
-        justifyContent: "center",
-        textAlign: "center",
-        alignItems: "center",
-        marginTop:16
-        // paddingBottom: "30px"
-    },
-    links: {
-        color: colors.primary,
-        fontSize: "16px",
-        lineHeight: "22px",
-        fontWeight: "400",
-        textDecoration: "none",
-        userSelect: "none",
-        marginLeft: "5px",
-
-        '& .MuiLink-underlineHover:hover': {
-            textDecoration: "none"
-        }
-    },
-    linkText: {
-        fontSize: "16px",
-        lineHeight: "22px",
-        fontWeight: "400"
-    },
-
+const useStyles=makeStyles(theme=>({
+mainCOntainer:{
+    padding:"24px",
+    borderRadius:4,
+    background:colors.background,
+    margin:"24px 0"
+},
+headerText:{
+    fontSize:20,
+    lineHeight:"24px",
+    color:colors.black,
+    marginBottom:8
+},
+descriptionText:{
+    fontSize:16,
+    lineHeight:"22px",
+    color:colors.black
+},
+buttonContainer:{
+    display:"flex",
+    marginTop:24
+},
 
 }))
-export const Register = () => {
-    const classes = useStyles()
+const ChangePasswordInput = (props) => {
+    const classes=useStyles()
     const [userData, setUserData] = React.useState({
         formData: {
-            username: {
-                elementConfig: {
-                    type: "text",
-                    placeholder: "eg. johndoe",
-                    label: "Your Full Name",
-                    name: "username",
-                    Icon: <PermIdentityIcon className={classes.icon} />,
-                    focus: null
-                },
-                value: '',
-                valid: false,
-                touched: false,
-                validity: {
-                    required: true,
-                    minLength: 3
-                }
-            },
-            email: {
-                elementConfig: {
-                    type: "email",
-                    placeholder: "eg. example@gmail.com",
-                    label: "Email",
-                    name: "email",
-                    Icon: <MailOutlineIcon className={classes.icon} />,
-                },
-                value: '',
-                focus: null,
-                valid: false,
-                touched: false,
-                validity: {
-                    required: true,
-                    regex: emailRegex
-                }
-            },
             password1: {
                 elementConfig: {
                     type: "password",
                     placeholder: "Password",
-                    label: "Password",
+                    label: "New password",
                     name: "password1",
                     Icon: <RiEyeCloseLine className={classes.icon} />,
 
@@ -107,6 +49,7 @@ export const Register = () => {
                 valid: false,
                 touched: false,
                 focus: null,
+                style:{width:"50%"},
                 validity: {
                     required: true,
                     regex: passwordRegex,
@@ -117,13 +60,14 @@ export const Register = () => {
             password2: {
                 elementConfig: {
                     type: "password",
-                    placeholder: "Password",
-                    label: "Confirm Password ",
+                    placeholder: "Confirm Password",
+                    label: "Confirm password ",
                     name: "password2",
                     Icon: <RiEyeCloseLine className={classes.icon} />,
                 },
                 value: '',
                 focus: null,
+                style:{width:"50%"},
                 valid: false,
                 touched: false,
                 showPassword: false,
@@ -136,6 +80,7 @@ export const Register = () => {
             },
         }
     });
+
     const iconClickHandler = (name) => {
         setUserData(pre => {
             return { ...pre, formData: { ...pre.formData, [name]: { ...pre.formData[name], showPassword: !pre.formData[name].showPassword } } }
@@ -207,13 +152,10 @@ export const Register = () => {
     Object.values(userData.formData).forEach(val => val.valid === false && (disable = true))
 
     return (
-        <div className={classes.mainContainer}>
-
-            <div className={classes.form}>
-
-                <AuthenticationModal title="Register with:" />
-                <form onSubmit={formSubmitHandler} className={classes.formContainer} >
-                    <div className={classes.inputContainer}>
+        <div className={classes.mainCOntainer}>
+            <div className={classes.headerText}>Enter new password</div>
+            <div className={classes.descriptionText}>Pass must contains at least 8 character, and a numbers.</div>
+            <div className={classes.inputContainer}>
                         {formDataArray.map((inputData, index) => {
                             return <Input name={inputData.formData.elementConfig.name}
                                 label={inputData.formData.elementConfig.label}
@@ -228,23 +170,20 @@ export const Register = () => {
                                 touched={inputData.formData.touched}
                                 inputData={inputData}
                                 focusHandler={focusHandler}
+                                style={inputData.formData.style}
                                 changeHandler={changeHandler}
                                 blurHandler={blurHandler}
                                 iconClickHandler={iconClickHandler}
                                 fullWidth="true" />
                         })}
                     </div>
-                    <PrimaryButton style={{ width:"100%",marginTop:24 }} title="Register" />
-                    <div className={classes.linkContainer}>
-                        <Typography variant="span" className={classes.linkText}>Already have account?</Typography>
-                        <Link href="#" className={classes.links}>
-                            <a className={classes.link}>Login</a>
-                        </Link>
+                    <div className={classes.buttonContainer}>
+                        <SecondaryButton actionClick={props.changePasswordHandler} title="Cancel" style={{marginRight:'24px'}}/>
+                        <PrimaryButton actionClick={props.changePasswordHandler} title="Continue" />
                     </div>
-                </form>
-            </div>
+            
         </div>
-
     )
 }
-export default Register
+
+export default ChangePasswordInput

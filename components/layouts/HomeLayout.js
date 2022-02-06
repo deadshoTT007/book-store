@@ -6,7 +6,7 @@ const HomeLayout = (props) => {
         <div style={{boxSizing: 'border-box', overflowX:'hidden'}}>
             <Header />
             {props.children}
-            <Footer />
+           {!props.footer && <Footer />} 
         </div>
     )
 };

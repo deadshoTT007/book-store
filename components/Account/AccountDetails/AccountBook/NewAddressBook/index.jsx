@@ -3,42 +3,36 @@ import { makeStyles } from '@mui/styles'
 import { colors } from '@/utils/index'
 import Input from '@/components/elements/Input'
 import SecondaryButton from '@/components/elements/SecondaryButton'
+import PrimaryButton from '@/components/elements/PrimaryButton'
+import { emailRegex } from '@/utils/index'
 import PermIdentityOutlinedIcon from '@mui/icons-material/PermIdentityOutlined';
 import MailOutlinedIcon from '@mui/icons-material/MailOutlined';
 import LocalPhoneOutlinedIcon from '@mui/icons-material/LocalPhoneOutlined';
-import { emailRegex } from '@/utils/index'
+import KeyboardArrowDownOutlinedIcon from '@mui/icons-material/KeyboardArrowDownOutlined';
 const useStyles=makeStyles(theme=>({
-    accountInfoContainer:{
-        padding:"16px 40px",
-        background:colors.mainGray,
-    },
-    accountText:{
-        textAlign:'center',
-        fontWeight:"500",
-        fontSize:"20px",
-        lineHeight:"24px",
-        color:colors.black,
-        margin:"24px 0",
-        // height:"75px",
-        display:'flex',
-        alignItems:'center',
-        justifyContent:'center',
-        [theme.breakpoints.down('md')]:{
-            height:'auto',
-            margin:"24px 0"
+main:{
+padding:"24px",
+background:colors.background,
+margin:"24px 0",
+
+},
+mainContainer:{
+    display:"grid",
+    gridTemplateColumns:"repeat(2,1fr)",
+    gridColumnGap:"24px",
+    [theme.breakpoints.down('md')]:{
+        gridTemplateColumns:"1fr"
     }
-    },
-    accountDetailsInputContainer:{
-        padding:24,
-        // paddingTop:0,
-        borderRadius:4,
-        background:colors.mainGray,
-        marginTop:24,
-        paddingTop:0
-    }
+},
+buttonContainer:{
+    display:"flex",
+    justifyContent:"flex-end",
+    marginTop:'24px'
+}
 }))
-const AccountDetails = () => {
+const NewAddressBook = (props) => {
     const classes=useStyles()
+   
     const [userData, setUserData] =useState({
         formData: {
             username: {
@@ -55,8 +49,6 @@ const AccountDetails = () => {
                 valid: false,
                 touched: false,
                 focus: null,
-                style:{width:"50%"},
-                smallStyle:{width:"100%"},
                 validity: {
                     required:true,
                     minLength: 3
@@ -74,11 +66,84 @@ const AccountDetails = () => {
                 focus: null,
                 valid: false,
                 touched: false,
-                style:{width:"50%"},
-                smallStyle:{width:"100%"},
                 validity: {
                     required: true,
                     regex: emailRegex
+                }
+            },
+            country:{
+                elementConfig: {
+                    type: "text",
+                    placeholder: "Nepal",
+                    label: "Country",
+                    name: "country",
+                    Icon:<KeyboardArrowDownOutlinedIcon className={classes.icon}/>
+                },
+                value: '',
+                valid: false,
+                touched: false,
+                validity: {
+                    required: true,
+                }
+            },
+            state:{
+                elementConfig: {
+                    type: "text",
+                    placeholder: "Lalitpur",
+                    label: "State",
+                    name: "state",
+                    Icon:<KeyboardArrowDownOutlinedIcon className={classes.icon}/>
+                },
+                value: '',
+                valid: false,
+                touched: false,
+                validity: {
+                    required: true,
+                }
+            },
+            district:{
+                elementConfig: {
+                    type: "text",
+                    placeholder: "Lalitpur",
+                    label: "District",
+                    name: "district",
+                    Icon:<KeyboardArrowDownOutlinedIcon className={classes.icon}/>
+                },
+                value: '',
+                valid: false,
+                touched: false,
+                validity: {
+                    required: true,
+                }
+            },
+            street:{
+                elementConfig: {
+                    type: "text",
+                    placeholder: "Kupondole",
+                    label: "Street",
+                    name: "street",
+                    Icon:<KeyboardArrowDownOutlinedIcon className={classes.icon}/>
+                },
+                value: '',
+                valid: false,
+                touched: false,
+                validity: {
+                    required: true,
+                }
+            },
+            address:{
+                elementConfig: {
+                    type: "text",
+                    placeholder: "Kupondole",
+                    label: "Address",
+                    name: "address",
+                    Icon:<KeyboardArrowDownOutlinedIcon className={classes.icon}/>
+                },
+                value: '',
+                valid: false,
+                touched: false,
+                validity: {
+                    required: true,
                 }
             },
           
@@ -94,8 +159,6 @@ const AccountDetails = () => {
                 value: '',
                 valid: false,
                 touched: false,
-                style:{width:"50%"},
-                smallStyle:{width:"100%"},
                 validity: {
                     required: true,
                     length: "10"
@@ -173,14 +236,11 @@ const AccountDetails = () => {
 
     let disable = false;
     Object.values(userData.formData).forEach(val => val.valid === false && (disable = true))
-
     return (
-        <div className={classes.accountDetailsInfoRight}>
-        <div className={classes.accountInfoContainer}>
-            <div className={classes.accountText}>My Account</div>
-        </div>
-        <div className={classes.accountDetailsInputContainer}>
-        {formDataArray.map((inputData, index) => {
+        <div className={classes.main}>
+            <div className={classes.headerText}>Add new address</div>
+            <div className={classes.mainContainer}>
+            {formDataArray.map((inputData, index) => {
                 return <Input name={inputData.formData.elementConfig.name}
                     label={inputData.formData.elementConfig.label}
                     type={inputData.formData.elementConfig.type}
@@ -198,14 +258,16 @@ const AccountDetails = () => {
                     blurHandler={blurHandler}
                     iconClickHandler={iconClickHandler}
                     style={inputData.formData.style}
-                    smallStyle={inputData.formData.smallStyle}
                     fullWidth="true" />
             })}
 
-        <SecondaryButton title="Save" parentStyle={{justifyContent:"flex-start"}} style={{color:'#8D8D8D',border:`1px solid #8D8D8D`,marginTop:24,}}/>
+            </div>
+            <div className={classes.buttonContainer}>
+                <SecondaryButton actionClick={props.closeAddressBookHandler} title="Cancel" style={{marginRight:"24px"}}/>
+                <PrimaryButton actionClick={props.closeAddressBookHandler} title="Save"/>
+            </div>
         </div>
-    </div>
     )
 }
 
-export default AccountDetails
+export default NewAddressBook

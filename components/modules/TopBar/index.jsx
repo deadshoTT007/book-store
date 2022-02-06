@@ -43,6 +43,7 @@ const useStyles = makeStyles(theme => ({
         lineHeight: "37px",
         fontWeight: "400",
         color: "#000",
+        cursor:"pointer",
         userSelect: "none",
 
     },

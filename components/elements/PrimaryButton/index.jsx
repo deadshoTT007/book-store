@@ -15,7 +15,8 @@ const PrimaryButton = (props) => {
             // marginTop: "30px",
 ...props.parentStyle,
 [theme.breakpoints.down("md")]:{
-    maxWidth:"100%"
+    maxWidth:"100%",
+    ...props.smallParentStyle
 }
         },
         button: {
