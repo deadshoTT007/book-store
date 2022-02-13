@@ -6,6 +6,7 @@ import PrimaryButton from '@/components/elements/PrimaryButton';
 import { BiEnvelope } from 'react-icons/bi'
 import { BiPhone } from 'react-icons/bi'
 import { GrLocation } from 'react-icons/gr'
+import { colors } from '@/utils/index';
 import { GrCircleQuestion } from 'react-icons/gr'
 import { FiInstagram } from 'react-icons/fi'
 import { RiFacebookCircleLine } from 'react-icons/ri'
@@ -15,15 +16,16 @@ const useStyles = makeStyles(theme => ({
     main: {
         // position: "fixed",
         // bottom: "0",
-        zIndex:"10000000",
+        zIndex:"10",
         width: "100vw",
-        overflow:"hidden",
-        background: "#F5FFF7",
+        // overflow:"hidden",
+        background: colors.background,
         paddingTop: "40px",
-        paddingBottom: "40px",
-        marginTop: "auto",
+        paddingBottom:"40px",        
+        marginTop:"40px",
         [theme.breakpoints.down('md')]:{
-            position:"relative"
+            position:"relative",
+            paddingBottom: "100px",
         }
     },
     mainContainer: {
@@ -260,40 +262,14 @@ const Footer = () => {
                         <FiGift className={classes.giftIcon} />
                         <div  className={classes.subscriptiontext}>Subscribe For Exciting Deals And Offers</div>
                     </div>
-                    {/* <div className={classes.emailContainer}>
-                        <FormControl outlined" className={classes.inputContainer}>
-                            <OutlinedInput
-                                placeholder="Email"
-                                type="email"
-                                endAdornment={
-                                    <InputAdornment position="end">
-                                        <IconButton
-
-                                            edge="end"
-                                        >
-                                            <BiEnvelope className={classes.envolopIcon} />
-                                        </IconButton>
-                                    </InputAdornment>
-                                }
-                                labelWidth={70}
-                            />
-                        </FormControl>
-                    </div> */}
+                  
                     <Email placeholder="Email" />
                     <div className={classes.subscriptionButtonContainer}>
                         <PrimaryButton title="Subscribe" style={{marginTop:0}} smallStyle={{marginTop:24}}/>
-                        {/* <Button className={classes.subscriptionButton} ">Subscribe</Button> */}
                     </div>
                 </div>
                 <div className={classes.info}>
-                    {/* <div className={classes.infoBox}>
-                        <div className={classes.infoBoxContainer}>
-                            <BiPhone className={classes.infoIcon} />
-                            <div className={classes.infoHeaderText} ">Phone Number</div>
-                        </div>
-                        <div className={classes.infoSubHeaderText} ">980253697</div>
-
-                    </div> */}
+                  
                     <div className={classes.infoBox}>
                         <div className={classes.infoBoxContainer}>
                             <BiPhone className={classes.infoPhoneIcon} />

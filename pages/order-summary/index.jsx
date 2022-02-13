@@ -21,11 +21,11 @@ const useStyles=makeStyles(theme=>({
         marginTop:"104px",
         [theme.breakpoints.down('md')]:{
             minWidth:"100%",
-            marginTop:"160px",
+            marginTop:"150px",
             display:"block"
         },
         [theme.breakpoints.down('sm')]:{
-            marginTop:"180px"
+            marginTop:"150px"
         }
     
     },

@@ -3,6 +3,7 @@ import { Typography, Button, Link } from '@mui/material';
 import { makeStyles } from '@mui/styles'
 import { colors } from '../../../utils'
 import PrimaryButton from '@/components/elements/PrimaryButton';
+import { useRouter } from 'next/dist/client/router';
 const useStyles = makeStyles(theme => ({
     orderConfirmation: {
         backgroundColor: colors.background,
@@ -65,6 +66,7 @@ const useStyles = makeStyles(theme => ({
 }))
 const OrderConfirmation = () => {
     const classes = useStyles()
+    const router=useRouter()
     return (
         <>
             <div className={classes.orderConfirmation}>
@@ -76,7 +78,7 @@ const OrderConfirmation = () => {
                 {/* <div className={classes.buttonContainer}>
                     <Button variant="contained" className={classes.button}>Confirm Your Order</Button>
                 </div> */}
-                <PrimaryButton title="Confirm Your Order" style={{marginTop:24,marginBottom:28}}/>
+                <PrimaryButton actionClick={()=>router.push('/payment-success')} title="Confirm Your Order" style={{marginTop:24,marginBottom:28}}/>
                 <div className={classes.linkContainer}>
                     <Link href="#" className={classes.links}>
                         <a className={classes.link}>Help?</a>

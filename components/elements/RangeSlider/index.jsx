@@ -32,19 +32,19 @@ const RangeSlider = (props) => {
         rangeSlider:{
             '& .css-14pt78w-MuiSlider-rail':{
                 opacity:1,
-                backgroundColor:colors.greenSurface,
+                backgroundColor:"#E8E8E8",
                 borderRadius:"25px",
-                height:"8px"
+                height:"4px"
             },
             '& .css-1gv0vcd-MuiSlider-track':{
                 color:colors.primary,
-                height:"8px"
+                height:"4px"
                 // border:`3px solid ${colors.primary}`
             },
             '& .css-eg0mwd-MuiSlider-thumb':{
                 color:"#fff",
-                width:"32px",
-                height:"32px",
+                width:"20px",
+                height:"20px",
                 border:`3px solid ${colors.primary}`
             },
            

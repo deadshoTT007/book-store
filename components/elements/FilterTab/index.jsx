@@ -85,14 +85,17 @@ smallTryOnContainer:{
 mainToggleCOntainer:{
     display:"flex",
     alignItems:"center"
+},
+selectedFilterText:{
+    borderBottom:`2px solid ${colors.primary}`
 }
 
 
 }))
 
 const FilterTab = (props) => {
-    const {value}=props;
-    console.log(value,"value")
+    const {value,selectedValue}=props;
+    console.log(value,selectedValue,"value")
     const classes=useStyles()
     return (
         <>
@@ -108,12 +111,12 @@ const FilterTab = (props) => {
 </div>
             </div>
             <ul className={classes.filterTextContainer}>
-                <li className={`${value==="price"?classes.activeFilterText:classes.filterText}`} onClick={()=>props.filterHandler("price")}>Price</li>
-                <li className={`${value==="shapes"?classes.activeFilterText:classes.filterText}`} onClick={()=>props.filterHandler("shapes")}>Shapes</li>
-                <li className={`${value==="frame"?classes.activeFilterText:classes.filterText}`} onClick={()=>props.filterHandler("frame")}>Frame width</li>
-                <li className={`${value==="colors"?classes.activeFilterText:classes.filterText}`} onClick={()=>props.filterHandler("colors")}>Colors</li>
-                <li className={`${value==="materials"?classes.activeFilterText:classes.filterText}`} onClick={()=>props.filterHandler("materials")}>Materials</li>
-                <li className={`${value==="nosebridge"?classes.activeFilterText:classes.filterText}`} onClick={()=>props.filterHandler("nosebridge")}>Nose bridge</li>
+                <li className={`${value==="price"?classes.activeFilterText:classes.filterText} ${selectedValue.includes("price") && classes.selectedFilterText}`} onClick={()=>props.filterHandler("price")}>Price</li>
+                <li className={`${value==="shapes"?classes.activeFilterText:classes.filterText} ${selectedValue.includes("shapes") && classes.selectedFilterText}`} onClick={()=>props.filterHandler("shapes")}>Shapes</li>
+                <li className={`${value==="frame"?classes.activeFilterText:classes.filterText} ${selectedValue.includes("frame") && classes.selectedFilterText}`} onClick={()=>props.filterHandler("frame")}>Frame width</li>
+                <li className={`${value==="colors"?classes.activeFilterText:classes.filterText} ${selectedValue.includes("colors") && classes.selectedFilterText}`} onClick={()=>props.filterHandler("colors")}>Colors</li>
+                <li className={`${value==="materials"?classes.activeFilterText:classes.filterText} ${selectedValue.includes("materials") && classes.selectedFilterText}`} onClick={()=>props.filterHandler("materials")}>Materials</li>
+                <li className={`${value==="nosebridge"?classes.activeFilterText:classes.filterText} ${selectedValue.includes("nosebridge") && classes.selectedFilterText}`} onClick={()=>props.filterHandler("nosebridge")}>Nose bridge</li>
             </ul>
             <ButtonIcon/>
         </div>

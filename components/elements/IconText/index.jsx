@@ -11,7 +11,12 @@ const IconText = (props) => {
             justifyContent:"center",
             textAlign:'center',
         ...props.style,
-        cursor:"pointer"
+        userSelect:"none",
+        cursor:"pointer",
+        "&:hover":{
+            color:colors.primary
+        }
+       
             // background:"red",
             
         },
@@ -19,6 +24,19 @@ const IconText = (props) => {
             fontSize:"16px",
             lineHeight:'22px',
             color:colors.black,
+            "&:hover":{
+                color:colors.primary
+            }
+    
+        },
+        activeIconText:{
+            fontSize:"16px",
+            lineHeight:'22px',
+            color:colors.primary,
+            "&:hover":{
+                color:colors.primary
+            }
+
         },
         icon:{
             fontSize:"12px",
@@ -27,9 +45,10 @@ const IconText = (props) => {
     }))
     const classes=useStyles()
     const {title,icon,actionClick}=props
+    console.log(props.name,props.value,"value")
     return (
         <div onClick={props.actionClick} className={classes.iconContainer}>
-        <div className={classes.iconText}>{title}</div>
+        <div className={`${props.name==props.value ? classes.activeIconText:classes.iconText }`}>{title}</div>
         {icon}
     </div>
 

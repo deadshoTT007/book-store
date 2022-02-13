@@ -17,13 +17,15 @@ const ProductList = (props) => {
            
         },
         productListContainer:{
+            marginBottom:40,
+            '&:last-child':{
+                marginBottom:0
+            }
+    
         },
         productContainer:{
             display:"flex",
-            justifyContent:"space-between",
-        marginBottom:"40px",
-        
-        
+            justifyContent:"space-between",        
         },
         detailContainer:{
             display:"flex"

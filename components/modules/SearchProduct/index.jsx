@@ -5,6 +5,7 @@ import { useRouter } from 'next/dist/client/router'
 const useStyles = makeStyles(theme => ({
     product: {
         display: "flex",
+        padding:24,
         cursor:"pointer",
         alignItems: "center",
         flexDirection: "column",
@@ -20,8 +21,8 @@ overflow:"hidden"
     },
     colorsContainer: {
         display: "flex",
-        marginTop: "20px",
-        alignSelf: "flex-start"
+        marginTop: "40px",
+        // alignSelf: "flex-start"
 
     },
     color: {
@@ -54,15 +55,16 @@ overflow:"hidden"
     productDetails: {
         display: 'flex',
         alignItems: "center",
-        marginTop: "15px",
-        marginLeft: "5px",
+        marginTop: "24px",
+        justifyContent:"center",
+        // marginLeft: "5px",
         width: "100%"
     },
     title: {
-        fontSize: "20px",
+        fontSize: "16px",
         fontWeight: "500",
-        lineHeight: "23px",
-        color: colors.black
+        lineHeight: "19px",
+        color: colors.black,
 
     },
     price: {
@@ -70,13 +72,12 @@ overflow:"hidden"
         fontWeight: "400",
         lineHeight: "22px",
         color: "#000",
-        marginLeft: "7px",
-        marginTop: "2px"
+        marginLeft: "12px",
 
     }
 }))
 
-const Product = ({ title, image, colors, price }) => {
+const SearchProduct = ({ title, image, colors, price }) => {
     const classes = useStyles()
     const router=useRouter()
     return (
@@ -103,4 +104,4 @@ const Product = ({ title, image, colors, price }) => {
         </div>
     )
 }
-export default Product
+export default SearchProduct

@@ -7,6 +7,7 @@ import { Radio, RadioGroup,Checkbox, FormControlLabel, FormControl, FormLabel } 
 import PrimaryButton from '../../elements/PrimaryButton';
 import SecondaryButton from '../../elements/SecondaryButton';
 import { useMediaQuery } from '@mui/material';
+import HomeLayout from '@/components/layouts/HomeLayout';
 import TopBar from '@/components/modules/TopBar';
 import StickyBottomNavBar from '@/components/elements/StickyBottomNavbar';
 const bgImage = "https://st2.depositphotos.com/3258807/10726/i/950/depositphotos_107267666-stock-photo-positive-girl-holding-her-glasses.jpg"
@@ -24,8 +25,13 @@ const useStyles = makeStyles(theme => ({
     main: {
         padding: "40px",
         overflow: "hidden",
+        marginTop:"65px",
         [theme.breakpoints.down('md')]: {
-            padding: "40px 20px"
+            padding: "0",
+            width:"90%",
+            margin:"0 auto",
+            marginTop:"220px"
+
         }
         // background: 'red'
 
@@ -125,6 +131,10 @@ const useStyles = makeStyles(theme => ({
         [theme.breakpoints.down('md')]: {
             padding: "16px 64px 24px 16px",
             minWidth:"100%",
+            display:"block",
+            minHeight:'auto',
+            height:"270px",
+            overflow:"auto"
         }
     },
     detailsContainer: {
@@ -481,7 +491,8 @@ const ProductDetails = () => {
     const dots = new Array(imagesData.length)
     return (
         <>
-        <TopBar/>
+        {/* <TopBar/> */}
+        <HomeLayout>
             <div className={classes.main}>
                 <div className={classes.productDetails}>
                     <div className={classes.imageContainer}>
@@ -559,7 +570,7 @@ const ProductDetails = () => {
                                         </RadioGroup>
                                     </FormControl>
                                 </div>
-                                <PrimaryButton title="Select lens for purchase" style={{ width: "70%",marginTop:"32px" }} parentStyle={{justifyContent:"start"}} />
+                                <PrimaryButton title="Select lens for purchase" style={{ width: "70%",marginTop:"32px" }} smallStyle={{width:"80%"}} parentStyle={{justifyContent:"start"}} />
                             </div>
                         </div>
                     </div>
@@ -580,7 +591,7 @@ const ProductDetails = () => {
                         <h2>Find eaxct width that fits you</h2>
                         <p>If your face is average in size, which is most common, this frame should fit you well.
                             Unsure of your size? Select a few different options in a free Home Try-On.</p>
-                        <SecondaryButton title="Find your width" parentStyle={{justifyContent:"start",marginTop:"32px"}} style={{ width: "50%",color:colors.black,border:`2px solid ${colors.black}`, justifyContent: "flex-start" }} />
+                        <SecondaryButton title="Find your width" parentStyle={{justifyContent:"start",marginTop:"32px"}} style={{ width: "50%",color:colors.black,border:`2px solid ${colors.black}`, justifyContent: "center" }} />
                     </div>
                 </div> :
                     <div className={classes.heroSection}>
@@ -593,7 +604,8 @@ const ProductDetails = () => {
                     </div>
                 }
             </div>
-<StickyBottomNavBar/>
+            </HomeLayout>
+{/* <StickyBottomNavBar/> */}
         </>
     )
 }

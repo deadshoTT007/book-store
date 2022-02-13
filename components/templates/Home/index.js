@@ -22,10 +22,10 @@ background:"linear-gradient(90deg, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0) 100%)
         display:'flex',
         alignItems:"center",
         [theme.breakpoints.down('md')]:{
-            marginTop:"140px"
+            marginTop:"150px"
         },
         [theme.breakpoints.down('sm')]:{
-            marginTop:"180px"
+            marginTop:"150px"
         }
 
     },

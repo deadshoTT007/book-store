@@ -8,10 +8,10 @@ const useStyles=makeStyles(theme=>({
 root:{
     marginTop:125,
     [theme.breakpoints.down('md')]:{
-        marginTop:"160px"
+        marginTop:"200px"
 },
-[theme.breakpoints.down('md')]:{
-    marginTop:"180px"
+[theme.breakpoints.down('sm')]:{
+    marginTop:"250px"
 }
 
 },

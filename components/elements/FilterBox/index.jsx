@@ -12,6 +12,7 @@ import ImageButton from '../ImageButton'
 
 const FilterBox = (props) => {
     const [filterValue,setFilterValue]=useState("")
+    const [selectedValue,setSelectedValue]=useState("")
     const useStyles=makeStyles(theme=>({
         filterMainContainer:{
             borderRadius:"4px",
@@ -124,10 +125,14 @@ const FilterBox = (props) => {
         },
         size:{
             padding:"20px 32px",
-            border:`2px solid ${colors.greenSurface}`,
+            border:`1px solid ${colors.lightGray}`,
             borderRadius:"4px",
             fontSize:"16px",
             lineHeight:"22px",
+            '&:hover':{
+                border:`1px solid ${colors.black}`,
+                cursor:"pointer"
+            }
         
         },
         mainContainer:{
@@ -157,6 +162,10 @@ const FilterBox = (props) => {
             borderRadius:"4px",
             border:"1px solid #8D8D8D",
             alignItems:"center",
+            '&:hover':{
+                border:`1px solid ${colors.black}`,
+                cursor:"pointer"
+            }
            
         },
         selectionText:{
@@ -195,7 +204,7 @@ const FilterBox = (props) => {
     }
     return (
         <div>
-            <FilterTab filterShowHandler={props.filterShowHandler} value={filterValue} filterHandler={filterHandler}/>
+            <FilterTab selectedValue={selectedValue} filterShowHandler={props.filterShowHandler} value={filterValue} filterHandler={filterHandler}/>
             {filterValue=="nosebridge"&&
             <div className={classes.mainFilterContainer}> 
             <div className={classes.filterMainContainer}>
@@ -210,7 +219,7 @@ const FilterBox = (props) => {
                      </div>
                 </div>
                 <div className={classes.selectionText}>Selection(0)</div>
-<PrimaryButton title="Apply" style={{marginTop:"24px"}}/>
+<PrimaryButton actionClick={()=>setSelectedValue(pre=>[...pre,filterValue])} title="Apply" style={{marginTop:"24px"}}/>
                 </div>
                 </div>
                 </div>
@@ -222,7 +231,7 @@ const FilterBox = (props) => {
             <CloseIcon className={classes.closeIcon}/>
           <RangeSlider maxRange="100" minRange="5000"/>
             {/* <div className={classes.priceRange}>Rs. 100 - Rs. 5000</div> */}
-            <PrimaryButton title="Apply" style={{marginTop:"24px"}}/>
+            <PrimaryButton actionClick={()=>setSelectedValue(pre=>[...pre,filterValue])} title="Apply" style={{marginTop:"24px"}}/>
             </div>
             </div>
             }
@@ -237,7 +246,7 @@ const FilterBox = (props) => {
     <div className={classes.size}>Extra-large</div>
 </div>
 <RangeSlider minRange="8mm" maxRange="12mm"/>
-            <PrimaryButton title="Apply" style={{marginTop:"24px"}}/>
+            <PrimaryButton actionClick={()=>setSelectedValue(pre=>[...pre,filterValue])} title="Apply" style={{marginTop:"24px"}}/>
 
                 </div>
             </div>
@@ -270,7 +279,7 @@ const FilterBox = (props) => {
 
                  </div>
 <div className={classes.selectionText}>Selection(0)</div>
-<PrimaryButton title="Apply" style={{marginTop:"24px"}}/>
+<PrimaryButton actionClick={()=>setSelectedValue(pre=>[...pre,filterValue])} title="Apply" style={{marginTop:"24px"}}/>
              </div>
              </div>
              </div>
@@ -304,7 +313,7 @@ const FilterBox = (props) => {
                      </div>
                      </div>
                      <div className={classes.selectionText}>Selection(0)</div>
-                     <PrimaryButton title="Apply" style={{marginTop:"24px"}}/>
+                     <PrimaryButton actionClick={()=>setSelectedValue(pre=>[...pre,filterValue])} title="Apply" style={{marginTop:"24px"}}/>
              </div>
              </div>
              </div>
@@ -338,7 +347,7 @@ const FilterBox = (props) => {
             </div>
             </div>
             <div className={classes.selectionText}>Selection(0)</div>
-            <PrimaryButton title="Apply" style={{marginTop:"24px"}}/>
+            <PrimaryButton actionClick={()=>setSelectedValue(pre=>[...pre,filterValue])} title="Apply" style={{marginTop:"24px"}}/>
 
             </div>
             </div>

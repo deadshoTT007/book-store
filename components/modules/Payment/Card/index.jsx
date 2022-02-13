@@ -79,10 +79,10 @@ const Card = () => {
                     placeholder: "dd/mm/yyyy",
                     label: "Expire date",
                     name: "date1",
-                    minWidth: "47%"
 
                 },
                 value: '',
+                style:{width:"47%",display:"inline-block"},
                 valid: false,
                 touched: false,
                 focus: null,
@@ -96,10 +96,10 @@ const Card = () => {
                     placeholder: "dd/mm/yyyy",
                     label: "Expire date",
                     name: "date2",
-                    minWidth: "47%"
 
                 },
                 value: '',
+                style:{width:"47%",display:"inline-block"},
                 valid: false,
                 touched: false,
                 focus: null,
@@ -186,6 +186,7 @@ const Card = () => {
                                 blurHandler={blurHandler}
                                 touched={inputData.formData.touched}
                                 changeHandler={changeHandler}
+                                style={inputData.formData.style}
                                 minWidth={inputData.formData.elementConfig.minWidth}
                                 fullWidth="true" />
                         })}

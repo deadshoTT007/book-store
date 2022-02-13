@@ -8,103 +8,101 @@ import Esewa from './Esewa';
 import OrderConfirmation from '../OrderConfirmation';
 import OnDelivery from './OnDelivery';
 import Card from './Card';
-const useStyles = makeStyles(theme => ({
-    paymentMethod: {
-        width: "100vw",
-        height: "100vh",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        [theme.breakpoints.down('md')]:{
-            marginTop:"100px",
 
-        },
-        [theme.breakpoints.down('sm')]:{
-            marginTop:"120px",
-        }
-    },
-    mainContainer: {
-        width: "60vh",
-        minHeight: "80vh",
-        background: "#fff",
-        padding: "20px"
-    },
-    paymentText: {
-        textAlign: "center",
-        fontSize: "24px",
-        fontWeight: "500",
-        lineHeight: "28px",
-        color: colors.black,
-        textTransform: "capitalize"
-    },
-    paymentMethodContainer: {
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        paddingTop: "40px",
-        paddingBottom: "50px",
-        // background: "red",
-        '&>*': {
-            flexBasis: "9   0px",
-            // background: "blue",
-            height: "70px",
-            margin: "0 30px",
-            [theme.breakpoints.down('xs')]: {
-                margin: "0 15px",
-                flexBasis: "80px"
-            }
-        }
-    },
-    eachMethod: {
-        // display: "flex",
-        // flexDirection: "column",
-        // justifyContent: "center",
-        // alignItems: "center",
-        cursor: "pointer",
-        userSelect: "none",
-        width: "100px",
-    },
-    eachMehodIcon: {
-        fontSize: "36px"
-    },
-    eachMethodImageContainer: {
-        border: "1px solid #8D8D8D",
-        borderRadius: "4px",
-        transition: "all 200ms ease-out",
-        width: "100%",
-        height: "100%",
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        cursor: "pointer",
-        "&:hover,&:focus": {
-            border: "3px solid #137D27",
-            backgroundColor: "#F5FFF7",
-
-        }
-    },
-    active: {
-        border: "3px solid #137D27"
-
-    },
-    eachMethodText: {
-        fontSize: "14px",
-        lineHeight: "16px",
-        fontWeight: "400",
-        color: colors.black,
-        textAlign: "center",
-        paddingTop: "10px"
-    },
-
-
-
-
-}))
 const Payment = () => {
-    const classes = useStyles()
+    const [card, setCard] = useState(false)
     const [esewa, setEsewa] = useState(true)
     const [onDelivery, setOndelivery] = useState(false)
-    const [card, setCard] = useState(false)
+    const useStyles = makeStyles(theme => ({
+        paymentMethod: {
+            width: "100vw",
+            height: "100vh",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            [theme.breakpoints.down('md')]:{
+                marginTop:"100px",
+    
+            },
+            [theme.breakpoints.down('sm')]:{
+                marginTop:card ? "180px":"120px",
+            }
+        },
+        mainContainer: {
+            width: "60vh",
+            minHeight: "80vh",
+            background: "#fff",
+            padding: "20px"
+        },
+        paymentText: {
+            textAlign: "center",
+            fontSize: "24px",
+            fontWeight: "500",
+            lineHeight: "28px",
+            color: colors.black,
+            textTransform: "capitalize"
+        },
+        paymentMethodContainer: {
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            paddingTop: "40px",
+            paddingBottom: "50px",
+            // background: "red",
+            '&>*': {
+                flexBasis: "9   0px",
+                // background: "blue",
+                height: "70px",
+                margin: "0 20px",
+                [theme.breakpoints.down('xs')]: {
+                    margin: "0 24px",
+                    flexBasis: "70px"
+                }
+            }
+        },
+        eachMethod: {
+            // display: "flex",
+            // flexDirection: "column",
+            // justifyContent: "center",
+            // alignItems: "center",
+            cursor: "pointer",
+            userSelect: "none",
+            width: "100px",
+        },
+        eachMehodIcon: {
+            fontSize: "36px"
+        },
+        eachMethodImageContainer: {
+            border: "1px solid #8D8D8D",
+            borderRadius: "4px",
+            transition: "all 200ms ease-out",
+            width: "100%",
+            height: "100%",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            cursor: "pointer",
+            "&:hover,&:focus": {
+                border: "3px solid #137D27",
+                backgroundColor: "#F5FFF7",
+    
+            }
+        },
+        active: {
+            border: "3px solid #137D27"
+    
+        },
+        eachMethodText: {
+            fontSize: "14px",
+            lineHeight: "16px",
+            fontWeight: "400",
+            color: colors.black,
+            textAlign: "center",
+            paddingTop: "10px"
+        },    
+    }))
+    const classes = useStyles()
+
     const onClickHandler = (name) => {
         if (name === "card") {
             setCard(true)

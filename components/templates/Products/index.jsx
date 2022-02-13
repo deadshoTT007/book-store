@@ -11,9 +11,12 @@ import { Modal } from '@mui/material'
 import StickyBottomNavBar from '@/components/elements/StickyBottomNavbar'
 import ButtonIcon from '@/components/elements/ButtonIcon'
 import ImageButton from '@/components/elements/ImageButton'
+import NavigationBox from '@/components/NavigationBox'
+import HomeLayout from '@/components/layouts/HomeLayout'
 const bgImage = 'https://post.healthline.com/wp-content/uploads/2020/09/woman-enjoying-morning-coffee-thumb.jpg'
-const imageBg="https://media.baamboozle.com/uploads/images/120677/1602612165_18008"
-const womenSunglassesData = [
+// const imageBg="https://media.baamboozle.com/uploads/images/120677/1602612165_18008"
+const imageBg="images/glass-image.png"
+const glassesData = [
     {
         src:imageBg,
         title: "Durand",
@@ -81,8 +84,15 @@ const womenSunglassesData = [
 const useStyles = makeStyles(theme => ({
     main: {
         padding: "40px",
+        marginTop:"65px",
         [theme.breakpoints.down('md')]: {
-            padding: "40px 20px"
+            padding: "0",
+            width:"90%",
+            margin:"0 auto",
+            marginTop:"140px"
+        },
+        [theme.breakpoints.down('sm')]:{
+            marginTop:"140px"
         }
     },
     banner: {
@@ -104,6 +114,7 @@ const useStyles = makeStyles(theme => ({
         textTransform: "capitalize"
     },
     sunglasses: {
+        width:"100%",
         display: "grid",
         gridTemplateColumns: " 1fr 1fr 1fr",
         gridRowGap: "80px",
@@ -148,7 +159,7 @@ const useStyles = makeStyles(theme => ({
     filterRootContainer:{
         width:'100%',
         // padding:"16px",
-        marginTop:'100px',
+        marginTop:'200px',
         background:"#fff",
         borderRadius:"32px 32px 0px  0px",
         // backgroundColor:colors.background
@@ -220,6 +231,7 @@ const useStyles = makeStyles(theme => ({
         height: "100vh",
         minHeight: "100vh",
         display: "flex",
+        zIndex:"20",
         justifyContent: "center",
         backgroundColor: "rgba(129, 125, 145, 0.61)",
         // opacity: "0.6",
@@ -248,7 +260,10 @@ const useStyles = makeStyles(theme => ({
     boxContainer:{
         border:`1px solid ${colors.lightGray}`,
         padding:8,
-        borderRadius:4
+        borderRadius:4,
+        "&:hover":{
+            border:`1px solid ${colors.black}`
+        }
     },
     filterMainContainer:{
         height:"60vh",
@@ -296,6 +311,7 @@ export const SunglassWomens = () => {
     console.log(showFilterOptions,"filter")
     return (
         <>
+        <HomeLayout>
         <div className={classes.root}>
             <div className={classes.main}>
                 {bannerActive ? <div className={classes.banner}>
@@ -310,11 +326,12 @@ export const SunglassWomens = () => {
                     <div className={classes.heroSectionText}>Glasses that work hard.<br></br>
                         Just as hard as you do.</div>
                 </div>}
+                {/* <NavigationBox/> */}
 <FilterBox filterShowHandler={filterShowHandler} showFilterOptions={showFilterOptions}/>
                 <div className={classes.sunglassesContainer}>
                     <div className={classes.sunglasses}>
-                        {womenSunglassesData.map((sunglass, index) => {
-                            return <Product key={index} title={sunglass.title} image={sunglass.src} colors={sunglass.colors} price={sunglass.price} />
+                        {glassesData.map((data, index) => {
+                            return <Product key={index} title={data.title} image={data.src} colors={data.colors} price={data.price} />
                         })}
                     </div>
                 </div>
@@ -422,13 +439,13 @@ export const SunglassWomens = () => {
          <div className={classes.selectionText}>Selection(0)</div>
          <ButtonIcon/>
      </div>
-     <StickyBottomNavBar/>
         </div>
         </Modal>
      </>
             }
             
             </div>
+            </HomeLayout>
         </>
     )
 }
