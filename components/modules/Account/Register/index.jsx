@@ -237,9 +237,7 @@ export const Register = () => {
                     <PrimaryButton style={{ width:"100%",marginTop:24 }} title="Register" />
                     <div className={classes.linkContainer}>
                         <Typography variant="span" className={classes.linkText}>Already have account?</Typography>
-                        <Link href="#" className={classes.links}>
-                            <a className={classes.link}>Login</a>
-                        </Link>
+                        Login
                     </div>
                 </form>
             </div>

@@ -8,8 +8,8 @@ const PrimaryButton = (props) => {
 
 
         buttonContainer: {
-            display: "flex",
-            justifyContent:"center",
+            // display: "flex",
+            // justifyContent:"center",
             // justifyContent: "center",
             // marginBottom: "0px",
             // marginTop: "30px",
@@ -21,17 +21,20 @@ const PrimaryButton = (props) => {
         },
         button: {
             background: colors.primary,
-            borderRadius: "50px",
+            borderRadius: "4px",
             padding: "12px 32px",
             color: "#fff",
             // width: "100%",
             fontSize: "16px",
             lineHeight: "19px",
             fontWeight: "700",
+            transition:"all 200ms ease-in-out",
             textTransform: "capitalize",
+            transform:"scale(1)",
             ...props.style,
             '&:hover': {
-                background: "#054A11"
+                background: "#000",
+                transform:'scale(1.04)'
             },
             '&:focus':{
                 background:"#03380D"

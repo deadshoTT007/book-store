@@ -13,11 +13,11 @@ const useStyles = makeStyles((theme) => ({
         // backgroundImage: `url(images/hero-section.png), linear-gradient(rgba(0,0,0,1), rgba(0,0,0,0))`,
 backgroundRepeat:"no-repeat",
 backgroundSize:"cover",
-background:"linear-gradient(90deg, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0) 100%), url(images/hero-section.png)",
+background:"url(images/hero.jpg)",
         // width: '100%',
         // height: '400px',
         margin: '24px 0px 24px',
-        height:"400px",
+        height:"700px",
         marginTop:"90px",
         display:'flex',
         alignItems:"center",
@@ -30,11 +30,17 @@ background:"linear-gradient(90deg, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0) 100%)
 
     },
     heroTextContainer: {
-        width: '50%',
+        width: '700px',
         padding: '40px',
+        marginLeft:"10%",
         [theme.breakpoints.down('md')]:{
             width:"100%",
             padding:" 40px"
+        },
+        '& p':{
+            color:"#000",
+            fontWeight:500,
+            fontSize:32
         }
     },
     heroHeader: {
@@ -228,6 +234,13 @@ width:"40%",
     buttonContainer:{
         marginTop:"40px",
         display:'flex'
+    },
+    heroTitle:{
+        fontSize:'60px',
+        fontWeight:700,
+        lineHeight:"66px",
+        color:"#d14031",
+        marginTop:"20px",
     }
 
 }));
@@ -239,11 +252,9 @@ const router=useRouter()
         <div className={classes.mainContainer}>
             <div className={classes.heroContainer}>
                 <div className={classes.heroTextContainer}>
-                    <Typography className={classes.heroHeader}>Find the sunglass that protect you everytime</Typography>
-                    <div className={classes.heroButtonContainer}>
-                        <SecondaryButton title={'For Men'} smallStyle={{padding:"8px 24px", fontSize:"12px"}} style={{ marginTop:40,border:`1px solid #fff`,color:"#fff",  marginRight: '24px' }} />
-                        <SecondaryButton title={'For Women'} smallStyle={{padding:"8px 24px",fontSize:"12px"}} style={{ marginTop:40,border:`1px solid #fff`,color:"#fff" }} />
-                    </div>
+                    <Typography className={classes.heroHeader}>Year end sale</Typography>
+                   <div className={classes.heroTitle}>Get 70% Off for All Design Books</div>
+                   <PrimaryButton parentStyle={{marginTop:"40px"}} title="Shop Now"/>
                 </div>
             </div>
             <Grid container spacing={4}>
@@ -262,7 +273,7 @@ const router=useRouter()
                     </div>
                 </Grid>
             </Grid>
-            <div className={classes.bannerContainer}>
+            {/* <div className={classes.bannerContainer}>
                 <div className={classes.bannerTextCOntainer}>
                 <Typography className={classes.bannerText}>Make you kids happy with their choice of eyewears</Typography>
                 <div className={classes.buttonContainer}>
@@ -318,7 +329,7 @@ const router=useRouter()
                         </div>
                     </Grid>
                 </Grid>
-            </div>
+            </div> */}
         </div>
     )
 }

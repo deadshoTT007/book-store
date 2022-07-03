@@ -127,7 +127,7 @@ const OrderSummary = () => {
         <div className={classes.locationText}>Katunje, bhaktapur</div>
     </div>
     <Link href="#" className={classes.link}>
-        <a >Change address</a>
+        Change address
     </Link>
 </div>
 <div className={classes.checkOutSectionContainer}>

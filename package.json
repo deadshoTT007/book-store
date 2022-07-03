@@ -15,12 +15,13 @@
     "@mui/lab": "^5.0.0-alpha.63",
     "@mui/material": "^5.2.7",
     "@mui/styles": "^5.2.3",
-    "next": "11.0.1",
+    "next": "^12.2.0",
     "react": "17.0.2",
     "react-dom": "17.0.2",
     "react-icons": "^4.2.0",
-    "react-slick": "^0.28.1",
-    "slick-carousel": "^1.8.1"
+    "redux": "^4.2.0",
+    "redux-thunk": "^2.4.1",
+    "react-redux": "^8.0.2"
   },
   "devDependencies": {
     "eslint": "7.32.0",

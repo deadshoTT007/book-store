@@ -174,7 +174,7 @@ const RegisterConfirmation = () => {
                     </div>
                     <div className={classes.linkContainer}>
                         <Link href="#" className={classes.links}>
-                            <a className={classes.link}>Didn't Get A Code?</a>
+                          Didn't Get A Code?
                         </Link>
                     </div>
 

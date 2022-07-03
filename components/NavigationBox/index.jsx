@@ -26,15 +26,15 @@ const NavigationBox = () => {
         <div className={classes.navigationBox}>
             <div className={classes.navigationBoxContainer}>
                 <Link href="#" className={classes.link}>
-                    <a >Home</a>
+                   Home
                 </Link>
             <ArrowForwardIosOutlinedIcon className={classes.icon}/>
             <Link href="#" className={classes.link}>
-                    <a >Home</a>
+                   Home
                 </Link>
                 <ArrowForwardIosOutlinedIcon className={classes.icon}/>
                 <Link href="#" className={classes.link}>
-                    <a >Home</a>
+                   Home
                 </Link>
 
             </div>

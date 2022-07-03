@@ -269,7 +269,7 @@ const ShippingInformation = () => {
 
 <PrimaryButton actionClick={()=>router.push('/order-summary')} title="Proceed to checkout" parentStyle={{justifyContent:"center"}} style={{marginTop:"24px"}}/>
 <Link className={classes.link}>
-    <a>Back to Cart</a>
+   Back to Cart
 </Link>
 
 </div>

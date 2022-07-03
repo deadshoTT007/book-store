@@ -207,7 +207,7 @@ const Cart = () => {
             <div className={classes.descriptionSubHeaderText}>Product Description(short)</div>
             <div className={classes.modelText}>Model: H231ff</div>
             <Link className={classes.link} onClick={detailsClickHandler}  href="#">
-                <a >More Details</a>
+               More Details
             </Link>
             {showMore ?
                  <div className={classes.descriptionContainer}>

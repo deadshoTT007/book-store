@@ -311,57 +311,57 @@ const Footer = () => {
                     <div className={classes.footerContent}>
                         <div className={classes.footerMainText} >Categories</div>
                         <Link href="#" className={classes.links}>
-                            <a className={classes.link}>Sunglass for mens</a>
+                          Sunglass for mens
                         </Link>
                         <Link href="#" className={classes.links}>
-                            <a className={classes.link}>Sunglass for womens</a>
+                          Sunglass for womens
                         </Link>
                         <Link href="#" className={classes.links}>
-                            <a className={classes.link}>Sunglass for kids</a>
+                          Sunglass for kids
                         </Link>
                         <Link href="#" className={classes.links}>
-                            <a className={classes.link}>Eyeglass for mens</a>
+                          Eyeglass for mens
                         </Link>
                         <Link href="#" className={classes.links}>
-                            <a className={classes.link}>Eyeglass for womens</a>
+                          Eyeglass for womens
                         </Link>
                         <Link href="#" className={classes.links}>
-                            <a className={classes.link}>Eyeglass for kids</a>
+                          Eyeglass for kids
                         </Link>
                     </div>
                     <div className={classes.footerContent}>
                         <div className={classes.footerMainText} >Brand</div>
                         <Link href="#" className={classes.links}>
-                            <a className={classes.link}>Ray-ban</a>
+                          Ray-ban
                         </Link>
                         <Link href="#" className={classes.links}>
-                            <a className={classes.link}>Sunglass hut</a>
+                          Sunglass hut
                         </Link>
                         <Link href="#" className={classes.links}>
-                            <a className={classes.link}>Okaley</a>
+                          Okaley
                         </Link>
 
                     </div>
                     <div className={classes.footerContent}>
                         <div className={classes.footerMainText} >Useful</div>
                         <Link href="#" className={classes.links}>
-                            <a className={classes.link}>Cart</a>
+                          Cart
                         </Link>
                         <Link href="#" className={classes.links}>
-                            <a className={classes.link}>Profile</a>
+                          Profile
                         </Link>
 
                     </div>
                     <div className={classes.footerContent}>
                         <div className={classes.footerMainText} >Features</div>
                         <Link href="#" className={classes.links}>
-                            <a className={classes.link}>Home try-on</a>
+                          Home try-on
                         </Link>
                         <Link href="#" className={classes.links}>
-                            <a className={classes.link}>Virtual try-on</a>
+                          Virtual try-on
                         </Link>
                         <Link href="#" className={classes.links}>
-                            <a className={classes.link}>Upload subscription</a>
+                          Upload subscription
                         </Link>
 
                     </div>

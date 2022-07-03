@@ -263,7 +263,7 @@ const SignIn = () => {
                 <PrimaryButton  style={{marginTop:24,width:"100%"}} title="Sign In" />
                 <div className={classes.linkContainer}>
                     <Link href="#" className={classes.links}>
-                        <a className={classes.link}>Forgot Password?</a>
+                      Forgot Password?
                     </Link>
                 </div>
             </form>

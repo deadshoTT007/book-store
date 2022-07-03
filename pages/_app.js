@@ -4,8 +4,12 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { normalTheme } from '../constants/theme';
 import React from 'react';
 import Head from 'next/head';
+import { useRouter } from 'next/router'
 
 function MyApp({ Component, pageProps }) {
+
+  const [mount, setMount] = React.useState(false)
+  const router = useRouter()
 
   React.useEffect(() => {
     // Remove the server-side injected CSS.
@@ -13,6 +17,8 @@ function MyApp({ Component, pageProps }) {
     if (jssStyles) {
       jssStyles.parentElement.removeChild(jssStyles);
     }
+    setMount(true)
+    // router.reload()
   }, []);
 
 
