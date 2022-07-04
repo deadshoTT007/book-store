@@ -327,7 +327,7 @@ export const SunglassWomens = () => {
                         Just as hard as you do.</div>
                 </div>}
                 {/* <NavigationBox/> */}
-<FilterBox filterShowHandler={filterShowHandler} showFilterOptions={showFilterOptions}/>
+{/* <FilterBox filterShowHandler={filterShowHandler} showFilterOptions={showFilterOptions}/> */}
                 <div className={classes.sunglassesContainer}>
                     <div className={classes.sunglasses}>
                         {glassesData.map((data, index) => {
@@ -349,91 +349,6 @@ export const SunglassWomens = () => {
                     <div className={classes.mainFilterText}>Price</div>
                     <RangeSlider parentStyle={{width:"100%"}} minRange="50" maxRange="500"/>
                 </div>
-                <div className={classes.container}>
-                    <div className={classes.frameText}>Frame Width</div>
-                    <div className={classes.sizeMainContainer}>
-                        <div className={classes.sizeContainer}>Small</div>
-                        <div className={classes.sizeContainer}>Medium</div>
-                        <div className={classes.sizeContainer}>Large</div>
-                        <div className={classes.sizeContainer}>Extra-large</div>
-                    </div>
-                    <RangeSlider minRange="Small" maxRange="Extra-large" parentStyle={{width:"100%"}}/>
-                </div>
-                <div className={classes.container}>
-                    <div classNmae={classes.mainFilterText}>Shapes</div>
-                    <div className={classes.shapeBoxesContainer}>
-                        <div className={classes.boxContainer}>
-                    <ImageButton image='/images/Rectangle 54.png' label="Rectangle"/>
-                        </div>
-
-                        <div className={classes.boxContainer}>
-                    <ImageButton image='/images/square.png' label="Square"/>
-                        </div>
-
-                        <div className={classes.boxContainer}>
-                    <ImageButton image='/images/Polygon.png' label="Geometric"/>
-                        </div>
-
-                        <div className={classes.boxContainer}>
-                    <ImageButton image='/images/heart.png' label="Heart"/>
-                        </div>
-                        
-                    </div>
-                </div>
-              <div className={classes.container}>
-              <div classNmae={classes.mainFilterText}>Colors</div>
-              <div className={classes.colorContainer}>
-                     <div className={classes.boxContainer}>
-                         <ImageButton style={{backgroundColor:"#E53C3C"}} color='red' style label="Red"/>
-                     </div>
-                     <div className={classes.boxContainer}>
-                         <ImageButton style={{backgroundColor:"#3CB2E5"}} color='blue' label="Blue"/>
-                     </div>
-                     <div className={classes.boxContainer}>
-                         <ImageButton style={{backgroundColor:"#AA0909"}} color='darkRed' label="Dark Red"/>
-                     </div>
-                     <div className={classes.boxContainer}>
-                         <ImageButton style={{backgroundColor:"#D7E53C"}} color='yellow' label="Pale Yellow"/>
-                     </div>
-                     <div className={classes.boxContainer}>
-                         <ImageButton style={{backgroundColor:"#6B4B4B"}} color='brown' label="Brown"/>
-                     </div>
-                     <div className={classes.boxContainer}>
-                         <ImageButton style={{backgroundColor:"#903CE5"}} color='purple' label="Purple"/>
-                     </div>
-                     <div className={classes.boxContainer}>
-                         <ImageButton style={{backgroundColor:"#0D0D0D"}} color='black' label="Rectangle"/>
-                     </div>
-                     </div>
-              </div>
-
-              <div className={classes.container}>
-              <div classNmae={classes.mainFilterText}>Materials</div>
-              <div className={classes.materialContainer}>
-                     <div className={classes.boxContainer}>
-            <div className={classes.materialText}>Acetate</div>
-            </div>
-            <div className={classes.boxContainer}>
-            <div className={classes.materialText}>Wood</div>
-            </div>
-            <div className={classes.boxContainer}>
-            <div className={classes.materialText}>Metal</div>
-            </div>
-            <div className={classes.boxContainer}>
-            <div className={classes.materialText}>Titanium</div>
-            </div>
-            <div className={classes.boxContainer}>
-            <div className={classes.materialText}>Plastic</div>
-            </div>
-            <div className={classes.boxContainer}>
-            <div className={classes.materialText}>Carbon fiber</div>
-            </div>
-            <div className={classes.boxContainer}>
-            <div className={classes.materialText}>Aluminium</div>
-            </div>
-            </div>
-              </div>
-               
             </div>
          <div className={classes.selectionContainer}>
          <div className={classes.selectionText}>Selection(0)</div>

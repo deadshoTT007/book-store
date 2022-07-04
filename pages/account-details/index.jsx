@@ -17,38 +17,10 @@ import SignOutAccount from '@/components/Account/SignOutAccount'
 import AccountHelp from '@/components/Account/AccountHelp'
 import AccountOrderHistory from '@/components/Account/AccountOrderHistory'
 import { useMediaQuery } from '@mui/material'
-import Slider from 'react-slick'
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
 // import ArrowForwardIosOutlinedIcon from '@mui/icons-material/ArrowForwardIosOutlined';
 import ArrowBackIosOutlinedIcon from '@mui/icons-material/ArrowBackIosOutlined';
 
-const sliderData=[
-    {
-        value:"Account Details",
-        name:"account_details"
-    },
-    {
-        value:"Address Book",
-        name:"address_book"
-    },
-    {
-        value:"Order History",
-        name:"order_history"
-    },
-    {
-        value:"Change Password",
-        name:"change_password"
-    },
-    {
-        value:"Help",
-        name:"help"
-    },
-    {
-        value:"Sign out",
-        name:"sign_out"
-    },
-]
+
 
 const useStyles=makeStyles(theme=>({
     mainContainer:{
@@ -196,42 +168,7 @@ const AccountDetail = () => {
    const accountDetailsHandler=(value)=>{
 setAccountName(value)
    }
-   const carouselStandard = {
-    dots: true,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 3,
-    slidesToScroll: 1
-    // nextArrow: <ArrowForwardIosOutlinedIcon />,
-    // prevArrow: <ArrowBackIosOutlinedIcon />,
-    // responsive: [
-    //     {
-    //         breakpoint: 1024,
-    //         settings: {
-    //             slidesToShow: 4,
-    //             slidesToScroll: 2,
-    //             infinite: true,
-    //             dots: true,
-    //         },
-    //     },
-    //     {
-    //         breakpoint: 600,
-    //         settings: {
-    //             slidesToShow: 4,
-    //             slidesToScroll: 2,
-    //             initialSlide: 4,
-    //         },
-    //     },
-    //     {
-    //         breakpoint: 480,
-    //         settings: {
-    //             slidesToShow: 4,
-    //             slidesToScroll: 2,
-    //             initialSlide: 4,
-    //         },
-    //     },
-    // ],
-}
+ 
    console.log(accountName,"name")
     return (
         <HomeLayout>

@@ -244,20 +244,22 @@ const SignIn = () => {
 
                     {formDataArray.map((inputData, index) => {
                         return <Input name={inputData.formData.elementConfig.name}
-                            label={inputData.formData.elementConfig.label}
-                            type={inputData.formData.elementConfig.type}
-                            Icon={inputData.formData.elementConfig.Icon}
-                            required={inputData.formData.elementConfig.required}
-                            placeholder={inputData.formData.elementConfig.placeholder}
-                            // focus={inputData.formData.elementConfig.focus}
-                            showPassword={inputData.formData.elementConfig.showPassword}
-                            value={inputData.formData.value}
-                            valid={inputData.formData.valid}
-                            blurHandler={blurHandler}
-                            touched={inputData.formData.touched}
-                            focusHandler={focusHandler}
-                            changeHandler={changeHandler}
-                            fullWidth="true" />
+                        label={inputData.formData.elementConfig.label}
+                        type={inputData.formData.elementConfig.type}
+                        Icon={inputData.formData.elementConfig.Icon}
+                        required={inputData.formData.elementConfig.required}
+                        placeholder={inputData.formData.elementConfig.placeholder}
+                        focus={inputData.formData.focus}
+                        showPassword={inputData.formData.showPassword}
+                        value={inputData.formData.value}
+                        valid={inputData.formData.valid}
+                        touched={inputData.formData.touched}
+                        inputData={inputData}
+                        focusHandler={focusHandler}
+                        changeHandler={changeHandler}
+                        blurHandler={blurHandler}
+                        iconClickHandler={iconClickHandler}
+                        fullWidth="true" />
                     })}
                 </div>
                 <PrimaryButton  style={{marginTop:24,width:"100%"}} title="Sign In" />

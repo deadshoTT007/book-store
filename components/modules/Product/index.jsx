@@ -2,104 +2,96 @@ import React from 'react'
 import { makeStyles } from '@mui/styles'
 import { colors } from '../../../utils'
 import { useRouter } from 'next/dist/client/router'
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+
+
+import book1 from '@/public/images/book1.jpg'
 const useStyles = makeStyles(theme => ({
-    product: {
-        display: "flex",
-        cursor:"pointer",
-        alignItems: "center",
-        flexDirection: "column",
-overflow:"hidden"
-
-    },
-    productImage: {
-        // width: "30%",
-        height: "auto",
-        objectFit: "contain",
-        width:"100%"
-        // objectFit: "cover"
-    },
-    colorsContainer: {
-        display: "flex",
-        marginTop: "20px",
-        alignSelf: "flex-start"
-
-    },
-    color: {
-        margin: "0 5px",
-        width: "24px",
-        height: "24px",
-        borderRadius: "50%",
-        "&:firstChild": {
-            marginRight: "5px"
+  productImage:{
+      width:"100%",
+      height:"600px",
+      objectFit:"cover",
+      transition:"all 300ms ease-in-out",
+      cursor:"pointer",
+      '&:hover':{
+          opacity:"0.8"
         },
+        [theme.breakpoints.down('md')]:{
+            height:"400px"
+        }
     },
-    red: {
-        backgroundColor: "#EB5858"
-    },
-    black: {
-        backgroundColor: "#36383A"
-    },
-    gray: {
-        backgroundColor: "#A7978D"
-    },
-    brown: {
-        backgroundColor: "#3A2A2B"
-    },
-    maron: {
-        backgroundColor: "#88321F"
-    },
-    yellow: {
-        backgroundColor: "#B98730"
-    },
-    productDetails: {
-        display: 'flex',
-        alignItems: "center",
-        marginTop: "15px",
-        marginLeft: "5px",
-        width: "100%"
-    },
-    title: {
-        fontSize: "20px",
-        fontWeight: "500",
-        lineHeight: "23px",
-        color: colors.black
+    container:{
+        position:"relative",
+        '&:hover':{
+             '& $cart':{
+                 display:"flex",
+                 transition:"all 250ms ease-in-out",
+                 top:"90%"
+             }
+        }
 
     },
-    price: {
-        fontSize: '16px',
-        fontWeight: "400",
-        lineHeight: "22px",
-        color: "#000",
-        marginLeft: "7px",
-        marginTop: "2px"
-
-    }
+    product:{
+        // flex:1,
+        // margin:"0 20px"
+        
+  },
+  authorName:{
+      color:"grey",
+      marginTop:"16px",
+      textAlign:"left"
+  },
+  title:{
+      marginTop:"10px",
+      fontWeight:700,
+      fontSize:"24px",
+      textAlign:"left"
+  },
+  price:{
+      textAlign:"left",
+      marginTop:'10px',
+      color:"grey",
+      fontSize:"18px",
+      fontWeight:'700'
+  },
+  cart:{
+      display:"none",
+      transition:"none",
+      padding:"20px",
+      backgroundColor:colors.primary,
+      position:"absolute",
+      top:"100%",
+      cursor:"pointer",
+      zIndex:10,
+    //   display:'flex',
+      alignItems:"center",
+      justifyContent:"center",
+      gap:"10px",
+      width:"100%",
+      color:"#fff",
+      fontWeight:"700",
+      fontSize:"18px"
+  },
+  icon:{
+      marginTop:"-3px",
+      fontSize:"20px"
+  }
 }))
 
 const Product = ({ title, image, colors, price }) => {
     const classes = useStyles()
     const router=useRouter()
     return (
-        <div onClick={()=>router.push('/product-details')} className={classes.product}>
-            <img src={image} className={classes.productImage} />
-            <div className={classes.colorsContainer}>
-                {/* {colors.map((color,index)=>{
-                    return (
-                        <div className={`${classes.color} ${color=="red"&&classes.red}`}></div>
-                        
-                    )
-                })} */}
-                <div className={`${classes.color} ${classes.red}`}></div>
-                <div className={`${classes.color} ${classes.black}`}></div>
-                <div className={`${classes.color} ${classes.gray}`}></div>
-                <div className={`${classes.color} ${classes.brown}`}></div>
-                <div className={`${classes.color} ${classes.maron}`}></div>
-                <div className={`${classes.color} ${classes.yellow}`}></div>
+        <div onClick={()=>router.push('product-details')} className={classes.product}>
+            <div className={classes.container}>
+            <img src={book1.src} className={classes.productImage}/>
+            <div className={classes.cart}>Add To Cart
+            <ShoppingCartIcon className={classes.icon}/>
             </div>
-            <div className={classes.productDetails}>
-                <div className={classes.title}>{title}</div>
-                <div className={classes.price}>{`Rs ${price}`}</div>
             </div>
+            <div className={classes.authorName}>ALICE JAMES</div>
+            <div className={classes.title}>Girls at the Golden City</div>
+            <div className={classes.price}>Rs.300</div>
         </div>
     )
 }

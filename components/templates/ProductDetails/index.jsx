@@ -172,13 +172,13 @@ const useStyles = makeStyles(theme => ({
     },
     description: {
         color: colors.gray,
-        fontSize: "16px",
+        fontSize: "18px",
         lineHeight: "22px",
         fontWeight: "400",
         margin: "5px 0"
     },
     model: {
-        fontWeight: "500",
+        fontWeight: "600",
         fontSize: "16px",
         lineHeight: "19px",
         color: colors.gray
@@ -534,44 +534,12 @@ const ProductDetails = () => {
                                 <p>(288 Reviews)</p>
                             </div>
                             <p className={classes.description}>Product Description(short)</p>
-                            <p className={classes.model}>model:H231ff</p>
+                            <p className={classes.model}>Category: H231ff</p>
                             <h4 className={classes.price}>Rs. 2400.00</h4>
                             
-                            <div className={classes.colors}>
-                                <p>Select Colors</p>
-                                <div className={classes.colorsContainer}>
-                                    <div className={`${classes.color} ${classes.red}`}></div>
-                                    <div className={`${classes.color} ${classes.green}`}></div>
-                                    <div className={`${classes.color} ${classes.yellow}`}></div>
-                                    <div className={`${classes.color} ${classes.darkGreen}`}></div>
-                                    <div className={`${classes.color} ${classes.gray}`}></div>
-                                    <div className={`${classes.color} ${classes.lightGreen}`}></div>
-                                </div>
-                                <div className={classes.sizes}>
-                                    <p>Select Sizes</p>
-                                    <div className={classes.sizesContainer}>
-                                        <div className={`${classes.size} ${classes.small}`}>Small</div>
-                                        <div className={`${classes.size} ${classes.activeSize}`}>Medium</div>
-                                        <div className={`${classes.size} ${classes.small}`}>Large</div>
-                                    </div>
-                                </div>
-                                <div className={classes.types}>
-                                    <p>Types</p>
-                                    <FormControl component="fieldset">
-                                        <RadioGroup className={classes.select} aria-label="select" name="select" value={value} onChange={handleChange}>
-                                            <div className={classes.type}>
-                                                <FormControlLabel value="Prescription" control={<Radio />} label="Prescription" />
-                                                <FormControlLabel name="Normal" value="Normal" control={<Radio />} label="Normal" />
-                                            </div>
-                                            <div className={classes.homeTryOn}>
-                                                <FormControlLabel value="Home Try-On" control={<Checkbox />} label="Home Try-On" />
-                                                <span>(Available: Get 5-frames to try at home)</span>
-                                            </div>
-                                        </RadioGroup>
-                                    </FormControl>
-                                </div>
-                                <PrimaryButton title="Select lens for purchase" style={{ width: "70%",marginTop:"32px" }} smallStyle={{width:"80%"}} parentStyle={{justifyContent:"start"}} />
-                            </div>
+                      
+                                <PrimaryButton title="ADD TO CART" style={{ width: "100%",marginTop:"32px" }} smallStyle={{width:"80%"}} parentStyle={{justifyContent:"start"}} />
+                            
                         </div>
                     </div>
                 </div>
