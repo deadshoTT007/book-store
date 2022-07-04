@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { makeStyles } from '@mui/styles';
 import {colors} from '../../../utils/index'
 import SearchIcon from '@mui/icons-material/Search';
@@ -21,6 +21,7 @@ import FavoriteOutlinedIcon from '@mui/icons-material/FavoriteOutlined';
 import { styled } from '@mui/material/styles'
 import Badge from '@mui/material/Badge';
 import IconButton from '@mui/material/IconButton';
+import { useClickOutside } from 'react-click-outside-hook';
 
 const useStyles = makeStyles(theme => ({
     topBar: {
@@ -455,7 +456,8 @@ flex:1,
 
 }))
 const TopBar = () => {
-    const [ token, setToken ] = useState(false)
+    const [ token, setToken ] = useState(true)
+    const [profileRef, profileClickOutside] = useClickOutside()
     const classes = useStyles()
     const router=useRouter()
     const [categories, setCategories] = useState(false)
@@ -464,6 +466,22 @@ const TopBar = () => {
     const [dropDown, setDropDown] = useState(false)
 const [showSearch,setShowSearch]=useState(false)
 const [searchValue,setSearchValue]=useState("")
+
+const collapseContainer = (e) =>
+  {
+    if (e)
+    {
+      e.stopPropagation()
+    }
+
+    setDropDown(false)
+  }
+
+  useEffect(() =>
+  {
+    if (profileClickOutside) collapseContainer()
+  }, [profileClickOutside])
+
 
 const StyledBadge = styled(Badge)(({ theme }) => ({
     '& .MuiBadge-badge': {
@@ -493,7 +511,11 @@ const StyledBadge = styled(Badge)(({ theme }) => ({
             setBrands(true)
         }
     }
-    const handleDropDown = () => {
+    const handleDropDown = (e) => {
+        console.log(e,"event")
+        e.isPropagationStopped()
+        e.isDefaultPrevented()
+        e.defaultPrevented=true
         setDropDown(!dropDown)
     }
     console.log(categories,"eyq")
@@ -564,11 +586,10 @@ const StyledBadge = styled(Badge)(({ theme }) => ({
                             </div>
                         </div>
 
-                        <div onClick={handleDropDown} className={classes.userContainer}>
+                        <div  onClick={handleDropDown} className={classes.userContainer}>
                             <span>Profile</span>
                             <AccountCircleOutlinedIcon className={classes.personIcon} />
-                            {/* <img className={classes.profileImage} src="data:image/png;base64,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" /> */}
-                            {dropDown ? <ExpandLessIcon className={classes.dropDownIcon}  /> : <ExpandMoreIcon className={classes.dropDownIcon} onClick={handleDropDown} />}
+                            {dropDown ? <ExpandLessIcon className={classes.dropDownIcon}  /> : <ExpandMoreIcon className={classes.dropDownIcon}  />}
                         </div>
                         
 

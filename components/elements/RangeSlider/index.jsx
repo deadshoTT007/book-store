@@ -66,7 +66,7 @@ const RangeSlider = (props) => {
         return `${value}°C`;
       }
       
-        const [value, setValue] = React.useState([20, 37]);
+        const [value, setValue] = React.useState([minRange, maxRange]);
       
         const handleChange = (event, newValue) => {
           setValue(newValue);
@@ -77,7 +77,7 @@ const RangeSlider = (props) => {
                 <div className={classes.minRange}>{minRange}</div>
                 <Slider
                 className={classes.rangeSlider}
-                getAriaLabel={() => 'Temperature range'}
+                // getAriaLabel={() => 'Temperature range'}
                 value={value}
                 onChange={handleChange}
                 valueLabelDisplay="auto"

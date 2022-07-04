@@ -16,8 +16,11 @@ const useStyles = makeStyles(theme => ({
       '&:hover':{
           opacity:"0.8"
         },
-        [theme.breakpoints.down('md')]:{
+        [theme.breakpoints.down('lg')]:{
             height:"400px"
+        },
+        [theme.breakpoints.down('md')]:{
+            height:"600px"
         }
     },
     container:{
@@ -26,7 +29,14 @@ const useStyles = makeStyles(theme => ({
              '& $cart':{
                  display:"flex",
                  transition:"all 250ms ease-in-out",
-                 top:"90%"
+                 top:"90%",
+                 [theme.breakpoints.down('lg')]:{
+                     top:'85%'
+                 },
+                 [theme.breakpoints.down('md')]:{
+                    top:'91%'
+                },
+
              }
         }
 
@@ -82,9 +92,9 @@ const Product = ({ title, image, colors, price }) => {
     const classes = useStyles()
     const router=useRouter()
     return (
-        <div onClick={()=>router.push('product-details')} className={classes.product}>
+        <div className={classes.product}>
             <div className={classes.container}>
-            <img src={book1.src} className={classes.productImage}/>
+            <img  onClick={()=>router.push('product-details')} src={book1.src} className={classes.productImage}/>
             <div className={classes.cart}>Add To Cart
             <ShoppingCartIcon className={classes.icon}/>
             </div>

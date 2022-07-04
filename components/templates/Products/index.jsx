@@ -1,4 +1,4 @@
-import React,{useState} from 'react'
+import React,{useState, useEffect} from 'react'
 import {makeStyles} from '@mui/styles'
 import { colors } from '../../../utils/index'
 import TopBar from '@/components/modules/TopBar'
@@ -13,74 +13,11 @@ import ButtonIcon from '@/components/elements/ButtonIcon'
 import ImageButton from '@/components/elements/ImageButton'
 import NavigationBox from '@/components/NavigationBox'
 import HomeLayout from '@/components/layouts/HomeLayout'
-const bgImage = 'https://post.healthline.com/wp-content/uploads/2020/09/woman-enjoying-morning-coffee-thumb.jpg'
-// const imageBg="https://media.baamboozle.com/uploads/images/120677/1602612165_18008"
-const imageBg="images/glass-image.png"
-const glassesData = [
-    {
-        src:imageBg,
-        title: "Durand",
-        colors: ["red", "black", "gray", "brown", "maron", "yellow"],
-        price: "2500"
+import { useSelector, useDispatch } from 'react-redux'
+import { getProductsList } from '@/store/actions/products'
+import bgImage from '@/public/images/book4.jpg'
 
-    },
-    {
-        src:imageBg,
-        title: "Durand",
-        colors: ["red", "black", "gray", "brown", "maron", "yellow"],
-        price: "2500"
 
-    },
-    {
-        src:imageBg,
-        title: "Durand",
-        colors: ["red", "black", "gray", "brown", "maron", "yellow"],
-        price: "2500"
-
-    },
-    {
-        src:imageBg,
-        title: "Durand",
-        colors: ["red", "black", "gray", "brown", "maron", "yellow"],
-        price: "2500"
-
-    },
-    {
-        src:imageBg,
-        title: "Durand",
-        colors: ["red", "black", "gray", "brown", "maron", "yellow"],
-        price: "2500"
-
-    },
-    {
-        src:imageBg,
-        title: "Durand",
-        colors: ["red", "black", "gray", "brown", "maron", "yellow"],
-        price: "2500"
-
-    },
-    {
-        src:imageBg,
-        title: "Durand",
-        colors: ["red", "black", "gray", "brown", "maron", "yellow"],
-        price: "2500"
-
-    },
-    {
-        src:imageBg,
-        title: "Durand",
-        colors: ["red", "black", "gray", "brown", "maron", "yellow"],
-        price: "2500"
-
-    },
-    {
-        src:imageBg,
-        title: "Durand",
-        colors: ["red", "black", "gray", "brown", "maron", "yellow"],
-        price: "2500"
-
-    },
-]
 const useStyles = makeStyles(theme => ({
     main: {
         padding: "40px",
@@ -97,7 +34,7 @@ const useStyles = makeStyles(theme => ({
     },
     banner: {
         height: "450px",
-        background: `url(${bgImage})`,
+        background: `url(${bgImage.src})`,
         backgroundSize: "cover",
         backgroundRepeat: "no-repeat",
         backgroundPositionY: "center",
@@ -108,23 +45,25 @@ const useStyles = makeStyles(theme => ({
     bannerText: {
         fontFamily: "Lora",
         fontWeight: "700",
+        color:"#fff",
         fontSize: "40px",
         lineheight: "51px",
-        color: colors.black,
         textTransform: "capitalize"
     },
     sunglasses: {
         width:"100%",
         display: "grid",
-        gridTemplateColumns: " 1fr 1fr 1fr",
-        gridRowGap: "80px",
-        gridColumnGap: "40px",
+        gridTemplateColumns: " repeat(3,1fr)",
+        gridRowGap: "40px",
+        gridColumnGap: "20px",
         margin: "20px 0",
         padding: "40px 80px",
         [theme.breakpoints.up("lg")]: {
-            gridColumnGap: "80px"
+        gridColumnGap: "20px",
+        gridTemplateColumns: " repeat(3,1fr)",
+
         },
-        [theme.breakpoints.down('md')]: {
+        [theme.breakpoints.down('lg')]: {
             gridTemplateColumns: " 1fr 1fr ",
         },
         [theme.breakpoints.down('md')]: {
@@ -299,8 +238,16 @@ materialText:{
     
 }
 }))
-export const SunglassWomens = () => {
+export const Products = () => {
     const classes = useStyles()
+    const dispatch = useDispatch()
+    const productsList = useSelector(state=>state.products.productsList)
+    console.log(productsList,"list")
+    const price = productsList.length>0 && productsList.map(product=>product.price)
+    const minPrice = price && Math.min(...price)
+    const maxPrice =price && Math.max(...price)
+    console.log(minPrice, maxPrice,price,"pp")
+
     const bannerActive = useMediaQuery("(min-width:900px)")
     console.log(bannerActive, "acctive")
     const [showFilterOptions,setShowFilterOptions]=useState(false)
@@ -309,6 +256,11 @@ export const SunglassWomens = () => {
         setShowFilterOptions(true)
     }
     console.log(showFilterOptions,"filter")
+
+
+    useEffect(()=>{
+        dispatch(getProductsList())
+    },[])
     return (
         <>
         <HomeLayout>
@@ -326,13 +278,17 @@ export const SunglassWomens = () => {
                     <div className={classes.heroSectionText}>Glasses that work hard.<br></br>
                         Just as hard as you do.</div>
                 </div>}
-                {/* <NavigationBox/> */}
-{/* <FilterBox filterShowHandler={filterShowHandler} showFilterOptions={showFilterOptions}/> */}
+               <FilterBox minPrice={minPrice} maxPrice={maxPrice}/>
                 <div className={classes.sunglassesContainer}>
                     <div className={classes.sunglasses}>
-                        {glassesData.map((data, index) => {
-                            return <Product key={index} title={data.title} image={data.src} colors={data.colors} price={data.price} />
+                        {[1,2,3,4,5,6,7,8,9].map((product,index)=>{
+                            return(
+                                <Product/>
+                            )
                         })}
+                        {/* {glassesData.map((data, index) => {
+                            return <Product key={index} title={data.title} image={data.src} colors={data.colors} price={data.price} />
+                        })} */}
                     </div>
                 </div>
             </div>
@@ -364,4 +320,4 @@ export const SunglassWomens = () => {
         </>
     )
 }
-export default SunglassWomens  
+export default Products  
