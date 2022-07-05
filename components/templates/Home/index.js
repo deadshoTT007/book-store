@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { makeStyles } from '@mui/styles';
 import { Typography } from '@mui/material';
 import Grid from '@mui/material/Grid';
@@ -8,6 +8,10 @@ import { useRouter } from 'next/dist/client/router';
 import Tabs from '@/components/Tabs';
 import { colors } from '@/utils/index';
 import Product from '@/components/modules/Product';
+import { useSelector, useDispatch } from 'react-redux';
+import { getCategoriesList } from '@/store/actions/categories';
+import { getProductsList } from '@/store/actions/products';
+
 
 const useStyles = makeStyles((theme) => ({
     mainContainer: {
@@ -40,7 +44,7 @@ const useStyles = makeStyles((theme) => ({
         [theme.breakpoints.down('md')]: {
             width: "100%",
             padding: " 40px",
-            marginLeft:"0%"
+            marginLeft: "0%"
         },
         '& p': {
             color: "#000",
@@ -247,45 +251,47 @@ const useStyles = makeStyles((theme) => ({
         color: "#d14031",
         marginTop: "20px",
     },
-    newArrivalContainer:{
-        margin:"80px 0",
-        textAlign:"center",
+    newArrivalContainer: {
+        margin: "80px 0",
+        textAlign: "center",
     },
-    arrivalText:{
-        fontSize:"40px",
-        fontWeight:"700",
-        marginBottom:20
+    arrivalText: {
+        fontSize: "40px",
+        fontWeight: "700",
+        marginBottom: 20
     },
-    divider:{
-        background:colors.primary,
-        height:'5px',
-        width:"80px",
-        margin:"0 auto",
-        marginBottom:"20px"
+    divider: {
+        background: colors.primary,
+        height: '5px',
+        width: "80px",
+        margin: "0 auto",
+        marginBottom: "20px"
     },
-    tabContainer:{
-        marginTop:"40px",
-        display:"flex",
-        justifyContent:"center",
-        gap:"20px",
-        flexWrap:"wrap",
+    tabContainer: {
+        width: "60%",
+        margin: "0 auto",
+        marginTop: "40px",
+        display: "flex",
+        justifyContent: "center",
+        gap: "20px",
+        flexWrap: "wrap",
     },
-    productContainer:{
-        marginTop:'60px',
-        display:"grid",
-        width:"85%",
-        margin:"0 auto",
+    productContainer: {
+        marginTop: '60px',
+        display: "grid",
+        width: "85%",
+        margin: "0 auto",
         // flexWrap:"wrap",
-        gridTemplateColumns:"repeat(4, 1fr)",
-        gridRowGap:"40px",
-        gridColumnGap:"20px",
-        [theme.breakpoints.down('lg')]:{
-        gridTemplateColumns:"repeat(3, 1fr)",
+        gridTemplateColumns: "repeat(4, 1fr)",
+        gridRowGap: "40px",
+        gridColumnGap: "20px",
+        [theme.breakpoints.down('lg')]: {
+            gridTemplateColumns: "repeat(3, 1fr)",
         },
-        [theme.breakpoints.down('md')]:{
-            gridTemplateColumns:"repeat(1, 1fr)",
-            width:"100%"
-            }
+        [theme.breakpoints.down('md')]: {
+            gridTemplateColumns: "repeat(1, 1fr)",
+            width: "100%"
+        }
         // rowGap:"20px"
     }
 
@@ -294,59 +300,84 @@ const useStyles = makeStyles((theme) => ({
 const HomePage = (props) => {
     const router = useRouter()
     const classes = useStyles();
-const tabData=[
-    { title:"All" },
-    { title:"Cook Book" },
-    { title:"History" },
-    { title:"Fantacy" },
-    { title:"Romance" }
-]
+    const categoriesList = useSelector(state => state.categories.categoriesList)
+    const productsList = useSelector(state => state.products.productsList)
+    const [specificCategory, setSpecificCategory] = useState(null)
+    console.log(specificCategory,"spec")
+    useEffect(()=>{
+        if(categoriesList.length>0)
+        setSpecificCategory(categoriesList[0].id)
+    },[categoriesList])
+    console.log(specificCategory,"specific")
+    const dispatch = useDispatch()
+    const tabData = [
+        { title: "All" },
+        { title: "Cook Book" },
+        { title: "History" },
+        { title: "Fantacy" },
+        { title: "Romance" }
+    ]
+
+    useEffect(() => {
+        dispatch(getProductsList())
+    }, [])
+
+     const categoryChooseHandler = (id) =>{
+        setSpecificCategory(id)
+     }
+
 
     return (
-        <div className={classes.mainContainer}>
-            <div className={classes.heroContainer}>
-                <div className={classes.heroTextContainer}>
-                    <Typography className={classes.heroHeader}>Year end sale</Typography>
-                    <div className={classes.heroTitle}>Get 70% Off for All Design Books</div>
-                    <PrimaryButton parentStyle={{ marginTop: "40px" }} title="Shop Now" />
-                </div>
-            </div>
-            <Grid container spacing={4}>
-                <Grid item xs={12} md={6}>
-                    <div className={classes.leftImage}>
-                        <Typography className={classes.imageHeader}>Iconic Styles with wide range of Sunglasses</Typography>
-                        <Typography className={classes.imageDescription}>Stand out and let your light shine with this collection of bold and bright sunglasses</Typography>
-                        <PrimaryButton actionClick={() => router.push('/products')} title={'Shop Sunglasses'} parentStyle={{ justifyContent: "start" }} style={{ width: '200px', marginTop: '20px', background: "linear-gradient(49.32deg, #137D27 0%, #03C95D 100%)" }} />
-                    </div>
-                </Grid>
-                <Grid item xs={12} md={6}>
-                    <div className={classes.rightImage}>
-                        <Typography className={classes.imageHeader}>Your custom glasses to match your personality</Typography>
-                        <Typography className={classes.imageDescription}>Stand out and let your light shine with this collection of bold and bright sunglasses</Typography>
-                        <PrimaryButton actionClick={() => router.push('/products')} title={'Shop Eyeglasses'} parentStyle={{ justifyContent: "start" }} style={{ width: '200px', marginTop: '20px', background: "linear-gradient(49.32deg, #137D27 0%, #03C95D 100%)" }} />
-                    </div>
-                </Grid>
-            </Grid>
-            <div className={classes.newArrivalContainer}>
-                <div className={classes.arrivalText}>New Arrivals</div>
-                <div className={classes.divider}></div>
-                <div className={classes.tabContainer}>
-                {tabData.map((tab,index)=>{
-                    return(
-                        <Tabs key={index} title={tab.title}/>
-                    )
-                })}
-                </div>
-                <div className={classes.productContainer}>
-                    {[1,2,3,4,5,6,7,8,9].map((product,index)=>{
-                        return(
-                            <Product/>
-                        )
-                    })}
-                </div>
-            </div>
-        </div>
-
+        <>
+        { ( categoriesList.length>0 && productsList.length>0 ) ?
+         <div className={classes.mainContainer}>
+         <div className={classes.heroContainer}>
+             <div className={classes.heroTextContainer}>
+                 <Typography className={classes.heroHeader}>Year end sale</Typography>
+                 <div className={classes.heroTitle}>Get 70% Off for All Design Books</div>
+                 <PrimaryButton parentStyle={{ marginTop: "40px" }} title="Shop Now" />
+             </div>
+         </div>
+         <Grid container spacing={4}>
+             <Grid item xs={12} md={6}>
+                 <div className={classes.leftImage}>
+                     <Typography className={classes.imageHeader}>Iconic Styles with wide range of Sunglasses</Typography>
+                     <Typography className={classes.imageDescription}>Stand out and let your light shine with this collection of bold and bright sunglasses</Typography>
+                     <PrimaryButton actionClick={() => router.push('/products')} title={'Shop Sunglasses'} parentStyle={{ justifyContent: "start" }} style={{ width: '200px', marginTop: '20px', background: "linear-gradient(49.32deg, #137D27 0%, #03C95D 100%)" }} />
+                 </div>
+             </Grid>
+             <Grid item xs={12} md={6}>
+                 <div className={classes.rightImage}>
+                     <Typography className={classes.imageHeader}>Your custom glasses to match your personality</Typography>
+                     <Typography className={classes.imageDescription}>Stand out and let your light shine with this collection of bold and bright sunglasses</Typography>
+                     <PrimaryButton actionClick={() => router.push('/products')} title={'Shop Eyeglasses'} parentStyle={{ justifyContent: "start" }} style={{ width: '200px', marginTop: '20px', background: "linear-gradient(49.32deg, #137D27 0%, #03C95D 100%)" }} />
+                 </div>
+             </Grid>
+         </Grid>
+         <div className={classes.newArrivalContainer}>
+             <div className={classes.arrivalText}>New Arrivals</div>
+             <div className={classes.divider}></div>
+             <div className={classes.tabContainer}>
+                 {categoriesList.length > 0 && categoriesList.map((cat, index) => {
+                     return (
+                         <Tabs actionClick={()=>categoryChooseHandler(cat.id)}  specificCategory={specificCategory && specificCategory} key={cat.id} id={cat.id} title={cat.category_name} />
+                     )
+                 })}
+                
+             </div>
+             <div className={classes.productContainer}>
+                 {productsList.filter((product)=>product.id===specificCategory).map((product, index) => {
+                     return (
+                         <Product />
+                     )
+                 })}
+             </div>
+         </div>
+     </div>
+    :
+    ""}
+       
+</>
     )
 }
 

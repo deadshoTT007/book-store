@@ -15,21 +15,28 @@ const Tabs = (props) => {
             cursor:"pointer",
             fontSize:"16px",
             fontWeight:"600",
+            textTransform:"capitalize",
             transition:"all 300ms ease-in-out",
             '&:hover':{
                 background:colors.primary,
                 color:"#fff"
             }
+        },
+        active:{
+            background:colors.primary,
+            color:"#fff"
         }
     }))
     
     const classes = useStyles()
     
-    const { title } = props;
+    const { title,id, specificCategory, actionClick} = props;
+
+    console.log(id,specificCategory,"check")
 
 
     return (
-        <div className={classes.tab}>
+        <div onClick={actionClick} className={`${classes.tab} ${specificCategory===id && classes.active} `}>
             {title}
         </div>
     )

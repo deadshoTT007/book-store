@@ -22,6 +22,8 @@ import { styled } from '@mui/material/styles'
 import Badge from '@mui/material/Badge';
 import IconButton from '@mui/material/IconButton';
 import { useClickOutside } from 'react-click-outside-hook';
+import { useSelector, useDispatch } from 'react-redux';
+import { getCategoriesList } from '@/store/actions/categories';
 
 const useStyles = makeStyles(theme => ({
     topBar: {
@@ -173,7 +175,7 @@ const useStyles = makeStyles(theme => ({
         },
         '&:hover':{
             '& $booksCategoriesContainer':{
-                display:"flex"
+                display:"grid"
             },
            
         }
@@ -275,6 +277,8 @@ const useStyles = makeStyles(theme => ({
         width:"auto",
         justifyContent:"center",
         margin:"auto",
+        height:"500px",
+        overflow:"auto",
         left:"50%",
         transform:'translate(-50%,0)',
         zIndex:"1000",
@@ -282,6 +286,9 @@ const useStyles = makeStyles(theme => ({
         userSelect:"none",
         padding: "24px 80px",
         display: "none",
+        // flexWrap:"wrap",
+        gridTemplateColumns:"repeat(3,1fr)",
+        gridGap:"20px",
         // display:"block",
        
         alignItems: "center",
@@ -467,6 +474,16 @@ const TopBar = () => {
 const [showSearch,setShowSearch]=useState(false)
 const [searchValue,setSearchValue]=useState("")
 
+const dispatch = useDispatch()
+
+
+const categoriesList = useSelector(state=>state.categories.categoriesList)
+
+
+useEffect(()=>{
+    dispatch(getCategoriesList())
+    },[])
+
 const collapseContainer = (e) =>
   {
     if (e)
@@ -530,7 +547,7 @@ const StyledBadge = styled(Badge)(({ theme }) => ({
                     <li className={classes.link}>Brands</li>
                 </ul> */}
                     <ul className={classes.links}>
-                    <li  className={classes.link}>
+                    <li onClick={()=>router.push('/products')}  className={classes.link}>
                        
                             Products
                        
@@ -542,7 +559,15 @@ const StyledBadge = styled(Badge)(({ theme }) => ({
                                 <ArrowDropDownIcon/>
                                 </span>
                     <div className={classes.booksCategoriesContainer}>
-                        <div className={classes.categories}>
+                        {categoriesList.length>0 ? categoriesList.map((cat,index)=>{
+                            return(
+                                <div className={classes.categories}>
+                                <img src={book1.src} className={classes.categoriesImg} />
+                                <div className={classes.categoryDetails}>Adventurous Eating Rs.500 </div>
+                            </div>
+                            )
+                        }):""}
+                        {/* <div className={classes.categories}>
                             <img src={book1.src} className={classes.categoriesImg} />
                             <div className={classes.categoryDetails}>Adventurous Eating Rs.500 </div>
                         </div>
@@ -553,7 +578,7 @@ const StyledBadge = styled(Badge)(({ theme }) => ({
                         <div className={classes.categories}>
                         <img src={book3.src} className={classes.categoriesImg} />
                         <div className={classes.categoryDetails}>Endless Summer Rs.400</div>
-                        </div>
+                        </div> */}
 
                     </div>
                 </div>

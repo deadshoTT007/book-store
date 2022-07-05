@@ -44,6 +44,7 @@ const useStyles = makeStyles(theme => ({
     product:{
         // flex:1,
         // margin:"0 20px"
+        overflow:"hidden"
         
   },
   authorName:{
@@ -79,8 +80,12 @@ const useStyles = makeStyles(theme => ({
       gap:"10px",
       width:"100%",
       color:"#fff",
+      transition:"all 250ms ease-in-out",
       fontWeight:"700",
-      fontSize:"18px"
+      fontSize:"18px",
+      '&:hover':{
+          transform:"scale(1.1)"
+      }
   },
   icon:{
       marginTop:"-3px",
