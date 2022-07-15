@@ -59,17 +59,24 @@ const RangeSlider = (props) => {
         }
         }))
         
-    const {minRange,maxRange}=props;
+    const {minRange,maxRange,minPriceHandler,maxPriceHandler}=props;
     const classes=useStyles()
     const [filterValue,setFilterValue]=useState("")
     function valuetext(value) {
         return `${value}°C`;
       }
+
+      console.log(minRange,maxRange,"range")
       
-        const [value, setValue] = React.useState([minRange, maxRange]);
+        const [value, setValue] = React.useState([20, 50]);
+        const [minValue, setMinValue] = useState(null)
+        const [maxValue, setMaxValue] = useState(null)
       
         const handleChange = (event, newValue) => {
-          setValue(newValue);
+            console.log(event,"event")
+        //   setValue(newValue);
+        //   minPriceHandler(event.value[0])
+        //   maxPriceHandler(event.value[1])
         };
     return (
         <div className={classes.root}>

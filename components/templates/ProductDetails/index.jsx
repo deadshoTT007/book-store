@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { makeStyles } from '@mui/styles'
 import { colors } from '../../../utils'
 import StarRoundedIcon from '@mui/icons-material/StarRounded';
@@ -8,8 +8,13 @@ import PrimaryButton from '../../elements/PrimaryButton';
 import SecondaryButton from '../../elements/SecondaryButton';
 import { useMediaQuery } from '@mui/material';
 import HomeLayout from '@/components/layouts/HomeLayout';
+import { useSelector, useDispatch } from 'react-redux';
 import TopBar from '@/components/modules/TopBar';
 import StickyBottomNavBar from '@/components/elements/StickyBottomNavbar';
+import { getProduct } from '@/store/actions/products';
+import Loader from '@/components/Loader';
+import { getProductsList } from '@/store/actions/products';
+import Product from '@/components/modules/Product';
 const bgImage = "https://st2.depositphotos.com/3258807/10726/i/950/depositphotos_107267666-stock-photo-positive-girl-holding-her-glasses.jpg"
 
 const imageData = [
@@ -79,7 +84,7 @@ const useStyles = makeStyles(theme => ({
     },
     mainImgContainer: {
         overflow: "hidden",
-        height: "60%",
+        height: "100%",
         [theme.breakpoints.down('md')]: {
             width: "100%",
             height: "100%",
@@ -92,7 +97,7 @@ const useStyles = makeStyles(theme => ({
     mainImg: {
         width: "100%",
         height: "100%",
-        objectFit: "cover",
+        objectFit: "unset",
     },
     smallImagesContainer: {
         display: "flex",
@@ -127,13 +132,16 @@ const useStyles = makeStyles(theme => ({
         // height: "60vh",
         display: "flex",
         alignItems: "center",
-        minWidth: "600px",
+        [theme.breakpoints.up('lg')]:{
+            minWidth: "500px",
+
+        },
         [theme.breakpoints.down('md')]: {
             padding: "16px 64px 24px 16px",
             minWidth:"100%",
             display:"block",
             minHeight:'auto',
-            height:"270px",
+            // height:"270px",
             overflow:"auto"
         }
     },
@@ -143,6 +151,7 @@ const useStyles = makeStyles(theme => ({
     titleContainer: {
         display: "flex",
         alignItems: "center",
+        flexWrap:"wrap",
         '& p': {
             marginTop: "3px"
         },
@@ -175,7 +184,7 @@ const useStyles = makeStyles(theme => ({
         fontSize: "18px",
         lineHeight: "22px",
         fontWeight: "400",
-        margin: "5px 0"
+        margin: "10px 0"
     },
     model: {
         fontWeight: "600",
@@ -465,12 +474,44 @@ const useStyles = makeStyles(theme => ({
         [theme.breakpoints.down('md')]:{
             display:"none"
         }
+    },
+    relatedProductsContainer:{
+        margin:"120px 0px"
+    },
+    relatedText:{
+        fontSize:40,
+        fontWeight:"600",
+        textAlign:"center",
+        marginBottom:"40px"
+    },
+    relatedMainContainer:{
+        width:"90%",
+        margin:"0 auto",
+       display:"grid",
+       gridTemplateColumns:"repeat(3,1fr)",
+       gap:"20px"
     }
 
 
 }))
-const ProductDetails = () => {
+const ProductDetails = (props) => {
+
+    const dispatch = useDispatch()
+    const product = useSelector(state=>state.products.product)
+    const productsList = useSelector(state=>state.products.productsList)
+
+    const { id } = props;
+
+    useEffect(()=>{
+        dispatch(getProduct(id))
+    },[id])
+
+    useEffect(()=>{
+        dispatch(getProductsList(product?product.category:""))
+    },[product && product.category])
+
     const classes = useStyles()
+    console.log(product,"product")
     const [imageIndex, setImageIndex] = useState([0])
     const [imagesData, setImagesData] = useState(imageData)
     const image = imagesData[imageIndex].src
@@ -489,17 +530,24 @@ const ProductDetails = () => {
         // }
     }
     const dots = new Array(imagesData.length)
+
+    const addToCartHandler = () => {
+        dispatch()
+    }
+
+
     return (
         <>
         {/* <TopBar/> */}
         <HomeLayout>
+            {product?
             <div className={classes.main}>
                 <div className={classes.productDetails}>
                     <div className={classes.imageContainer}>
                         <div className={classes.mainImgContainer}>
-                            <img src={image} className={classes.mainImg} alt="" />
+                            <img src={product.image} className={classes.mainImg} alt="" />
                         </div>
-                        {active ? <div className={classes.smallImagesContainer}>
+                        {/* {active ? <div className={classes.smallImagesContainer}>
                             {imagesData.map((img, index) => {
                                 return (
                                     <div onClick={() => imageClickHandler(index)} className={`${classes.eachImgContainer} ${index === imageIndex && classes.activeImg}`}>
@@ -517,13 +565,13 @@ const ProductDetails = () => {
                                     )
                                 })}
                             </div>
-                        </div>)}
+                        </div>)} */}
 
                     </div>
                     <div className={classes.details}>
                         <div className={classes.detailsContainer}>
                             <div className={classes.titleContainer}>
-                                <h3 className={classes.title}>Chase</h3>
+                                <h3 className={classes.title}>{product.title}</h3>
                                 <div className={classes.reviewsContainer}>
                                     <StarRoundedIcon className={`${classes.starIcon} ${classes.active}`} />
                                     <StarRoundedIcon className={`${classes.starIcon} ${classes.active}`} />
@@ -533,17 +581,17 @@ const ProductDetails = () => {
                                 </div>
                                 <p>(288 Reviews)</p>
                             </div>
-                            <p className={classes.description}>Product Description(short)</p>
-                            <p className={classes.model}>Category: H231ff</p>
-                            <h4 className={classes.price}>Rs. 2400.00</h4>
+                            <p className={classes.description}>{product.description}</p>
+                            <p className={classes.model}>Category: {product.category}</p>
+                            <h4 className={classes.price}>Rs.{product.price}</h4>
                             
                       
-                                <PrimaryButton title="ADD TO CART" style={{ width: "100%",marginTop:"32px" }} smallStyle={{width:"80%"}} parentStyle={{justifyContent:"start"}} />
+                                <PrimaryButton actionClick={addToCartHandler} title="ADD TO CART" style={{ width: "100%",marginTop:"32px" }} smallStyle={{width:"94%"}} parentStyle={{justifyContent:"start"}} />
                             
                         </div>
                     </div>
                 </div>
-                <div className={classes.chaseGlass}>
+                {/* <div className={classes.chaseGlass}>
                     <div className={classes.chaseDescription}>
                         <h2 >About chase glass</h2>
                         <p>Chase has a frame shape that is classic and timeless. The unassuming shape and subtle hinge studs
@@ -553,8 +601,8 @@ const ProductDetails = () => {
                     <div className={classes.chaseImgContainer}>
                         <img src="https://images.unsplash.com/photo-1609902726285-00668009f004?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTJ8fGdpcmwlMjB3aXRoJTIwZ2xhc3Nlc3xlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&w=1000&q=80" alt="" />
                     </div>
-                </div>
-                {active ? <div className={classes.banner}>
+                </div> */}
+                {/* {active ? <div className={classes.banner}>
                     <div className={classes.bannerContainer}>
                         <h2>Find eaxct width that fits you</h2>
                         <p>If your face is average in size, which is most common, this frame should fit you well.
@@ -570,8 +618,21 @@ const ProductDetails = () => {
                         <div className={classes.heroSectionBodyText}>If your face is average in size, which is most common, this frame should fit you well. Unsure of your size? Select a few different options in a free Home Try-On.</div>
                         <SecondaryButton title="Find your width" style={{ width: "50%", justifyContent: "flex-start" }} />
                     </div>
-                }
+                } */}
+
+                <div className={classes.relatedProductsContainer}>
+                    <div className={classes.relatedText}>Related Books</div>
+                    <div className={classes.relatedMainContainer}>
+                {productsList.length>0 && productsList.map(product=>{
+                    return(
+                        <Product key={product.id} id={product.id} title={product.title} description={product.description} price={product.price} image={product.image}/>
+                        )
+                })}
+                </div>
+                </div>
             </div>
+        :<Loader/> 
+        }
             </HomeLayout>
 {/* <StickyBottomNavBar/> */}
         </>

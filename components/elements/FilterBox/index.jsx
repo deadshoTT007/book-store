@@ -190,7 +190,7 @@ const FilterBox = (props) => {
     // const [frame,setFrame]=useState(false)
     // const [colors,setColors]=useState(false)
     // const [noseBridge,setNoseBridge]=useState(false)
-    const { minPrice, maxPrice } = props;
+    const { minPrice, maxPrice, minPriceHandler, maxPriceHandler } = props;
     function valuetext(value) {
         return `${value}°C`;
       }
@@ -205,7 +205,7 @@ const FilterBox = (props) => {
     }
     return (
         <div>
-            <FilterTab selectedValue={selectedValue} filterShowHandler={props.filterShowHandler} value={filterValue} filterHandler={filterHandler}/>
+            {/* <FilterTab selectedValue={selectedValue} filterShowHandler={props.filterShowHandler} value={filterValue} filterHandler={filterHandler}/> */}
             {filterValue=="nosebridge"&&
             <div className={classes.mainFilterContainer}> 
             <div className={classes.filterMainContainer}>
@@ -230,7 +230,7 @@ const FilterBox = (props) => {
                         <div className={classes.mainFilterContainer}> 
             <div className={classes.filterMainContainer}>
             <CloseIcon className={classes.closeIcon}/>
-          <RangeSlider maxRange={maxPrice} minRange={minPrice}/>
+          <RangeSlider maxPriceHandler={maxPriceHandler} minPriceHandler={minPriceHandler} maxRange={maxPrice} minRange={minPrice}/>
             {/* <div className={classes.priceRange}>Rs. 100 - Rs. 5000</div> */}
             <PrimaryButton actionClick={()=>setSelectedValue(pre=>[...pre,filterValue])} title="Apply" style={{marginTop:"24px"}}/>
             </div>

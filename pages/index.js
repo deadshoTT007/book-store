@@ -1,4 +1,5 @@
 import Head from 'next/head'
+import React, {useEffect} from 'react'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
 import Footer from '@/components/modules/Footer'
@@ -13,7 +14,21 @@ import TopBar from '@/components/modules/TopBar'
 import ProductDetails from '@/components/templates/ProductDetails'
 import Products from '@/components/templates/Products'
 import HomeLayout from '@/components/layouts/HomeLayout';
+import { useDispatch } from 'react-redux'
+import { loginRefresh } from '@/store/actions/auth'
 export default function HomePage() {
+
+  // const token = localStorage.getItem('token')
+  const token = 'token'
+  const dispatch = useDispatch()
+
+  
+
+
+  // useEffect(()=>{
+  //   dispatch(loginRefresh(token))
+  // },[])
+
   return (
     <HomeLayout>
      <Home />

@@ -53,7 +53,7 @@ const PrimaryButton = (props) => {
 
 
         <div className={classes.buttonContainer}>
-            <Button onClick={props.actionClick} type="submit" variant="contained" className={classes.button}>{props.title}</Button>
+            <Button disable={props.disable} onClick={props.actionClick} type="submit" variant="contained" className={classes.button}>{props.title}</Button>
 
         </div>
 

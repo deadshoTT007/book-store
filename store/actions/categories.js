@@ -21,3 +21,4 @@ const getSuccessCategoryList = (categories) =>{
         data:categories
     }
 }
+

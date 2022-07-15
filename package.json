@@ -1,5 +1,5 @@
 {
-  "name": "chasmaghar",
+  "name": "bookstore",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -15,13 +15,14 @@
     "@mui/lab": "^5.0.0-alpha.63",
     "@mui/material": "^5.2.7",
     "@mui/styles": "^5.2.3",
+    "axios": "^0.27.2",
     "next": "^12.2.0",
     "react": "17.0.2",
     "react-click-outside": "^3.0.1",
     "react-click-outside-hook": "^1.1.1",
     "react-dom": "17.0.2",
-    "axios": "^0.27.2",
     "react-icons": "^4.2.0",
+    "react-loader-spinner": "^5.1.5",
     "react-redux": "^8.0.2",
     "redux": "^4.2.0",
     "redux-thunk": "^2.4.1"

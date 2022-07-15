@@ -13,6 +13,9 @@ import { passwordRegex } from '../../../../utils'
 import { BsPerson } from 'react-icons/bs'
 import PermIdentityIcon from '@mui/icons-material/PermIdentity';
 import MailOutlineIcon from '@mui/icons-material/MailOutline';
+import { useSelector, useDispatch } from 'react-redux'
+import { register } from '@/store/actions/auth'
+import { useRouter } from 'next/router'
 
 
 const useStyles = makeStyles(theme => ({
@@ -57,6 +60,10 @@ const useStyles = makeStyles(theme => ({
 }))
 export const Register = () => {
     const classes = useStyles()
+    const dispatch = useDispatch()
+    const router = useRouter()
+    const token = useSelector(state=>state.auth.token)
+    console.log(token,"ttoken")
     const [userData, setUserData] = React.useState({
         formData: {
             username: {
@@ -154,6 +161,19 @@ export const Register = () => {
         })
 
     }
+    
+    console.log(userData,"data")
+    const signUpHandler = async() => {
+        console.log("kera")
+        const username = userData.formData.username.value;
+        const email = userData.formData.email.value;
+        const password = userData.formData.password1.value;
+
+      await  dispatch(register(username,email,password))
+    }
+
+
+    if(token) router.push('/')
 
     const checkValidity = (values, rules, name) => {
         console.log(values, rules, "values")
@@ -206,6 +226,8 @@ export const Register = () => {
     let disable = false;
     Object.values(userData.formData).forEach(val => val.valid === false && (disable = true))
 
+    console.log(disable,"disable")
+
     return (
         <div className={classes.mainContainer}>
 
@@ -234,7 +256,7 @@ export const Register = () => {
                                 fullWidth="true" />
                         })}
                     </div>
-                    <PrimaryButton style={{ width:"100%",marginTop:24 }} title="Register" />
+                    <PrimaryButton disable={disable} actionClick={signUpHandler} style={{ width:"100%",marginTop:24 }} title="Register" />
                     <div className={classes.linkContainer}>
                         <Typography variant="span" className={classes.linkText}>Already have account?</Typography>
                         Login

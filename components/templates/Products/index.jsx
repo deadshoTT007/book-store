@@ -236,17 +236,60 @@ materialText:{
     fontSize:"16px",
     lineHeight:"22px",
     
+},
+gridContainer:{
+    // width:'300px',
+    // marginTop:60
+},
+categories:{
+    fontSize:24
+},
+cat:{
+    margin:"10px 0px",
+    padding:"10px 8px",
+    background:colors.primary,
+    color:"#fff",
+    cursor:"pointer",
+    borderRadius:"4px"
+},
+activeCat:{
+    backgroundColor:"#000"
+},
+searchContainer:{
+    marginTop:40,
+    display:"flex",
+    justifyContent:"flex-end"
+},
+search:{
+    width:"250px",
+    padding:"10px 16px",
+    border:"none",
+    boxShadow:"4px 4px 12px rgba(0,0,0,0.1)",
+    borderRadius:"4px",
+    fontSize:"16px",
+    "&:focus":{
+        border:"none",
+        outline:"none"
+    }
+},
+filterContainer:{
+    display:"flex",
+    justifyContent:"space-between",
+    alignItems:'flex-start',
+    justifyContent:"flex-end"
 }
 }))
 export const Products = () => {
     const classes = useStyles()
     const dispatch = useDispatch()
+    const [searchText, setSearchText ] = useState("")
+    const [categories, setCategories] = useState(null) 
     const productsList = useSelector(state=>state.products.productsList)
-    console.log(productsList,"list")
+    const categoriesList = useSelector(state=>state.categories.categoriesList)
     const price = productsList.length>0 && productsList.map(product=>product.price)
-    const minPrice = price && Math.min(...price)
-    const maxPrice =price && Math.max(...price)
-    console.log(minPrice, maxPrice,price,"pp")
+    console.log(categoriesList,"catList")
+
+
 
     const bannerActive = useMediaQuery("(min-width:900px)")
     console.log(bannerActive, "acctive")
@@ -257,10 +300,14 @@ export const Products = () => {
     }
     console.log(showFilterOptions,"filter")
 
+    const specificCategories = (cat) => {
+        setCategories(cat)
+    }
+
 
     useEffect(()=>{
-        dispatch(getProductsList())
-    },[])
+        dispatch(getProductsList(categories?categories.id:"",searchText))
+    },[categories&&categories.id,searchText])
     return (
         <>
         <HomeLayout>
@@ -278,12 +325,28 @@ export const Products = () => {
                     <div className={classes.heroSectionText}>Glasses that work hard.<br></br>
                         Just as hard as you do.</div>
                 </div>}
-               <FilterBox minPrice={minPrice} maxPrice={maxPrice}/>
+                <div className={classes.filterContainer}>
+               
+
+                <div className={classes.searchContainer}>
+                    <input onChange={(e)=>setSearchText(e.target.value)} placeholder="Search" className={classes.search} type="search"/>
+                </div>
+                </div>
+               {/* <FilterBox minPriceHandler={minPriceHandler} maxPriceHandler={maxPriceHandler} minPrice={minPrice} maxPrice={maxPrice}/> */}
                 <div className={classes.sunglassesContainer}>
+                <div className={classes.gridContainer}>
+                        <div  className={classes.categories}>Categories </div>
+                        {categoriesList.length>0 && categoriesList.map((cat,index)=>{
+                            return (
+                                <div onClick={()=>specificCategories(cat)} key={index} className={`${classes.cat} ${categories && cat.id==categories.id && classes.activeCat}`}>{cat.category_name}</div>
+                            )
+                        })}
+                    </div>
                     <div className={classes.sunglasses}>
-                        {[1,2,3,4,5,6,7,8,9].map((product,index)=>{
+                   
+                        {productsList.map((product,index)=>{
                             return(
-                                <Product/>
+                                <Product key={product.id} id={product.id} title={product.title} description={product.description} price={product.price} image={product.image}/>
                             )
                         })}
                         {/* {glassesData.map((data, index) => {

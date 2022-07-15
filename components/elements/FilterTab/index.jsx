@@ -101,15 +101,7 @@ const FilterTab = (props) => {
         <>
         
         <div className={classes.filterBoxContainer}>
-            <div className={classes.tryOnContainer}>
-                <div className={classes.tryOnText}>Home try on</div>
-                <div className={classes.toggleContainer}>
-                <FormGroup className={classes.toggleButton}>
-  <FormControlLabel  control={<Switch   />} label="" />
-</FormGroup>
 
-</div>
-            </div>
             <ul className={classes.filterTextContainer}>
                 <li className={`${value==="price"?classes.activeFilterText:classes.filterText} ${selectedValue.includes("price") && classes.selectedFilterText}`} onClick={()=>props.filterHandler("price")}>Price</li>
                 <li className={`${value==="shapes"?classes.activeFilterText:classes.filterText} ${selectedValue.includes("shapes") && classes.selectedFilterText}`} onClick={()=>props.filterHandler("shapes")}>Shapes</li>
@@ -118,20 +110,8 @@ const FilterTab = (props) => {
                 <li className={`${value==="materials"?classes.activeFilterText:classes.filterText} ${selectedValue.includes("materials") && classes.selectedFilterText}`} onClick={()=>props.filterHandler("materials")}>Materials</li>
                 <li className={`${value==="nosebridge"?classes.activeFilterText:classes.filterText} ${selectedValue.includes("nosebridge") && classes.selectedFilterText}`} onClick={()=>props.filterHandler("nosebridge")}>Nose bridge</li>
             </ul>
-            <ButtonIcon/>
         </div>
-        <div className={classes.smallTryOnContainer}>
-            <div className={classes.mainToggleCOntainer}>
-                <div className={classes.tryOnText}>Home try on</div>
-                <div className={classes.toggleContainer}>
-                <FormGroup className={classes.toggleButton}>
-  <FormControlLabel  control={<Switch   />} label="" />
-</FormGroup>
-
-</div>
-</div>
-<SecondaryButton actionClick={props.filterShowHandler} title="Filter" style={{border:`1px solid ${colors.black}`,color:colors.black}}/>
-            </div>
+      
         </>
     )
 }

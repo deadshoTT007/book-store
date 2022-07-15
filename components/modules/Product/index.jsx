@@ -93,20 +93,21 @@ const useStyles = makeStyles(theme => ({
   }
 }))
 
-const Product = ({ title, image, colors, price }) => {
+const Product = ({ title, author, description, price, image, follow_author,id }) => {
+    console.log(id,"pid")
     const classes = useStyles()
     const router=useRouter()
     return (
         <div className={classes.product}>
             <div className={classes.container}>
-            <img  onClick={()=>router.push('product-details')} src={book1.src} className={classes.productImage}/>
+            <img  onClick={()=>router.push(`/product-details/${id}`)} src={image} className={classes.productImage}/>
             <div className={classes.cart}>Add To Cart
             <ShoppingCartIcon className={classes.icon}/>
             </div>
             </div>
-            <div className={classes.authorName}>ALICE JAMES</div>
-            <div className={classes.title}>Girls at the Golden City</div>
-            <div className={classes.price}>Rs.300</div>
+            <div className={classes.authorName}>{author}</div>
+            <div className={classes.title}>{title}</div>
+            <div className={classes.price}>Rs.{price}</div>
         </div>
     )
 }

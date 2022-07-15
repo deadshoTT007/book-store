@@ -12,7 +12,11 @@ import { BiEnvelope } from 'react-icons/bi'
 import { RiEyeCloseLine } from 'react-icons/ri'
 import { passwordRegex } from '../../../../utils'
 import PermIdentityIcon from '@mui/icons-material/PermIdentity';
-import MailOutlineIcon from '@mui/icons-material/MailOutline'
+import MailOutlineIcon from '@mui/icons-material/MailOutline';
+import { useRouter } from 'next/router'
+import { useDispatch, useSelector } from 'react-redux'
+import { login } from '@/store/actions/auth'
+import { useEffect } from 'react'
 
 const useStyles = makeStyles(theme => ({
     modal: {
@@ -130,15 +134,19 @@ const useStyles = makeStyles(theme => ({
 
 const SignIn = () => {
     const classes = useStyles()
+    const dispatch = useDispatch()
+    const router = useRouter()
+
+    const token = useSelector(state=>state.auth.token)
 
     const [userData, setUserData] = React.useState({
         formData: {
-            email: {
+            username: {
                 elementConfig: {
-                    type: "email",
+                    type: "text",
                     placeholder: "eg. johndoe",
-                    label: "Username or Email",
-                    name: "email",
+                    label: "Username",
+                    name: "username",
                     Icon: <MailOutlineIcon className={classes.icon} />,
                 },
                 value: '',
@@ -147,7 +155,7 @@ const SignIn = () => {
                 touched: false,
                 validity: {
                     required: true,
-                    regex: emailRegex
+                    // regex: emailRegex
                 }
             },
             password: {
@@ -235,6 +243,21 @@ const SignIn = () => {
     // let isDisable = Object.values(userData.formData).forEach(val => val.valid && (disable = false))
     Object.values(userData.formData).forEach(val => val.valid === false && (disable = true))
 
+    const loginHandler = () => {
+        const username = userData.formData.username.value;
+        const password = userData.formData.password.value;
+
+        dispatch(login(username,password))
+    }
+
+    useEffect(()=>{
+        if(token) {
+            router.push('/')
+        }
+    },[token])
+
+   
+
     return (
         <>
         <div>
@@ -262,7 +285,7 @@ const SignIn = () => {
                         fullWidth="true" />
                     })}
                 </div>
-                <PrimaryButton  style={{marginTop:24,width:"100%"}} title="Sign In" />
+                <PrimaryButton actionClick={loginHandler}  style={{marginTop:24,width:"100%"}} title="Sign In" />
                 <div className={classes.linkContainer}>
                     <Link href="#" className={classes.links}>
                       Forgot Password?

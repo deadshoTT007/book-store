@@ -367,8 +367,9 @@ const HomePage = (props) => {
              </div>
              <div className={classes.productContainer}>
                  {productsList.filter((product)=>product.id===specificCategory).map((product, index) => {
+                     console.log(product,"product")
                      return (
-                         <Product />
+                         <Product {...product} />
                      )
                  })}
              </div>

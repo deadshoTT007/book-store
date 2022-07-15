@@ -68,8 +68,8 @@ const Signin = () => {
             <div className={classes.root}>
                 <div className={classes.main}>
                     <div className={classes.formTextContainer}>
-                        <div className={classes.formBigHeaderText}>Welcome to <br></br> Chasma Ghar</div>
-                        <div className={classes.formSmallHeaderText}>Welcome to Chasma Ghar</div>
+                        <div className={classes.formBigHeaderText}>Welcome to <br></br> Book Store</div>
+                        <div className={classes.formSmallHeaderText}>Welcome to Book Store</div>
                         <div className={classes.formSubText}>Best place to find personalize and high quality eyewears products.</div>
                     </div>
                     <Form/>

@@ -283,7 +283,7 @@ const Footer = () => {
                             <BiEnvelope className={classes.infoIcon} />
                             <div className={classes.infoHeaderText} >Email</div>
                         </div>
-                        <div className={classes.infoSubHeaderText} >support@chasmaghar.com</div>
+                        <div className={classes.infoSubHeaderText} >support@bookstore.com</div>
 
                     </div>
 
@@ -368,7 +368,7 @@ const Footer = () => {
                 </div>
                 <div className={classes.policiesContainer}>
                     <div className={classes.socials}>
-                        <div className={classes.socialText}>@chasmaghar</div>
+                        <div className={classes.socialText}>@bookstore</div>
                         <FiInstagram className={classes.socialIcons} />
                         <RiFacebookCircleLine className={classes.socialIcons} />
                     </div>
