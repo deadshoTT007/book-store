@@ -25,6 +25,7 @@ import { useClickOutside } from 'react-click-outside-hook';
 import { useSelector, useDispatch } from 'react-redux';
 import { getCategoriesList } from '@/store/actions/categories';
 import PrimaryButton from '@/components/elements/PrimaryButton';
+import { profileFetch } from '@/store/actions/profile';
 
 const useStyles = makeStyles(theme => ({
     topBar: {
@@ -496,9 +497,17 @@ const TopBar = () => {
     const categoriesList = useSelector(state => state.categories.categoriesList)
 
 
+
+
     useEffect(() => {
         dispatch(getCategoriesList())
     }, [])
+
+    useEffect(()=>{
+        if(token){
+            dispatch(profileFetch())
+        }
+    },[token])
 
     const collapseContainer = (e) => {
         if (e) {

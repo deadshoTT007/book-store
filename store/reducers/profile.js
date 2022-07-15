@@ -17,3 +17,5 @@ const reducer = (state=initialState,action)=> {
             return profileFetch(state, action.data)
     }
 }
+
+export default profile
