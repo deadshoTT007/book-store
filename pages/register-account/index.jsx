@@ -4,6 +4,9 @@ import { colors } from '@/utils/index'
 import HomeLayout from '@/components/layouts/HomeLayout'
 import SignIn from '@/components/modules/Account/SignIn'
 import Form from '@/components/modules/Account/Form'
+import { useRouter } from 'next/router'
+
+
 const useStyles=makeStyles(theme=>({
 root:{
     marginTop:125,
@@ -62,6 +65,9 @@ formSubText:{
 }))
 const Signin = () => {
     const classes=useStyles()
+    const router = useRouter()
+    console.log(router,"router")
+    const id = router.query.pid;
     return (
 
         <HomeLayout footer={true}>
@@ -70,9 +76,9 @@ const Signin = () => {
                     <div className={classes.formTextContainer}>
                         <div className={classes.formBigHeaderText}>Welcome to <br></br> Book Store</div>
                         <div className={classes.formSmallHeaderText}>Welcome to Book Store</div>
-                        <div className={classes.formSubText}>Best place to find personalize and high quality eyewears products.</div>
+                        <div className={classes.formSubText}>Best place to study and gain knowledge </div>
                     </div>
-                    <Form/>
+                    <Form  id={id} />
                 </div>
             </div>
         </HomeLayout>

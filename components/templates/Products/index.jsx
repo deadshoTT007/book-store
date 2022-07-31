@@ -308,6 +308,8 @@ export const Products = () => {
     useEffect(()=>{
         dispatch(getProductsList(categories?categories.id:"",searchText))
     },[categories&&categories.id,searchText])
+
+
     return (
         <>
         <HomeLayout>

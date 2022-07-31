@@ -35,7 +35,7 @@ export const getToken = (token) => {
 }
 
 
-export const register = ( username, email, password ) => {
+export const register = ( username, email, password,routerHandler,id ) => {
     return dispatch => {
         const url = '/account/register/'
 
@@ -51,6 +51,7 @@ export const register = ( username, email, password ) => {
         axios.post(url,requestOptions).then(res=>{
             if(res.status===200||res.status===201){
                 dispatch(login(username,password))
+                routerHandler(id)
             }
         })
     }

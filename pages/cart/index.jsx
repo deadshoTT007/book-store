@@ -1,5 +1,5 @@
 
-import React,{useState} from 'react'
+import React,{ useState, useEffect } from 'react'
 import { makeStyles } from '@mui/styles'
 import { colors } from '@/utils/index'
 import TopBar from '@/components/modules/TopBar'
@@ -10,6 +10,11 @@ import PrimaryButton from '@/components/elements/PrimaryButton'
 import { Link } from '@mui/material'
 import { useRouter } from 'next/dist/client/router'
 import HomeLayout from '@/components/layouts/HomeLayout'
+import { useDispatch, useSelector } from 'react-redux'
+import { getCartList } from '@/store/actions/cart'
+import Loader from '@/components/Loader'
+
+
 const useStyles=makeStyles(theme=>({
 mainContainer:{
     margin:"28px 0",
@@ -57,20 +62,22 @@ productDetails:{
     // justifyContent:""
 },
 productImage:{
-    objectFit:"contain",
+    objectFit:"cover",
     flex:1,
-    marginRight:40
+    marginRight:40,
+    width:"100%",
+    height:"200px"
 },
 productDescriptionContainer:{
     flex:1,
 
 },
 descriptionHeaderText:{
-    fontSize:"24px",
+    fontSize:"28px",
     fontWeight:500,
     lineHeight:"28px",
     color:colors.black,
-    marginBottom:"4px",
+    marginBottom:"10px",
     [theme.breakpoints.down('md')]:{
      marginTop:24   
     }
@@ -78,10 +85,11 @@ descriptionHeaderText:{
 descriptionSubHeaderText:{
     fontSize:"16px",
     color:colors.gray,
-    marginBottom:4
+    marginBottom:10
 },
 modelText:{
-    fontSize:"12px",
+    fontSize:"14px",
+    fontWeight:700,
     color:colors.gray
 },
 descriptionContainer:{
@@ -179,6 +187,11 @@ link:{
     [theme.breakpoints.down('md')]:{
         display:"block"
     }
+},
+priceText:{
+    color: colors.primary,
+    fontSize:24,
+    marginTop:10
 }
 
 }))
@@ -186,10 +199,26 @@ link:{
 const Cart = () => {
     const classes=useStyles()
     const router=useRouter()
+    const dispatch = useDispatch()
+    const cart = useSelector(state=>state.cart.cart)
     const [showMore,setShowMore]=useState(false)
+
+
+
+   
+
     const detailsClickHandler=()=>{
         setShowMore(!showMore)
     }
+
+    useEffect(()=>{
+        dispatch(getCartList())
+    },[])
+
+    if ( cart.length==0 ) {
+        return  <Loader/> 
+    }
+
     return (
         <HomeLayout footer={true}>
         <div className={classes.root}>
@@ -197,47 +226,17 @@ const Cart = () => {
                 <div className={classes.cartText}>Your Cart</div>
                 <div className={classes.productDetailsContainer}>
                     <div className={classes.mainDetailContainer}>
-                        {[0,1,2].map(product=>{
+                        {cart.map(product=>{
                             return (
                                 <div className={classes.productDetails}>
                                 <CloseIcon className={classes.closeIcon}/>
-        <img src="images/glass.png" className={classes.productImage}/>
+        <img src={product.product.image} className={classes.productImage}/>
         <div className={classes.productDescriptionContainer}>
-            <div className={classes.descriptionHeaderText}>Chase</div>
-            <div className={classes.descriptionSubHeaderText}>Product Description(short)</div>
-            <div className={classes.modelText}>Model: H231ff</div>
-            <Link className={classes.link} onClick={detailsClickHandler}  href="#">
-               More Details
-            </Link>
-            {showMore ?
-                 <div className={classes.descriptionContainer}>
-                 <div className={classes.detailsContainer}>
-                 <div className={classes.descriptionMainText}>Size</div>
-                 <div className={classes.descriptionSubText}>Medium</div>
-                 </div>
-                 <div className={classes.detailsContainer}>
-                 <div className={classes.descriptionMainText}>Size</div>
-                 <div className={classes.descriptionSubText}>Medium</div>
-                 </div>
-                 <div className={classes.detailsContainer}>
-                 <div className={classes.descriptionMainText}>Size</div>
-                 <div className={classes.descriptionSubText}>Medium</div>
-                 </div>
-                 <div className={classes.detailsContainer}>
-                 <div className={classes.descriptionMainText}>Size</div>
-                 <div className={classes.descriptionSubText}>Medium</div>
-                 </div>
-                 <div className={classes.detailsContainer}>
-                 <div className={classes.descriptionMainText}>Size</div>
-                 <div className={classes.descriptionSubText}>Medium</div>
-                 </div>
-                 <div className={classes.detailsContainer}>
-                 <div className={classes.descriptionMainText}>Size</div>
-                 <div className={classes.descriptionSubText}>Medium</div>
-                 </div>
-         
-                 </div>:'' }
-       
+            <div className={classes.descriptionHeaderText}>{product.product.title}</div>
+            <div className={classes.descriptionSubHeaderText}>{product.product.description}</div>
+            <div className={classes.modelText}>Author: {product.product.author}</div>
+            <div className={classes.priceText}>Rs.{product.product.price}</div>
+          
             </div>
         </div>
                             )
@@ -248,7 +247,7 @@ const Cart = () => {
                     <div className={classes.checkOutContainer}>
                         <div className={classes.itemContainer}>
                             <div className={classes.itemText}>Items:</div>
-                            <div className={classes.count}>4</div>
+                            <div className={classes.count}>{cart.length}</div>
                         </div>
                             <Divider style={{margin:"10px 0"}}/>
                             <div className={classes.totalContainer}>

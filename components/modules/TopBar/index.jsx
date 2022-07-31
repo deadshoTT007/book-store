@@ -11,7 +11,7 @@ import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import SecondaryButton from '@/components/elements/SecondaryButton';
 import CloseOutlinedIcon from '@mui/icons-material/CloseOutlined';
-import { useRouter } from 'next/dist/client/router';
+import { useRouter } from 'next/router';
 import Divider from '@/components/elements/Divider';
 import book1 from '@/public/images/book1.jpg';
 import book2 from '@/public/images/book2.jpg';
@@ -22,10 +22,11 @@ import { styled } from '@mui/material/styles'
 import Badge from '@mui/material/Badge';
 import IconButton from '@mui/material/IconButton';
 import { useClickOutside } from 'react-click-outside-hook';
-import { useSelector, useDispatch } from 'react-redux';
 import { getCategoriesList } from '@/store/actions/categories';
+import { useSelector, useDispatch } from 'react-redux';
 import PrimaryButton from '@/components/elements/PrimaryButton';
 import { profileFetch } from '@/store/actions/profile';
+import { getCartList } from '@/store/actions/cart';
 
 const useStyles = makeStyles(theme => ({
     topBar: {
@@ -495,6 +496,7 @@ const TopBar = () => {
 
 
     const categoriesList = useSelector(state => state.categories.categoriesList)
+    const cart = useSelector(state=> state.cart.cart)
 
 
 
@@ -503,11 +505,11 @@ const TopBar = () => {
         dispatch(getCategoriesList())
     }, [])
 
-    useEffect(()=>{
-        if(token){
-            dispatch(profileFetch())
-        }
-    },[token])
+    // useEffect(()=>{
+    //     if(token){
+    //         dispatch(profileFetch())
+    //     }
+    // },[token])
 
     const collapseContainer = (e) => {
         if (e) {
@@ -520,6 +522,12 @@ const TopBar = () => {
     useEffect(() => {
         if (profileClickOutside) collapseContainer()
     }, [profileClickOutside])
+
+    useEffect(()=>{
+        dispatch(getCartList())
+    },[])
+
+    const [ update, setUpdate ] = useState(false)
 
 
     const StyledBadge = styled(Badge)(({ theme }) => ({
@@ -614,8 +622,8 @@ const TopBar = () => {
                             <div className={classes.cartContainer}>
                                 <FavoriteOutlinedIcon className={classes.favIcon} />
                                 {/* <ShoppingCartIcon onClick={()=>router.push('/cart')} className={classes.cartIcon} /> */}
-                                <IconButton aria-label="cart">
-                                    <StyledBadge badgeContent={4} color="secondary">
+                                <IconButton onClick={()=>router.push('/cart')} aria-label="cart">
+                                    <StyledBadge badgeContent={cart.length} color="secondary">
                                         <ShoppingCartIcon />
                                     </StyledBadge>
                                 </IconButton>
@@ -637,7 +645,7 @@ const TopBar = () => {
                                             <div onClick={() => router.push('/account-details')} className={classes.option}>
                                                 <span>Account Details</span>
                                             </div>
-                                            <div className={classes.option}>
+                                            <div onClick={()=>{localStorage.removeItem('token');window.location.reload()}} className={classes.option}>
                                                 <span>Logout</span>
                                             </div>
                                         </div>

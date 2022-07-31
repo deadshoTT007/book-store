@@ -58,7 +58,7 @@ const useStyles = makeStyles(theme => ({
 
 
 }))
-export const Register = () => {
+export const Register = ({id}) => {
     const classes = useStyles()
     const dispatch = useDispatch()
     const router = useRouter()
@@ -161,19 +161,24 @@ export const Register = () => {
         })
 
     }
+
+    const routerPushHandler = (id) => {
+        if(id){
+            router.push(`/product-details/${id}`)
+        }
+    }
     
     console.log(userData,"data")
     const signUpHandler = async() => {
-        console.log("kera")
         const username = userData.formData.username.value;
         const email = userData.formData.email.value;
         const password = userData.formData.password1.value;
 
-      await  dispatch(register(username,email,password))
+      await  dispatch(register(username,email,password,routerPushHandler,id))
     }
 
 
-    if(token) router.push('/')
+    // if(token) router.push('/')
 
     const checkValidity = (values, rules, name) => {
         console.log(values, rules, "values")
@@ -256,7 +261,7 @@ export const Register = () => {
                                 fullWidth="true" />
                         })}
                     </div>
-                    <PrimaryButton disable={disable} actionClick={signUpHandler} style={{ width:"100%",marginTop:24 }} title="Register" />
+                    <PrimaryButton disableState={disable} actionClick={signUpHandler} style={{ width:"100%",marginTop:24 }} title="Register" />
                     <div className={classes.linkContainer}>
                         <Typography variant="span" className={classes.linkText}>Already have account?</Typography>
                         Login

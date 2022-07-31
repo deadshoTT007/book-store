@@ -126,7 +126,7 @@ const useStyles = makeStyles(theme => ({
     }
 
 }))
-const Form = () => {
+const Form = ({id}) => {
     const classes = useStyles()
     const [signIn, setSignIn] = useState(true)
     const [register, setRegister] = useState(false)
@@ -165,8 +165,8 @@ const Form = () => {
                     <div className={classes.form}>
                         <CustomButton onClickHandler={onClickHandler} left={true} active={signIn} name="signIn" title="Sign In" />
                         <CustomButton onClickHandler={onClickHandler} right={true} active={register} name="register" title="Register" />
-                        {register && <Register />}
-                        {signIn && <SignIn />}
+                        {register && <Register id={id}/>}
+                        {signIn && <SignIn id={id} />}
 
                     </div>
 

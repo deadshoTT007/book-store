@@ -15,7 +15,9 @@ const reducer = (state=initialState,action)=> {
     switch(action.type){
         case "PROFILE_FETCH":
             return profileFetch(state, action.data)
+            default:
+                return state
     }
 }
 
-export default profile
+export default reducer

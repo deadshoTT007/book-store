@@ -10,8 +10,12 @@ const AuthenticationProvider = props => {
     if (typeof window !== 'undefined') {
         initialValue = initialValue + 1
         if (initialValue <= 1)
+        {
             dispatch(getToken(localStorage.getItem('token')))
-           
+        }
+
+        dispatch(profileFetch())
+
         return <>{props.children}</>
     }
     return props.children

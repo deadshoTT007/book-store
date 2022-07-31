@@ -15,6 +15,10 @@ import { getProduct } from '@/store/actions/products';
 import Loader from '@/components/Loader';
 import { getProductsList } from '@/store/actions/products';
 import Product from '@/components/modules/Product';
+import { profileFetch } from '@/store/actions/profile';
+import { addToCartCreate, getCartData, getCartList } from '@/store/actions/cart';
+import { useRouter } from 'next/router';
+import { addToCart } from '@/store/actions/cart';
 const bgImage = "https://st2.depositphotos.com/3258807/10726/i/950/depositphotos_107267666-stock-photo-positive-girl-holding-her-glasses.jpg"
 
 const imageData = [
@@ -499,12 +503,40 @@ const ProductDetails = (props) => {
     const dispatch = useDispatch()
     const product = useSelector(state=>state.products.product)
     const productsList = useSelector(state=>state.products.productsList)
+    const cartId = useSelector(state=>state.cart.cartid)
+    const token = useSelector(state=>state.auth.token)
+    const cart = useSelector(state=>state.cart.cart)
+
+    const router = useRouter()
+
+    let userId;
+    if (token){
+         userId = useSelector(state=>state.profile.profile?.id)
+    }
+
+    const checkQuantityHandler = () => {
+        if(product){
+            let data = cart.filter(eachCart=>eachCart.id === product.id)
+            data.quantity += 1; 
+    
+            if(data){
+                return data.quantity=0;
+
+        }
+        }
+
+
+    }
 
     const { id } = props;
 
     useEffect(()=>{
         dispatch(getProduct(id))
     },[id])
+
+    useEffect(()=>{
+        dispatch(getCartList())
+    },[])
 
     useEffect(()=>{
         dispatch(getProductsList(product?product.category:""))
@@ -530,10 +562,37 @@ const ProductDetails = (props) => {
         // }
     }
     const dots = new Array(imagesData.length)
+    // useEffect(()=>{
+    //     dispatch(getCartData())
+    // },[])
+    let quantity=0;
 
-    const addToCartHandler = () => {
-        dispatch()
+    const addToCartHandler =async () => {
+
+        const item = cart.length>0 && cart.map((eachCart,index)=>{
+            if ( eachCart.id == product.id) {
+                quantity ++ ;
+            }
+        })
+
+        console.log(quantity,"quantity")
+        dispatch(addToCart(product.id,1))
+       
+        if(!token){
+            router.push({
+                pathname:'/register-account',
+                query:{pid:product.id}
+            })
+        }
     }
+
+
+
+   
+    // useEffect(()=>{
+    //     if(token)
+    //     dispatch(profileFetch())
+    // },[token])
 
 
     return (

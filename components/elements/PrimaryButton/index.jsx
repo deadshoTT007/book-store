@@ -49,11 +49,13 @@ const PrimaryButton = (props) => {
 
     }))
     const classes = useStyles()
+
+    console.log(props,"prosps disable")
     return (
 
 
         <div className={classes.buttonContainer}>
-            <Button disable={props.disable} onClick={props.actionClick} type="submit" variant="contained" className={classes.button}>{props.title}</Button>
+            <Button style={{cursor:props.disableState&&"not-allowed",backgroundColor:props.disableState && "red"}} onClick={props.actionClick} type="submit" variant="contained" className={classes.button}>{props.title}</Button>
 
         </div>
 

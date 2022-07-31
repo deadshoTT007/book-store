@@ -62,8 +62,9 @@ const useStyles = makeStyles(theme => ({
       textAlign:"left",
       marginTop:'10px',
       color:"grey",
-      fontSize:"18px",
-      fontWeight:'700'
+      fontSize:"24px",
+      fontWeight:'700',
+      color:colors.primary
   },
   cart:{
       display:"none",
@@ -97,17 +98,23 @@ const Product = ({ title, author, description, price, image, follow_author,id })
     console.log(id,"pid")
     const classes = useStyles()
     const router=useRouter()
+
+    const addToCartHandler = () => {
+
+    }
+
     return (
         <div className={classes.product}>
             <div className={classes.container}>
             <img  onClick={()=>router.push(`/product-details/${id}`)} src={image} className={classes.productImage}/>
-            <div className={classes.cart}>Add To Cart
+            <div onClick={addToCartHandler} className={classes.cart}>
             <ShoppingCartIcon className={classes.icon}/>
+                Add To Cart
             </div>
             </div>
             <div className={classes.authorName}>{author}</div>
             <div className={classes.title}>{title}</div>
-            <div className={classes.price}>Rs.{price}</div>
+            <div className={classes.price}>Rs. {price}</div>
         </div>
     )
 }

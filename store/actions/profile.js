@@ -4,7 +4,6 @@ export const profileFetch = (token) => {
     return (dispatch,getState) => {
         const url = "/account/profile/"
         const token = getState().auth.token
-        console.log(token,"token")
         const requestOptions = {
            
             headers: {
@@ -13,6 +12,8 @@ export const profileFetch = (token) => {
             },
         }
 
-        axios.get(url, requestOptions).then(res=>console.log(res.data,"profile"))
+        axios.get(url, requestOptions).then(res=>dispatch({type:"PROFILE_FETCH",data:res.data}))
+
     }
+
 }

@@ -7,6 +7,7 @@ import PermIdentityOutlinedIcon from '@mui/icons-material/PermIdentityOutlined';
 import MailOutlinedIcon from '@mui/icons-material/MailOutlined';
 import LocalPhoneOutlinedIcon from '@mui/icons-material/LocalPhoneOutlined';
 import { emailRegex } from '@/utils/index'
+import { useSelector } from 'react-redux'
 const useStyles=makeStyles(theme=>({
     accountInfoContainer:{
         padding:"16px 40px",
@@ -39,6 +40,7 @@ const useStyles=makeStyles(theme=>({
 }))
 const AccountDetails = () => {
     const classes=useStyles()
+    const profile = useSelector(state=>state.profile.profile)
     const [userData, setUserData] =useState({
         formData: {
             username: {
@@ -51,10 +53,11 @@ const AccountDetails = () => {
                     minWidth: "100%"
 
                 },
-                value: '',
+                value:`${profile?profile.username:''}`,
                 valid: false,
                 touched: false,
                 focus: null,
+                readOnly:true,
                 style:{width:"50%"},
                 smallStyle:{width:"100%"},
                 validity: {
@@ -70,10 +73,11 @@ const AccountDetails = () => {
                     name: "email",
                     Icon: <MailOutlinedIcon className={classes.icon} />,
                 },
-                value: '',
+                value: `${profile?profile.email:''}`,
                 focus: null,
                 valid: false,
                 touched: false,
+                readOnly:true,
                 style:{width:"50%"},
                 smallStyle:{width:"100%"},
                 validity: {
@@ -82,26 +86,7 @@ const AccountDetails = () => {
                 }
             },
           
-            phone: {
-                elementConfig: {
-                    type: "text",
-                    placeholder: "9823456765",
-                    label: "Phone Number",
-                    name: "phone",
-                    Icon:<LocalPhoneOutlinedIcon className={classes.icon}/>
-                    // required: true,
-                },
-                value: '',
-                valid: false,
-                touched: false,
-                style:{width:"50%"},
-                smallStyle:{width:"100%"},
-                validity: {
-                    required: true,
-                    length: "10"
-                }
-            },
-        }
+        }           
     });
 
     const iconClickHandler = (name) => {
@@ -191,6 +176,7 @@ const AccountDetails = () => {
                     showPassword={inputData.formData.showPassword}
                     value={inputData.formData.value}
                     valid={inputData.formData.valid}
+                    readOnly={inputData.formData.readOnly}
                     touched={inputData.formData.touched}
                     inputData={inputData}
                     focusHandler={focusHandler}

@@ -122,7 +122,7 @@ const Input = (props) => {
 
 
     const classes = useStyles()
-    const { name, type, Icon, pattern, iconClickHandler, focus, showPassword, focusHandler, phoneFocus, blurHandler, value, valid, inputData, touched, required, placeholder, emailFocus, passwordFocus, label, fullWidth, changeHandler, paddingTop } = props
+    const { name, type,readOnly, Icon, pattern, iconClickHandler, focus, showPassword, focusHandler, phoneFocus, blurHandler, value, valid, inputData, touched, required, placeholder, emailFocus, passwordFocus, label, fullWidth, changeHandler, paddingTop } = props
     console.log(focus, "focus")
     return (
         <div className={classes.mainContainer}>
@@ -139,7 +139,7 @@ const Input = (props) => {
                     name={name}
                     required
                     autoComplete="off"
-
+                    readOnly={readOnly}
                     value={value}
                     onFocus={() => focusHandler(name)}
                     onBlur={() => blurHandler(name)}

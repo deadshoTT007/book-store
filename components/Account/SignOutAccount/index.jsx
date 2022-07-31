@@ -2,6 +2,9 @@ import React from 'react'
 import { makeStyles } from '@mui/styles'
 import { colors } from '@/utils/index'
 import PrimaryButton from '@/components/elements/PrimaryButton'
+import { useRouter } from 'next/router'
+
+
 const useStyles=makeStyles(theme=>({
 signOutContainer:{
     display:'flex',
@@ -44,6 +47,7 @@ signoutText:{
 }
 }))
 const SignOutAccount = () => {
+    const router = useRouter()
     const classes=useStyles()
     return (
         <div className={classes.main}>
@@ -53,7 +57,7 @@ const SignOutAccount = () => {
             <div className={classes.signOutMainContainer}>
                 <div className={classes.signoutText}>Signout</div>
                 <div className={classes.description}>You will be signout from you account.</div>
-                <PrimaryButton title="Signout" smallParentStyle={{justifyContent:"flex-start"}} parentStyle={{justifyContent:"center"}} style={{marginTop:24}} />
+                <PrimaryButton title="Signout" actionClick={()=>{ localStorage.removeItem('token'); window.location.reload(); router.push('/') }}  smallParentStyle={{justifyContent:"flex-start"}} parentStyle={{justifyContent:"center"}} style={{marginTop:24}} />
             </div>
             
         </div>

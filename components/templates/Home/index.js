@@ -329,7 +329,7 @@ const HomePage = (props) => {
 
     return (
         <>
-        { ( categoriesList.length>0 && productsList.length>0 ) ?
+       
          <div className={classes.mainContainer}>
          <div className={classes.heroContainer}>
              <div className={classes.heroTextContainer}>
@@ -375,8 +375,7 @@ const HomePage = (props) => {
              </div>
          </div>
      </div>
-    :
-    ""}
+  
        
 </>
     )

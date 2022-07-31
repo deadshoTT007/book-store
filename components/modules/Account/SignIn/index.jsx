@@ -285,7 +285,7 @@ const SignIn = () => {
                         fullWidth="true" />
                     })}
                 </div>
-                <PrimaryButton actionClick={loginHandler}  style={{marginTop:24,width:"100%"}} title="Sign In" />
+                <PrimaryButton disableState={disable} actionClick={loginHandler}  style={{marginTop:24,width:"100%"}} title="Sign In" />
                 <div className={classes.linkContainer}>
                     <Link href="#" className={classes.links}>
                       Forgot Password?
