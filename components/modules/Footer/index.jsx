@@ -310,59 +310,7 @@ const Footer = () => {
                 <div className={classes.footer}>
                     <div className={classes.footerContent}>
                         <div className={classes.footerMainText} >Categories</div>
-                        <Link href="#" className={classes.links}>
-                          Sunglass for mens
-                        </Link>
-                        <Link href="#" className={classes.links}>
-                          Sunglass for womens
-                        </Link>
-                        <Link href="#" className={classes.links}>
-                          Sunglass for kids
-                        </Link>
-                        <Link href="#" className={classes.links}>
-                          Eyeglass for mens
-                        </Link>
-                        <Link href="#" className={classes.links}>
-                          Eyeglass for womens
-                        </Link>
-                        <Link href="#" className={classes.links}>
-                          Eyeglass for kids
-                        </Link>
-                    </div>
-                    <div className={classes.footerContent}>
-                        <div className={classes.footerMainText} >Brand</div>
-                        <Link href="#" className={classes.links}>
-                          Ray-ban
-                        </Link>
-                        <Link href="#" className={classes.links}>
-                          Sunglass hut
-                        </Link>
-                        <Link href="#" className={classes.links}>
-                          Okaley
-                        </Link>
-
-                    </div>
-                    <div className={classes.footerContent}>
-                        <div className={classes.footerMainText} >Useful</div>
-                        <Link href="#" className={classes.links}>
-                          Cart
-                        </Link>
-                        <Link href="#" className={classes.links}>
-                          Profile
-                        </Link>
-
-                    </div>
-                    <div className={classes.footerContent}>
-                        <div className={classes.footerMainText} >Features</div>
-                        <Link href="#" className={classes.links}>
-                          Home try-on
-                        </Link>
-                        <Link href="#" className={classes.links}>
-                          Virtual try-on
-                        </Link>
-                        <Link href="#" className={classes.links}>
-                          Upload subscription
-                        </Link>
+                      
 
                     </div>
                 </div>

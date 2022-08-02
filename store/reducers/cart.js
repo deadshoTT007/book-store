@@ -4,6 +4,7 @@ import { updateObject } from "../utility";
 const initialState = {
     cart:[],
     cartId:null,
+    total:''
 }
 
 const addToCartHandler = (state, action) => {
@@ -26,6 +27,18 @@ const cartReducer = (state = initialState, action) => {
             return cartCreate(state,action)
         case "GET_CART":
             return getCartData(state,action)
+        case "TOTAL":
+            let totalArr=[];
+            totalArr = state.cart && state.cart>0 && state.cart.map((eachCart, index) => {
+                let price = eachCart.product.price * eachCart.quantity;
+                let totalPrice = + price;
+                return totalPrice
+            })
+            console.log(totalArr,"arrrr")
+           let total = totalArr && totalArr.length>0 && totalArr.reduce((arr, acc) => arr + acc)
+
+           return updateObject(state,{total:total})
+
         default:
             return state
     }

@@ -1,4 +1,4 @@
-import React,{useState} from 'react'
+import React,{useState, useEffect} from 'react'
 import { makeStyles } from '@mui/styles'
 import { colors } from '@/utils/index'
 import IconText from '@/components/elements/IconText'
@@ -19,19 +19,24 @@ import AccountOrderHistory from '@/components/Account/AccountOrderHistory'
 import { useMediaQuery } from '@mui/material'
 // import ArrowForwardIosOutlinedIcon from '@mui/icons-material/ArrowForwardIosOutlined';
 import ArrowBackIosOutlinedIcon from '@mui/icons-material/ArrowBackIosOutlined';
+import { useSelector, useDispatch} from 'react-redux'
+import { createOrder, getOrders } from '@/store/actions/orders'
+
+
+
 
 
 
 const useStyles=makeStyles(theme=>({
     mainContainer:{
-        width:"70%",
+        width:"90%",
         margin:"40px auto",
         marginTop:"105px",
         display:'grid',
         gridTemplateColumns:"250px auto",
         gridGap:'24px',
         [theme.breakpoints.down('lg')]:{
-        width:"80%",
+        width:"90%",
         marginTop:"120px"
         },
         [theme.breakpoints.down('md')]:{
@@ -163,12 +168,28 @@ const AccountDetail = () => {
     const classes=useStyles()
     const active=useMediaQuery("(min-width:900px)")
     const [accountName,setAccountName]=useState("account_details")
-
-
+    const orderData = useSelector(state=>state.order.orderCreate)
+    const ordersList = useSelector(state=>state.order.orders)
+    
+    const dispatch = useDispatch()
    const accountDetailsHandler=(value)=>{
 setAccountName(value)
    }
- 
+
+   
+   useEffect(()=>{
+       dispatch(createOrder())
+       dispatch(getOrders())
+       
+    },[])
+
+    // useEffect(()=>{
+        
+    //     if(orderData.id){
+    //         dispatch(getOrders())
+    //     }
+    // },[orderData.id])
+    
    console.log(accountName,"name")
     return (
         <HomeLayout>
@@ -213,7 +234,7 @@ setAccountName(value)
                 {accountName==="change_password" && <ChangeAccountPassword/>}
                 {accountName==="sign_out" && <SignOutAccount/>}
                 {/* {accountName==="help" && <AccountHelp/>} */}
-               {accountName==="order_history" && <AccountOrderHistory/>}
+               {accountName==="order_history" && <AccountOrderHistory ordersList={ ordersList.length>0 && ordersList } /> }
         </div>
         </div>
 

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import { makeStyles } from '@mui/styles'
 import { colors } from '@/utils/index'
 import TopBar from '@/components/modules/TopBar'
@@ -8,6 +8,7 @@ import Divider from '@/components/elements/Divider'
 import PrimaryButton from '@/components/elements/PrimaryButton'
 import { useRouter } from 'next/dist/client/router'
 import HomeLayout from '@/components/layouts/HomeLayout'
+import { useDispatch,useSelector } from 'react-redux'
 const useStyles=makeStyles(theme=>({
     mainContainer:{
         width:"50%",
@@ -114,6 +115,14 @@ const useStyles=makeStyles(theme=>({
 const OrderSummary = () => {
     const classes=useStyles()
     const router=useRouter()
+
+    const dispatch = useDispatch()
+
+    useEffect(()=>{
+        dispatch({type:"TOTAL"})
+    })
+
+
     return (
         <>
         <HomeLayout>
@@ -126,7 +135,7 @@ const OrderSummary = () => {
         <div className={classes.addressText}>Shipping address:</div>
         <div className={classes.locationText}>Katunje, bhaktapur</div>
     </div>
-    <Link href="#" className={classes.link}>
+    <Link  className={classes.link}>
         Change address
     </Link>
 </div>

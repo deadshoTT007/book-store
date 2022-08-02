@@ -1,16 +1,23 @@
 import axios from "@/utils/axios"
 
 
- export const addToCart = (product,quantity,cart,price) => {
-    return dispatch => {
+ export const addToCart = (product,quantity) => {
+    return (dispatch,getState) => {
         const url = '/cart/item/create/'
+        const token = getState().auth.token
 
         const requestOptions={
             product:product,
             quantity,
         }
 console.log(requestOptions,"req")
-        axios.post(url,requestOptions).then(res=>console.log(res.data,"cart"))
+        axios.post(url,requestOptions,{
+            headers: {
+                'Content-Type': 'application/json',
+                "Authorization": 'Bearer ' + token,
+            },
+           
+        }).then(res=>console.log(res.data,"cart"))
     }
 }
 
@@ -56,7 +63,7 @@ export const addToCartCreate = (userId) => {
 
 export const getCartList = () => {
     return (dispatch,getState) => {
-        const url = '/cart/item/list/'
+        const url = '/cart/retrieve/'
         const token = getState().auth.token
         const requestOptions = {
            

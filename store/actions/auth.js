@@ -3,7 +3,7 @@ import axios from "@/utils/axios"
 // const token = localStorage.getItem('token')
 
 
-export const login =  ( username, password ) => {
+export const login =  ( username, password, routerHandler, id ) => {
     return dispatch => {
         const url = '/account/login/'
 
@@ -16,10 +16,13 @@ export const login =  ( username, password ) => {
         axios.post(url,requestOptions).then(res=>{
             console.log(res.data,"login")
             localStorage.setItem('token',res.data.access)
-            dispatch({
-                type:"LOGIN",
-                data:res.data.access
-            })
+            if(res.status===200 || res.status===201){
+                dispatch({
+                    type:"LOGIN",
+                    data:res.data.access
+                })
+                routerHandler(id)
+            }
         })
 
     }

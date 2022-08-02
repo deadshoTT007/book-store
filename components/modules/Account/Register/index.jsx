@@ -162,11 +162,7 @@ export const Register = ({id}) => {
 
     }
 
-    const routerPushHandler = (id) => {
-        if(id){
-            router.push(`/product-details/${id}`)
-        }
-    }
+  
     
     console.log(userData,"data")
     const signUpHandler = async() => {

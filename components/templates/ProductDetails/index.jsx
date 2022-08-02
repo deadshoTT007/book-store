@@ -19,6 +19,9 @@ import { profileFetch } from '@/store/actions/profile';
 import { addToCartCreate, getCartData, getCartList } from '@/store/actions/cart';
 import { useRouter } from 'next/router';
 import { addToCart } from '@/store/actions/cart';
+import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
+import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
+
 const bgImage = "https://st2.depositphotos.com/3258807/10726/i/950/depositphotos_107267666-stock-photo-positive-girl-holding-her-glasses.jpg"
 
 const imageData = [
@@ -494,6 +497,31 @@ const useStyles = makeStyles(theme => ({
        display:"grid",
        gridTemplateColumns:"repeat(3,1fr)",
        gap:"20px"
+    },
+
+    quantity:{
+        margin:"20px 0",
+        marginBottom:"10px",
+        fontSize:"16px",
+        fontWeight:"600"
+    },
+
+    amountToggle:{
+        display:"flex",
+        alignItems:"center",
+    },
+    amountInput:{
+        width:"70px",
+        height:"30px",
+        fontSize:"20px",
+        paddingLeft:10
+    },
+    icons:{
+        display:'flex',
+        flexDirection:"column"
+    },
+    toggleIcon:{
+        cursor:"pointer",
     }
 
 
@@ -506,6 +534,22 @@ const ProductDetails = (props) => {
     const cartId = useSelector(state=>state.cart.cartid)
     const token = useSelector(state=>state.auth.token)
     const cart = useSelector(state=>state.cart.cart)
+
+    const [ quantity, setQuantity ] = useState(1)
+
+    const incrementQuantityHandler = () => {
+        setQuantity(pre=>pre+1)
+    }
+
+    const decrementQuantityHandler = () => {
+        if(quantity>1){
+            setQuantity(pre=>pre-1)
+        }
+    }
+
+    const amountHandler = (e) => {
+        setQuantity(+e.target.valie)
+    }
 
     const router = useRouter()
 
@@ -565,25 +609,19 @@ const ProductDetails = (props) => {
     // useEffect(()=>{
     //     dispatch(getCartData())
     // },[])
-    let quantity=0;
 
     const addToCartHandler =async () => {
 
-        const item = cart.length>0 && cart.map((eachCart,index)=>{
-            if ( eachCart.id == product.id) {
-                quantity ++ ;
-            }
-        })
-
-        console.log(quantity,"quantity")
-        dispatch(addToCart(product.id,1))
-       
         if(!token){
             router.push({
                 pathname:'/register-account',
                 query:{pid:product.id}
             })
+        } 
+        else {
+            dispatch(addToCart(product.id,quantity))
         }
+       
     }
 
 
@@ -642,6 +680,15 @@ const ProductDetails = (props) => {
                             </div>
                             <p className={classes.description}>{product.description}</p>
                             <p className={classes.model}>Category: {product.category}</p>
+
+                            <div className={classes.quantity}>Quantity</div>
+                            <div className={classes.amountToggle}>
+                                <div className={classes.icons}>
+                                <KeyboardArrowUpIcon onClick={incrementQuantityHandler} className={classes.toggleIcon}/>
+                                <KeyboardArrowDownIcon onClick={decrementQuantityHandler} className={classes.toggleIcon} />
+                                </div>
+                                <input onChange={amountHandler} value={quantity} className={classes.amountInput} type="number" />
+                            </div>
                             <h4 className={classes.price}>Rs.{product.price}</h4>
                             
                       

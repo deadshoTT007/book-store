@@ -7,7 +7,15 @@ body {
     /* display:flex;
     flex-direction: column;
     height: 100vh; */
-    font-family: 'Rubik', sans-serif;}
+    font-family: 'Rubik', sans-serif;
+    display: flex;
+    overflow-x: hidden;
+    /* flex-direction: column; */
+    justify-content: space-between;
+    align-items: flex-end;
+    min-height: 100vh;
+  
+  }
 
 a {
   color: inherit;
@@ -26,4 +34,13 @@ a {
 }
 ::-webkit-scrollbar {
   display: none;
+}
+
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button { 
+	-webkit-appearance: none;
 }

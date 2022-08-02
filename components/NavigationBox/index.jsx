@@ -25,7 +25,7 @@ const NavigationBox = () => {
     return (
         <div className={classes.navigationBox}>
             <div className={classes.navigationBoxContainer}>
-                <Link href="#" className={classes.link}>
+                {/* <Link href="#" className={classes.link}>
                    Home
                 </Link>
             <ArrowForwardIosOutlinedIcon className={classes.icon}/>
@@ -35,7 +35,7 @@ const NavigationBox = () => {
                 <ArrowForwardIosOutlinedIcon className={classes.icon}/>
                 <Link href="#" className={classes.link}>
                    Home
-                </Link>
+                </Link> */}
 
             </div>
             

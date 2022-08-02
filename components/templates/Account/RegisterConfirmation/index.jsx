@@ -173,9 +173,9 @@ const RegisterConfirmation = () => {
                         <PrimaryButton title="Continue" />
                     </div>
                     <div className={classes.linkContainer}>
-                        <Link href="#" className={classes.links}>
+                        {/* <Link href="#" className={classes.links}>
                           Didn't Get A Code?
-                        </Link>
+                        </Link> */}
                     </div>
 
                 </form>

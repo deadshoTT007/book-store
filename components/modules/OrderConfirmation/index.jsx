@@ -80,9 +80,9 @@ const OrderConfirmation = () => {
                 </div> */}
                 <PrimaryButton actionClick={()=>router.push('/payment-success')} title="Confirm Your Order" style={{marginTop:24,marginBottom:28}}/>
                 <div className={classes.linkContainer}>
-                    <Link href="#" className={classes.links}>
+                    {/* <Link href="#" className={classes.links}>
                         Help?
-                    </Link>
+                    </Link> */}
                 </div>
             </div>
         </>

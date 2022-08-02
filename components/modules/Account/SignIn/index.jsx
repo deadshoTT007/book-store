@@ -132,7 +132,7 @@ const useStyles = makeStyles(theme => ({
 
 }))
 
-const SignIn = () => {
+const SignIn = ({id}) => {
     const classes = useStyles()
     const dispatch = useDispatch()
     const router = useRouter()
@@ -243,11 +243,18 @@ const SignIn = () => {
     // let isDisable = Object.values(userData.formData).forEach(val => val.valid && (disable = false))
     Object.values(userData.formData).forEach(val => val.valid === false && (disable = true))
 
+    const routerPushHandler = (id) => {
+        console.log("Back to product details")
+        if(id){
+            router.push(`/product-details/${id}`)
+        }
+    }
+
     const loginHandler = () => {
         const username = userData.formData.username.value;
         const password = userData.formData.password.value;
 
-        dispatch(login(username,password))
+        dispatch(login(username,password,routerPushHandler,id))
     }
 
     useEffect(()=>{
@@ -287,9 +294,9 @@ const SignIn = () => {
                 </div>
                 <PrimaryButton disableState={disable} actionClick={loginHandler}  style={{marginTop:24,width:"100%"}} title="Sign In" />
                 <div className={classes.linkContainer}>
-                    <Link href="#" className={classes.links}>
+                    {/* <Link href="#" className={classes.links}>
                       Forgot Password?
-                    </Link>
+                    </Link> */}
                 </div>
             </form>
             </div>
