@@ -21,7 +21,8 @@ import { useMediaQuery } from '@mui/material'
 import ArrowBackIosOutlinedIcon from '@mui/icons-material/ArrowBackIosOutlined';
 import { useSelector, useDispatch} from 'react-redux'
 import { createOrder, getOrders } from '@/store/actions/orders'
-
+import { useRouter } from 'next/router'
+import { paymentUpdate } from '@/store/actions/payment'
 
 
 
@@ -183,6 +184,15 @@ setAccountName(value)
        
     },[])
 
+    const router = useRouter()
+
+    console.log(router,"router")
+
+    useEffect(()=>{
+        if(router.query){
+            dispatch(paymentUpdate(router.query.id,router.query.oid,router.query.refId,router.query.amt))
+        }
+    },[router.query.id])
     // useEffect(()=>{
         
     //     if(orderData.id){
@@ -204,7 +214,7 @@ setAccountName(value)
                     {active?
                     <div className={classes.personSettingsContainer}>
                     <IconText name={accountName} value="account_details" actionClick={()=>accountDetailsHandler("account_details")} style={{justifyContent:"space-between"}} title="Account Details" icon={<ArrowForwardIosOutlinedIcon className={`${accountName==="account_details"?classes.activeIcon:classes.icon}`}/>}/>
-                    <IconText name={accountName} value="address_book" actionClick={()=>accountDetailsHandler("address_book")} style={{justifyContent:"space-between"}} title="Address Book" icon={<ArrowForwardIosOutlinedIcon className={`${accountName==="address_book"?classes.activeIcon:classes.icon}`}/>}/>
+                    {/* <IconText name={accountName} value="address_book" actionClick={()=>accountDetailsHandler("address_book")} style={{justifyContent:"space-between"}} title="Address Book" icon={<ArrowForwardIosOutlinedIcon className={`${accountName==="address_book"?classes.activeIcon:classes.icon}`}/>}/> */}
                     <IconText name={accountName} value="order_history" actionClick={()=>accountDetailsHandler("order_history")} style={{justifyContent:"space-between"}} title="Order History" icon={<ArrowForwardIosOutlinedIcon className={`${accountName==="order_history"?classes.activeIcon:classes.icon}`}/>}/>
                     <IconText name={accountName} value="change_password" actionClick={()=>accountDetailsHandler("change_password")} style={{justifyContent:"space-between"}} title="Change Password" icon={<ArrowForwardIosOutlinedIcon className={`${accountName==="change_password"?classes.activeIcon:classes.icon}`}/>}/>
                     {/* <IconText name={accountName} value="help" actionClick={()=>accountDetailsHandler("help")} style={{justifyContent:"space-between"}} title="Help" icon={<ArrowForwardIosOutlinedIcon className={`${accountName==="help"?classes.activeIcon:classes.icon}`}/>}/> */}
@@ -230,7 +240,7 @@ setAccountName(value)
                    
                 </div>
                 {accountName==="account_details" &&<AccountDetails/>}
-                {accountName==="address_book" && <AccountBook/>}
+                {/* {accountName==="address_book" && <AccountBook/>} */}
                 {accountName==="change_password" && <ChangeAccountPassword/>}
                 {accountName==="sign_out" && <SignOutAccount/>}
                 {/* {accountName==="help" && <AccountHelp/>} */}

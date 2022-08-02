@@ -5,5 +5,6 @@ import auth from '../reducers/auth'
 import cart from '../reducers/cart'
 import profile from '../reducers/profile'
 import order from '../reducers/orders'
+import payment from '../reducers/payment'
 
-export default combineReducers({auth,products,categories,cart, profile, order})
+export default combineReducers({auth,products,categories,cart, profile, order, payment})

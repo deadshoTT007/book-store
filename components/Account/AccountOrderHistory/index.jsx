@@ -4,6 +4,9 @@ import { colors } from '@/utils/index'
 import PrimaryButton from '@/components/elements/PrimaryButton'
 import Pagination from '@/components/Pagination'
 import Divider from '@/components/elements/Divider'
+import { useSelector, useDispatch } from 'react-redux'
+import { paymentCreate } from '@/store/actions/payment'
+import { useRouter } from 'next/router'
 
 const orderData=[
     {
@@ -155,14 +158,16 @@ mainOrdersContainer:{
 
 }))
 const AccountOrderHistory = ({ordersList}) => {
-    console.log(ordersList,"ordersList")
     const classes=useStyles()
+    const dispatch = useDispatch()
+    const router = useRouter()
     const [currentPage,setCurrentPage]=useState(1)
     const listsPerPage=5;
     const indexOFLastPost = currentPage * listsPerPage;
     const indexOfFirstPost = indexOFLastPost - listsPerPage;
-    const newOrderList = ordersList.filter(order=>order.order_items.length>0)
-    const currentList = newOrderList.slice(indexOfFirstPost, indexOFLastPost)
+    const newOrderList = ordersList.length>0 && ordersList.filter(order=>order.order_items.length>0)
+    console.log(newOrderList,"ordersList")
+    const currentList = newOrderList.length>0 && newOrderList.slice(indexOfFirstPost, indexOFLastPost)
     const pageChangeNext=()=>{
         if(currentPage>=Math.ceil(ordersList.length/listsPerPage)){
             return;
@@ -178,7 +183,10 @@ const AccountOrderHistory = ({ordersList}) => {
         setCurrentPage(currentPage-1)
     }
 
-const paymentHandler = () => {
+const paymentHandler = (amount,productId) => {
+    dispatch(paymentCreate(amount,productId))
+    router.push('/payment')
+    
     
 }
 
@@ -222,7 +230,7 @@ const paymentHandler = () => {
                 </div>
                     )
                 })} */}
-                { currentList.map((orders,index)=>{
+                { currentList.length>0 && currentList.map((orders,index)=>{
                     return (
                         <div className={classes.mainOrdersContainer}>
                          {orders.order_items.length>0 && orders.order_items.map((order,index)=>{
@@ -255,7 +263,7 @@ const paymentHandler = () => {
                             }) 
                         }
                         {orders.order_items.length>0 && 
-                        <PrimaryButton actionClock={paymentHandler} style={{margin:"20px",width:"200px"}} parentStyle={{background:"#fff"}} title="Pay"/>
+                        <PrimaryButton actionClick={()=>paymentHandler(orders.total,orders.id)} style={{margin:"20px",width:"200px"}} parentStyle={{background:"#fff"}} title={`Pay  Rs.${orders.total}`}/>
                         }
                             </div>
                     )

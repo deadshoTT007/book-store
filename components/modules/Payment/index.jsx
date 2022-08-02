@@ -103,34 +103,13 @@ const Payment = () => {
     }))
     const classes = useStyles()
 
-    const onClickHandler = (name) => {
-        if (name === "card") {
-            setCard(true)
-            setEsewa(false)
-            setOndelivery(false)
-        }
-        if (name === "esewa") {
-            setCard(false)
-            setEsewa(true)
-            setOndelivery(false)
-        }
-        if (name === "onDelivery") {
-            setCard(false)
-            setEsewa(false)
-            setOndelivery(true)
-        }
-    }
+  
     return (
         <div className={classes.paymentMethod}>
             <div className={classes.mainContainer}>
                 <Typography variant="h2" className={classes.paymentText}>Choose your payment method</Typography>
                 <div className={classes.paymentMethodContainer}>
-                    <div className={classes.eachMethod} onClick={() => onClickHandler('card')}>
-                        <div className={`${classes.eachMethodImageContainer} ${card ? classes.active : null}`}>
-                            <AiOutlineCreditCard className={classes.eachMehodIcon} />
-                        </div>
-                        <Typography variant="h6" className={classes.eachMethodText}>Card</Typography>
-                    </div>
+                   
                     <div className={classes.eachMethod} onClick={() => onClickHandler('esewa')}>
                         <div className={`${classes.eachMethodImageContainer} ${esewa ? classes.active : null}`}>
                             {/* <img src="https://esewa.com.np/common/images/esewa_logo.png" /> */}
@@ -139,17 +118,9 @@ const Payment = () => {
                         </div>
                         <Typography variant="h6" className={classes.eachMethodText}>e-Sewa</Typography>
                     </div>
-                    <div className={classes.eachMethod} onClick={() => onClickHandler('onDelivery')}>
-                        <div className={`${classes.eachMethodImageContainer} ${onDelivery ? classes.active : null}`}>
-                            <AiOutlineCreditCard className={classes.eachMehodIcon} />
-                        </div>
-                        <Typography variant="h6" className={classes.eachMethodText}>On delivery</Typography>
-                    </div>
+                   
                 </div>
                 {esewa && <Esewa />}
-                {onDelivery && <OnDelivery />}
-                {card && <Card />}
-                {/* <OrderConfirmation /> */}
             </div>
         </div>
     )
